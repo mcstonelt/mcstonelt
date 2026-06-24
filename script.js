@@ -1,0 +1,1 @@
+function copyIP(){navigator.clipboard.writeText("mc.mcstone.lt");const t=document.getElementById("copyText");if(t){t.textContent="IP nukopijuotas!";setTimeout(()=>t.textContent="Spausk, kad nukopijuotum",1600)}}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>McStone.lt</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="logo.png">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="logo.png" alt="McStone"><span>MCSTONE.LT</span></a>
+  <nav class="nav">
+    <a href="index.html">Pradžia</a>
+    <a href="informacija.html">Informacija</a>
+    <a href="naujienos.html">Naujienos</a>
+    <a href="komanda.html">Komanda</a>
+    <a href="discord.html">Discord</a>
+    <a href="parduotuve.html">Parduotuvė</a>
+  </nav>
+  <button onclick="copyIP()" class="ip-btn">MC.MCSTONE.LT</button>
+</header>
+<main class="layout">
+<aside><input placeholder="Ieškoti..."><b>Informacija</b><a href="#gidas">Naujoko gidas</a><a href="#taisykles">Taisyklės</a><a href="#komandos">Komandos</a><b>Režimai</b><a href="#survival">Survival</a><a href="#duels">Duels</a><a href="#pozemiai">Požemiai</a><a href="#clans">Clans</a></aside>
+<article class="doc">
+<span class="pill small">Informacija</span>
+<h1 id="gidas">Naujoko gidas</h1>
+<p>Prisijungęs į McStone.lt pirmiausia nueik į spawn, pasiimk pradinį rinkinį ir susirask vietą bazei. Jeigu nori žaisti saugiau, nusistatyk namus su /sethome. Jeigu nori greitai suprasti ekonomiką, atsidaryk /shop ir pažiūrėk, ką verta parduoti.</p>
+<p>Serverio tikslas paprastas: žaisk, kelk balansą, stiprink bazę, gauk geresnius daiktus, kovok dueliuose, eik į požemius ir kurk klaną. Viskas padaryta taip, kad naujas žaidėjas galėtų pradėti be didelio vargo.</p>
+<h2 id="survival">Survival</h2><p>Pagrindinis režimas. Čia renki resursus, statai namus, darai fermas, prekiauji, keli balansą ir saugai savo progresą.</p>
+<h2 id="duels">Duels</h2><p>Dvikovos skirtos žaidėjams, kurie nori kovoti be ilgo pasiruošimo. Tai gera vieta treniruotis ir testuoti įrangą.</p>
+<h2 id="pozemiai">Požemiai</h2><p>Požemiai yra rizikingesnė veikla. Ten gali rasti geresnį loot'ą, bet turi pasiruošti: šarvai, ginklai, maistas ir vieta inventoriuje.</p>
+<h2 id="clans">Clans</h2><p>Klanai leidžia žaisti su draugais, padėti vienas kitam ir siekti stipresnės pozicijos serveryje.</p>
+<h2 id="komandos">Komandos</h2><table><tr><th>Komanda</th><th>Alternatyvos</th><th>Aprašymas</th></tr><tr><td><code>/kit</code></td><td>—</td><td>Atidaro rinkinius. Pagal rangą gali turėti skirtingus kit'us.</td></tr><tr><td><code>/spawn</code></td><td>—</td><td>Grąžina į pagrindinę serverio vietą.</td></tr><tr><td><code>/shop</code></td><td>/parduotuve</td><td>Atidaro serverio parduotuvę, kur gali pirkti ir parduoti daiktus.</td></tr><tr><td><code>/paslaugos</code></td><td>—</td><td>Parodo mokamas paslaugas ir serverio pasiūlymus.</td></tr><tr><td><code>/tpa</code></td><td>—</td><td>Siunčia teleportacijos užklausą kitam žaidėjui.</td></tr><tr><td><code>/sethome</code></td><td>—</td><td>Nustato tavo namų vietą.</td></tr><tr><td><code>/home</code></td><td>—</td><td>Nukelia į tavo nustatytus namus.</td></tr><tr><td><code>/cp</code></td><td>/changepassword</td><td>Pakeičia serverio slaptažodį.</td></tr><tr><td><code>/ignore</code></td><td>—</td><td>Paslepia pasirinkto žaidėjo žinutes.</td></tr><tr><td><code>/money</code></td><td>/bal /balance</td><td>Parodo tavo turimą balansą.</td></tr><tr><td><code>/ah</code></td><td>—</td><td>Atidaro aukcioną, kuriame žaidėjai parduoda daiktus.</td></tr><tr><td><code>/pay</code></td><td>—</td><td>Perduoda pinigus kitam žaidėjui.</td></tr><tr><td><code>/ranks</code></td><td>—</td><td>Parodo visus serverio rangus.</td></tr><tr><td><code>/rankup</code></td><td>—</td><td>Pakelia rangą, jei turi pakankamai pinigų.</td></tr><tr><td><code>/rankupinfo</code></td><td>—</td><td>Parodo, ką gausi su kitu rangu.</td></tr><tr><td><code>/msg</code></td><td>/m /w</td><td>Siunčia privačią žinutę žaidėjui.</td></tr><tr><td><code>/tp</code></td><td>/res tp</td><td>Teleportuoja į rezidenciją.</td></tr><tr><td><code>/warp</code></td><td>/teleportacijos</td><td>Parodo serverio teleportacijų vietas.</td></tr><tr><td><code>/spalvos</code></td><td>—</td><td>Parodo teksto spalvų kodus.</td></tr><tr><td><code>/sell hand</code></td><td>/sellh</td><td>Parduoda rankoje laikomą daiktą.</td></tr><tr><td><code>/pt</code></td><td>/playtime</td><td>Parodo tavo arba kito žaidėjo pražaistą laiką.</td></tr><tr><td><code>/exit</code></td><td>/tprandom</td><td>Nukelia į atsitiktinę vietą už spawn ribų.</td></tr><tr><td><code>/daily</code></td><td>—</td><td>Atsiimi kasdienį piniginį bonusą.</td></tr><tr><td><code>/pickupitems</code></td><td>—</td><td>Įjungia arba išjungia numestų daiktų rinkimą.</td></tr><tr><td><code>/giveitem</code></td><td>—</td><td>Perduoda daiktą kitam žaidėjui be metimo ant žemės.</td></tr><tr><td><code>/trade</code></td><td>—</td><td>Saugus apsikeitimas daiktais su kitu žaidėju.</td></tr><tr><td><code>/music</code></td><td>/daina /dainos</td><td>Paleidžia serveryje esančią muziką.</td></tr><tr><td><code>/coinflip</code></td><td>/cf</td><td>Pinigų žaidimas prieš kitą žaidėją.</td></tr><tr><td><code>/jackpot</code></td><td>—</td><td>Bendras prizinis žaidimas, kur laimi vienas žaidėjas.</td></tr></table>
+<h2 id="taisykles">Taisyklės</h2><ul class="rules"><li>Cheat'ai, xray, autoclicker, fly, reach ir kiti pranašumai yra draudžiami.</li><li>Draudžiama naudoti bug'us, glitch'us ar serverio klaidas savo naudai.</li><li>Draudžiama dubliuoti daiktus, pinigus, raktus ar bet kokius resursus.</li><li>Nereklamuok kitų serverių, Discord grupių ar parduotuvių.</li><li>Gerbk kitus žaidėjus. Įžeidinėjimai, grasinimai ir persekiojimas nėra toleruojami.</li><li>Nespamink chate, nenaudok flood'o ir nerašyk beprasmių reklaminių žinučių.</li><li>Nevok paskyrų, nesidalink slaptažodžiais ir neapsimetinėk administracija.</li><li>Scam'ai, apgaudinėjimai per trade ar pardavimus yra draudžiami.</li><li>PvP metu naudok tik leidžiamas priemones. Draudžiami modai ir makro komandos.</li><li>Administracijos sprendimai galioja visiems. Jei nesutinki – kreipkis per Discord tvarkingai.</li><li>Už bandymą apeiti bausmę gali būti skiriama griežtesnė bausmė.</li><li>Nežinojimas nuo taisyklių neatleidžia.</li></ul>
+</article>
+<aside><b>Šiame puslapyje</b><a href="#gidas">Gidas</a><a href="#komandos">Komandos</a><a href="#taisykles">Taisyklės</a></aside>
+</main>
+<footer class="footer">
+  <div class="footer-brand">
+    <img src="logo.png" alt="McStone">
+    <div><b>MCSTONE.LT</b><p>Survival, Duels, Požemiai, Clans, ekonomika ir draugiška bendruomenė.</p></div>
+  </div>
+  <div class="foot-links">
+    <section><b>Puslapiai</b><a href="index.html">Pradžia</a><a href="informacija.html">Informacija</a><a href="naujienos.html">Naujienos</a><a href="komanda.html">Komanda</a></section>
+    <section><b>Bendruomenė</b><a href="discord.html">Discord</a><a href="parduotuve.html">Parduotuvė</a></section>
+    <section><b>Serveris</b><strong>MC.MCSTONE.LT</strong><small>Java Edition • 1.19.4</small></section>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
