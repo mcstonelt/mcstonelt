@@ -7,36 +7,910 @@
 
   <title>Discord | McStone.lt</title>
 
+  <!-- Bendras svetainės CSS -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="discord.css">
-
   <link rel="icon" href="logo.png">
+
+  <!-- Tik Discord puslapiui -->
+  <style>
+
+    /* ==========================================
+       DISCORD PAGE
+    ========================================== */
+
+    .discord-page {
+      width: min(1180px, 90%);
+      margin: 0 auto;
+      padding: 45px 0 70px;
+    }
+
+
+    /* ==========================================
+       HERO
+    ========================================== */
+
+    .discord-hero {
+      position: relative;
+      min-height: 330px;
+      padding: 42px 48px;
+
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      align-items: center;
+      gap: 40px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(177, 64, 255, .55);
+      border-radius: 10px;
+
+      background:
+        radial-gradient(
+          circle at 82% 45%,
+          rgba(168, 49, 255, .22),
+          transparent 25%
+        ),
+        linear-gradient(
+          115deg,
+          #09070d 0%,
+          #13091c 55%,
+          #35104e 100%
+        );
+
+      box-shadow:
+        0 20px 55px rgba(0,0,0,.30);
+    }
+
+
+    /* Hero grid fonas */
+
+    .discord-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255,255,255,.025) 1px,
+          transparent 1px
+        );
+
+      background-size: 28px 28px;
+
+      pointer-events: none;
+    }
+
+
+    .discord-hero::after {
+      content: "";
+      position: absolute;
+
+      width: 320px;
+      height: 320px;
+
+      right: -80px;
+      top: -90px;
+
+      border-radius: 50%;
+
+      background: rgba(164, 42, 255, .15);
+
+      filter: blur(90px);
+
+      pointer-events: none;
+    }
+
+
+    /* ==========================================
+       HERO LEFT
+    ========================================== */
+
+    .discord-hero-left {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .discord-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 17px;
+
+      color: #c253ff;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+
+      letter-spacing: 1px;
+    }
+
+
+    .discord-label::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      background: #b53cff;
+
+      box-shadow:
+        0 0 10px #b53cff;
+    }
+
+
+    .discord-hero h1 {
+      margin: 0 0 19px;
+
+      color: #fff;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(34px, 4vw, 50px);
+
+      line-height: 1.18;
+
+      text-shadow:
+        4px 4px 0 rgba(0,0,0,.25);
+    }
+
+
+    .discord-hero h1 span {
+      display: block;
+
+      color: #aa38ff;
+
+      text-shadow:
+        0 0 30px rgba(170,56,255,.20);
+    }
+
+
+    .discord-hero-left > p {
+      max-width: 640px;
+
+      margin: 0;
+
+      color: #a9a4b0;
+
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+
+    /* ==========================================
+       BUTTONS
+    ========================================== */
+
+    .discord-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+
+      margin-top: 25px;
+    }
+
+
+    .discord-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 44px;
+
+      padding: 0 19px;
+
+      border: 1px solid #c55cff;
+      border-radius: 4px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #7d17d3,
+          #ad39f5
+        );
+
+      color: white;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+
+      text-decoration: none;
+
+      box-shadow:
+        0 0 24px rgba(175,54,255,.18);
+
+      transition:
+        .2s ease;
+    }
+
+
+    .discord-button:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 30px rgba(175,54,255,.35);
+    }
+
+
+    .discord-online {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      color: #77717e;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 5px;
+    }
+
+
+    .discord-online i {
+      width: 7px;
+      height: 7px;
+
+      display: block;
+
+      border-radius: 50%;
+
+      background: #58ee88;
+
+      box-shadow:
+        0 0 10px rgba(88,238,136,.8);
+    }
+
+
+    /* ==========================================
+       HERO RIGHT / LOGO
+    ========================================== */
+
+    .discord-hero-right {
+      position: relative;
+      z-index: 2;
+
+      height: 230px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .discord-logo-glow {
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(170,49,255,.18);
+
+      filter: blur(45px);
+    }
+
+
+    .discord-logo-card {
+      position: relative;
+      z-index: 3;
+
+      width: 165px;
+
+      padding: 12px;
+
+      border:
+        1px solid rgba(192,82,255,.50);
+
+      border-radius: 9px;
+
+      background:
+        rgba(8,6,11,.72);
+
+      text-align: center;
+
+      box-shadow:
+        0 0 35px rgba(169,51,255,.18);
+    }
+
+
+    .discord-logo-card img {
+      width: 135px;
+      height: 135px;
+
+      display: block;
+
+      margin: 0 auto;
+
+      border-radius: 7px;
+
+      object-fit: cover;
+    }
+
+
+    .discord-logo-card span {
+      display: block;
+
+      margin-top: 11px;
+
+      color: #bf50ff;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 6px;
+    }
+
+
+    .discord-ring {
+      position: absolute;
+
+      width: 205px;
+      height: 205px;
+
+      border:
+        1px solid rgba(183,64,255,.20);
+
+      border-radius: 25px;
+
+      transform: rotate(45deg);
+    }
+
+
+    .discord-ring.second {
+      width: 170px;
+      height: 170px;
+
+      border-style: dashed;
+
+      transform: rotate(22deg);
+    }
+
+
+    .hero-plus {
+      position: absolute;
+
+      color: #b842ff;
+
+      font-family: "Press Start 2P", monospace;
+
+      text-shadow:
+        0 0 10px #b842ff;
+    }
+
+
+    .hero-plus.one {
+      left: 20px;
+      top: 25px;
+    }
+
+
+    .hero-plus.two {
+      right: 15px;
+      bottom: 30px;
+    }
+
+
+    /* ==========================================
+       SECTION TITLE
+    ========================================== */
+
+    .discord-section {
+      margin-top: 45px;
+    }
+
+
+    .discord-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 17px;
+    }
+
+
+    .discord-number {
+      width: 39px;
+      height: 39px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+
+      border:
+        1px solid rgba(181,66,255,.55);
+
+      border-radius: 4px;
+
+      background:
+        rgba(148,35,220,.10);
+
+      color: #bd4dff;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+    }
+
+
+    .discord-title-text small {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color: #68616e;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 5px;
+    }
+
+
+    .discord-title-text h2 {
+      margin: 0;
+
+      color: white;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 15px;
+    }
+
+
+    .discord-title-line {
+      height: 1px;
+      flex: 1;
+
+      margin-left: 8px;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(175,61,255,.35),
+          rgba(255,255,255,.06)
+        );
+    }
+
+
+    /* ==========================================
+       CARDS
+    ========================================== */
+
+    .discord-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 12px;
+    }
+
+
+    .discord-card {
+      position: relative;
+
+      min-height: 215px;
+
+      padding: 20px;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(255,255,255,.10);
+
+      border-radius: 6px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(15,11,18,.97),
+          rgba(7,6,9,.98)
+        );
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+
+    .discord-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 120px;
+
+      right: -50px;
+      top: -50px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(171,51,255,.10);
+
+      filter: blur(30px);
+    }
+
+
+    .discord-card:hover {
+      transform: translateY(-3px);
+
+      border-color:
+        rgba(181,66,255,.48);
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.25);
+    }
+
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+
+    .card-header span {
+      color: #bd4aff;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 6px;
+    }
+
+
+    .card-header small {
+      color: #56505b;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 5px;
+    }
+
+
+    .discord-card-icon {
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 25px 0 18px;
+
+      border:
+        1px solid rgba(185,69,255,.50);
+
+      border-radius: 4px;
+
+      background:
+        rgba(158,37,231,.10);
+
+      color: #c14fff;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 12px;
+    }
+
+
+    .discord-card h3 {
+      margin: 0 0 10px;
+
+      color: white;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 10px;
+    }
+
+
+    .discord-card p {
+      margin: 0;
+
+      max-width: 310px;
+
+      color: #817b86;
+
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+
+    .card-tag {
+      position: absolute;
+
+      left: 20px;
+      bottom: 17px;
+
+      color: #a73de7;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 5px;
+    }
+
+
+    /* ==========================================
+       BOTTOM JOIN
+    ========================================== */
+
+    .discord-bottom {
+      position: relative;
+
+      margin-top: 25px;
+
+      padding: 28px 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(181,66,255,.38);
+
+      border-radius: 7px;
+
+      background:
+        linear-gradient(
+          110deg,
+          #0d0911,
+          #180b22,
+          #300e46
+        );
+    }
+
+
+    .discord-bottom::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        radial-gradient(
+          rgba(255,255,255,.15) .7px,
+          transparent .7px
+        );
+
+      background-size:
+        18px 18px;
+
+      opacity: .14;
+    }
+
+
+    .bottom-text {
+      position: relative;
+      z-index: 2;
+    }
+
+
+    .bottom-text small {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #ba48f8;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 5px;
+    }
+
+
+    .bottom-text h2 {
+      margin: 0 0 10px;
+
+      color: white;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 16px;
+
+      line-height: 1.5;
+    }
+
+
+    .bottom-text h2 span {
+      color: #b943f4;
+    }
+
+
+    .bottom-text p {
+      margin: 0;
+
+      color: #807986;
+
+      font-size: 11px;
+    }
+
+
+    .bottom-button {
+      position: relative;
+      z-index: 2;
+
+      flex-shrink: 0;
+
+      padding: 15px 20px;
+
+      border:
+        1px solid #c054ff;
+
+      border-radius: 4px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #7f18d5,
+          #ae39f5
+        );
+
+      color: white;
+
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+
+      text-decoration: none;
+
+      transition: .2s ease;
+    }
+
+
+    .bottom-button:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 28px rgba(178,58,255,.30);
+    }
+
+
+    /* ==========================================
+       RESPONSIVE
+    ========================================== */
+
+    @media (max-width: 850px) {
+
+      .discord-hero {
+        grid-template-columns: 1fr 220px;
+
+        padding: 35px 30px;
+      }
+
+      .discord-hero-right {
+        transform: scale(.85);
+      }
+
+    }
+
+
+    @media (max-width: 700px) {
+
+      .discord-page {
+        width: 92%;
+
+        padding: 25px 0 50px;
+      }
+
+
+      .discord-hero {
+        display: block;
+
+        min-height: auto;
+
+        padding: 28px 22px;
+      }
+
+
+      .discord-hero h1 {
+        font-size: 27px;
+      }
+
+
+      .discord-actions {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+
+      .discord-hero-right {
+        width: 100%;
+        height: 210px;
+
+        margin-top: 15px;
+
+        transform: scale(.85);
+      }
+
+
+      .discord-grid {
+        grid-template-columns: 1fr;
+      }
+
+
+      .discord-card {
+        min-height: 210px;
+      }
+
+
+      .discord-title-line {
+        display: none;
+      }
+
+
+      .discord-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: 24px;
+      }
+
+
+      .bottom-button {
+        width: 100%;
+
+        text-align: center;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
 
-<!-- =========================
+<!-- ==========================================
      HEADER
-========================= -->
+========================================== -->
 
 <header class="topbar">
 
   <a class="brand" href="index.html">
+
     <img src="logo.png" alt="McStone">
+
     <span>MCSTONE.LT</span>
+
   </a>
 
+
   <nav class="nav">
+
     <a href="index.html">Pradžia</a>
-    <a href="informacija.html">Informacija</a>
-    <a href="naujienos.html">Naujienos</a>
-    <a href="komanda.html">Komanda</a>
-    <a href="discord.html">Discord</a>
-    <a href="https://mcstonelt.tebex.io/" target="_blank">Parduotuvė</a>
+
+    <a href="informacija.html">
+      Informacija
+    </a>
+
+    <a href="naujienos.html">
+      Naujienos
+    </a>
+
+    <a href="komanda.html">
+      Komanda
+    </a>
+
+    <a href="discord.html">
+      Discord
+    </a>
+
+    <a
+      href="https://mcstonelt.tebex.io/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Parduotuvė
+    </a>
+
   </nav>
 
-  <button onclick="copyIP()" class="ip-btn">
+
+  <button
+    onclick="copyIP()"
+    class="ip-btn"
+  >
     MC.MCSTONE.LT
   </button>
 
@@ -44,9 +918,9 @@
 
 
 
-<!-- =========================
-     DISCORD PAGE
-========================= -->
+<!-- ==========================================
+     MAIN
+========================================== -->
 
 <main class="discord-page">
 
@@ -55,37 +929,48 @@
 
   <section class="discord-hero">
 
-    <div class="discord-hero-content">
 
-      <span class="discord-eyebrow">
+    <!-- LEFT -->
+
+    <div class="discord-hero-left">
+
+      <div class="discord-label">
         MCSTONE.LT / DISCORD
-      </span>
+      </div>
+
 
       <h1>
         PRISIJUNK PRIE
         <span>DISCORD</span>
       </h1>
 
+
       <p>
-        Visa McStone bendruomenė vienoje vietoje. Gauk pagalbą,
-        sek serverio naujienas, pranešk apie problemas ir
-        bendrauk su kitais žaidėjais.
+        Visa McStone bendruomenė vienoje vietoje.
+        Gauk pagalbą, sek serverio naujienas,
+        pranešk apie problemas ir bendrauk
+        su kitais žaidėjais.
       </p>
+
 
       <div class="discord-actions">
 
         <a
-          class="discord-main-btn"
           href="https://discord.gg/xH5VDRtM7v"
           target="_blank"
           rel="noopener noreferrer"
+          class="discord-button"
         >
           PRISIJUNGTI →
         </a>
 
-        <div class="discord-status">
-          <span></span>
+
+        <div class="discord-online">
+
+          <i></i>
+
           DISCORD SERVERIS
+
         </div>
 
       </div>
@@ -93,138 +978,195 @@
     </div>
 
 
-    <!-- LOGO SIDE -->
 
-    <div class="discord-visual">
+    <!-- RIGHT -->
 
-      <div class="visual-ring ring-one"></div>
-      <div class="visual-ring ring-two"></div>
+    <div class="discord-hero-right">
 
-      <div class="discord-logo-box">
-        <img src="logo.png" alt="McStone Discord">
+      <div class="discord-logo-glow"></div>
 
-        <small>MCSTONE</small>
-        <strong>COMMUNITY</strong>
+      <div class="discord-ring"></div>
+
+      <div class="discord-ring second"></div>
+
+
+      <span class="hero-plus one">
+        +
+      </span>
+
+      <span class="hero-plus two">
+        +
+      </span>
+
+
+      <div class="discord-logo-card">
+
+        <img
+          src="logo.png"
+          alt="McStone"
+        >
+
+        <span>
+          MCSTONE COMMUNITY
+        </span>
+
       </div>
 
-      <span class="visual-plus plus-a">+</span>
-      <span class="visual-plus plus-b">+</span>
-      <span class="visual-plus plus-c">+</span>
-
-    </div>
-
-
-    <div class="hero-code">
-      COMMUNITY // 01
     </div>
 
   </section>
 
 
 
-  <!-- =========================
-       FEATURES
-  ========================= -->
+  <!-- ==========================================
+       KĄ RASI DISCORD
+  ========================================== -->
 
-  <section class="discord-features">
+  <section class="discord-section">
 
-    <div class="discord-section-title">
 
-      <div class="section-number">
+    <div class="discord-title">
+
+      <div class="discord-number">
         01
       </div>
 
-      <div>
-        <small>MCSTONE DISCORD</small>
-        <h2>KĄ RASI SERVERYJE?</h2>
+
+      <div class="discord-title-text">
+
+        <small>
+          MCSTONE DISCORD
+        </small>
+
+        <h2>
+          KĄ RASI SERVERYJE?
+        </h2>
+
       </div>
 
-      <div class="title-line"></div>
+
+      <div class="discord-title-line"></div>
 
     </div>
 
 
-    <div class="feature-grid">
+
+    <div class="discord-grid">
 
 
-      <!-- PAGALBA -->
+      <!-- CARD 1 -->
 
-      <article class="feature-card">
+      <article class="discord-card">
 
-        <div class="feature-top">
+        <div class="card-header">
+
           <span>01</span>
-          <small>PAGALBA</small>
+
+          <small>
+            PAGALBA
+          </small>
+
         </div>
 
-        <div class="feature-icon">
+
+        <div class="discord-card-icon">
           ?
         </div>
 
-        <h3>GAUK PAGALBĄ</h3>
+
+        <h3>
+          GAUK PAGALBĄ
+        </h3>
+
 
         <p>
           Kyla klausimų ar susidūrei su problema?
-          Discord serveryje galėsi greičiau susisiekti
-          su McStone komanda.
+          Discord serveryje galėsi greičiau
+          susisiekti su McStone komanda.
         </p>
 
-        <div class="feature-bottom">
-          PAGALBA →
+
+        <div class="card-tag">
+          SUPPORT →
         </div>
 
       </article>
 
 
-      <!-- NAUJIENOS -->
 
-      <article class="feature-card">
+      <!-- CARD 2 -->
 
-        <div class="feature-top">
+      <article class="discord-card">
+
+        <div class="card-header">
+
           <span>02</span>
-          <small>NAUJIENOS</small>
+
+          <small>
+            NAUJIENOS
+          </small>
+
         </div>
 
-        <div class="feature-icon">
+
+        <div class="discord-card-icon">
           !
         </div>
 
-        <h3>SEK NAUJIENAS</h3>
+
+        <h3>
+          SEK NAUJIENAS
+        </h3>
+
 
         <p>
-          Sužinok apie serverio atnaujinimus,
-          renginius, pakeitimus ir kitą svarbią
-          McStone informaciją.
+          Serverio atnaujinimai, renginiai,
+          pakeitimai ir kita svarbi McStone
+          informacija vienoje vietoje.
         </p>
 
-        <div class="feature-bottom">
-          NAUJIENOS →
+
+        <div class="card-tag">
+          NEWS →
         </div>
 
       </article>
 
 
-      <!-- COMMUNITY -->
 
-      <article class="feature-card">
+      <!-- CARD 3 -->
 
-        <div class="feature-top">
+      <article class="discord-card">
+
+        <div class="card-header">
+
           <span>03</span>
-          <small>BENDRUOMENĖ</small>
+
+          <small>
+            BENDRUOMENĖ
+          </small>
+
         </div>
 
-        <div class="feature-icon">
+
+        <div class="discord-card-icon">
           +
         </div>
 
-        <h3>BENDRAUK</h3>
+
+        <h3>
+          BENDRAUK
+        </h3>
+
 
         <p>
           Susipažink su kitais žaidėjais,
           ieškok komandos, dalinkis pasiekimais
-          ir tapk bendruomenės dalimi.
+          ir tapk McStone bendruomenės dalimi.
         </p>
 
-        <div class="feature-bottom">
+
+        <div class="card-tag">
           COMMUNITY →
         </div>
 
@@ -236,30 +1178,29 @@
 
 
 
-  <!-- =========================
+  <!-- ==========================================
        BOTTOM CTA
-  ========================= -->
+  ========================================== -->
 
-  <section class="discord-join">
+  <section class="discord-bottom">
 
-    <div class="join-decoration">
-      +
-    </div>
 
-    <div class="join-content">
+    <div class="bottom-text">
 
-      <span>
-        MCSTONE.LT
-      </span>
+      <small>
+        MCSTONE.LT / COMMUNITY
+      </small>
+
 
       <h2>
         TAPK MŪSŲ
-        <strong>BENDRUOMENĖS DALIMI.</strong>
+        <span>BENDRUOMENĖS DALIMI.</span>
       </h2>
 
+
       <p>
-        Prisijunk prie McStone Discord ir nepraleisk
-        serverio naujienų bei renginių.
+        Prisijunk prie Discord ir nepraleisk
+        serverio naujienų, renginių bei svarbių pranešimų.
       </p>
 
     </div>
@@ -269,7 +1210,7 @@
       href="https://discord.gg/xH5VDRtM7v"
       target="_blank"
       rel="noopener noreferrer"
-      class="join-button"
+      class="bottom-button"
     >
       DISCORD →
     </a>
@@ -281,58 +1222,103 @@
 
 
 
-<!-- =========================
+<!-- ==========================================
      FOOTER
-========================= -->
+========================================== -->
 
 <footer class="footer">
 
+
   <div class="footer-brand">
 
-    <img src="logo.png" alt="McStone">
+    <img
+      src="logo.png"
+      alt="McStone"
+    >
+
 
     <div>
-      <b>MCSTONE.LT</b>
+
+      <b>
+        MCSTONE.LT
+      </b>
 
       <p>
         Survival, Duels, Požemiai, Clans,
         ekonomika ir draugiška bendruomenė.
       </p>
+
     </div>
 
   </div>
 
 
+
   <div class="foot-links">
 
-    <section>
-      <b>Puslapiai</b>
 
-      <a href="index.html">Pradžia</a>
-      <a href="informacija.html">Informacija</a>
-      <a href="naujienos.html">Naujienos</a>
-      <a href="komanda.html">Komanda</a>
+    <section>
+
+      <b>
+        Puslapiai
+      </b>
+
+      <a href="index.html">
+        Pradžia
+      </a>
+
+      <a href="informacija.html">
+        Informacija
+      </a>
+
+      <a href="naujienos.html">
+        Naujienos
+      </a>
+
+      <a href="komanda.html">
+        Komanda
+      </a>
+
     </section>
 
 
-    <section>
-      <b>Bendruomenė</b>
 
-      <a href="discord.html">Discord</a>
-      <a href="https://mcstonelt.tebex.io/" target="_blank">
+    <section>
+
+      <b>
+        Bendruomenė
+      </b>
+
+      <a href="discord.html">
+        Discord
+      </a>
+
+      <a
+        href="https://mcstonelt.tebex.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Parduotuvė
       </a>
+
     </section>
 
 
-    <section>
-      <b>Serveris</b>
 
-      <strong>MC.MCSTONE.LT</strong>
+    <section>
+
+      <b>
+        Serveris
+      </b>
+
+      <strong>
+        MC.MCSTONE.LT
+      </strong>
 
       <small>
         Java Edition • 1.21.11
       </small>
+
     </section>
 
   </div>
