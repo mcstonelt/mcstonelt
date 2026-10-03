@@ -1,446 +1,490 @@
 <!DOCTYPE html>
 <html lang="lt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Komanda | McStone.lt</title>
+    <title>Komanda | McStone.lt</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="logo.png">
+    <!-- Tavo pagrindinis CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Tik komandos puslapiui -->
+    <link rel="stylesheet" href="komanda.css">
+
+    <link rel="icon" href="logo.png">
 </head>
 
-<body>
+<body class="staff-body">
 
 <header class="topbar">
+    <a class="brand" href="index.html">
+        <img src="logo.png" alt="McStone">
+        <span>MCSTONE.LT</span>
+    </a>
 
-  <a class="brand" href="index.html">
-    <img src="logo.png" alt="McStone">
-    <span>MCSTONE.LT</span>
-  </a>
+    <nav class="nav">
+        <a href="index.html">Pradžia</a>
+        <a href="informacija.html">Informacija</a>
+        <a href="naujienos.html">Naujienos</a>
+        <a href="komanda.html">Komanda</a>
+        <a href="discord.html">Discord</a>
+        <a href="parduotuve.html">Parduotuvė</a>
+    </nav>
 
-  <nav class="nav">
-    <a href="index.html">Pradžia</a>
-    <a href="informacija.html">Informacija</a>
-    <a href="naujienos.html">Naujienos</a>
-    <a href="komanda.html">Komanda</a>
-    <a href="discord.html">Discord</a>
-    <a href="parduotuve.html">Parduotuvė</a>
-  </nav>
-
-  <button onclick="copyIP()" class="ip-btn">
-    MC.MCSTONE.LT
-  </button>
-
+    <button onclick="copyIP()" class="ip-btn">
+        MC.MCSTONE.LT
+    </button>
 </header>
 
 
-<main class="staff-page">
+<main class="team-page">
 
-  <!-- HERO -->
+    <!-- HERO -->
+    <section class="team-hero">
 
-  <section class="staff-hero">
+        <div class="team-hero-glow"></div>
 
-    <div class="staff-hero-content">
+        <span class="team-label">MCSTONE.LT</span>
 
-      <span class="pill small">MCSTONE.LT • KOMANDA</span>
-
-      <h1>
-        SUSIPAŽINK SU
-        <span>KOMANDA</span>
-      </h1>
-
-      <p>
-        Žmonės, kurie kiekvieną dieną rūpinasi McStone serveriu,
-        padeda žaidėjams, prižiūri bendruomenę ir kuria geresnę
-        žaidimo patirtį.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- VADOVYBĖ -->
-
-  <section class="staff-section">
-
-    <div class="staff-section-title">
-      <h2>Vadovybė</h2>
-    </div>
-
-    <div class="staff-grid two">
-
-      <article class="staff-card owner">
-
-        <div class="staff-avatar">
-          <img src="saulekas.png" alt="Saulekas">
-        </div>
-
-        <span class="role">Savininkas</span>
-
-        <h3>Saulekas</h3>
+        <h1>
+            SERVERIO
+            <span>KOMANDA</span>
+        </h1>
 
         <p>
-          Prižiūri visą McStone projekto kryptį, komandą
-          ir svarbiausius serverio sprendimus.
+            Susipažink su žmonėmis, kurie prižiūri McStone serverį,
+            padeda žaidėjams ir rūpinasi bendruomene.
         </p>
 
-        <div class="staff-status">
-          <span></span>
-          McStone komanda
+        <div class="hero-info">
+            <div>
+                <strong>MCSTONE.LT</strong>
+                <span>Minecraft serveris</span>
+            </div>
+
+            <div>
+                <strong>24/7</strong>
+                <span>Serverio priežiūra</span>
+            </div>
         </div>
 
-      </article>
+    </section>
 
 
-      <article class="staff-card developer">
+    <!-- VADOVYBĖ -->
+    <section class="team-section">
 
-        <div class="staff-avatar">
-          <img src="tuzas5.png" alt="Tuzas5">
+        <div class="section-heading">
+            <div class="section-number">01</div>
+
+            <div>
+                <span>MCSTONE.LT</span>
+                <h2>VADOVYBĖ</h2>
+            </div>
         </div>
 
-        <span class="role">Programuotojas</span>
 
-        <h3>Tuzas5</h3>
+        <div class="team-grid team-grid-2">
 
-        <p>
-          Atsakingas už serverio sistemas, techninius darbus,
-          funkcijų kūrimą ir stabilų serverio veikimą.
-        </p>
+            <!-- SAULEKAS -->
+            <article class="team-card featured">
 
-        <div class="staff-status">
-          <span></span>
-          McStone komanda
+                <div class="card-top">
+                    <span class="role-badge owner-role">
+                        SAVININKAS
+                    </span>
+
+                    <span class="online-dot"></span>
+                </div>
+
+                <div class="skin-box">
+                    <div class="skin-glow"></div>
+
+                    <img
+                        src="saulekas.png"
+                        alt="Saulekas"
+                    >
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        MCSTONE.LT
+                    </span>
+
+                    <h3>Saulekas</h3>
+
+                    <p>
+                        Prižiūri McStone projekto kryptį,
+                        komandą ir svarbiausius serverio sprendimus.
+                    </p>
+
+                    <div class="member-bottom">
+                        <span class="member-status">
+                            <i></i>
+                            Komandos narys
+                        </span>
+
+                        <span class="arrow">→</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- TUZAS -->
+            <article class="team-card">
+
+                <div class="card-top">
+                    <span class="role-badge">
+                        PROGRAMUOTOJAS
+                    </span>
+
+                    <span class="online-dot"></span>
+                </div>
+
+                <div class="skin-box">
+                    <div class="skin-glow"></div>
+
+                    <img
+                        src="tuzas5.png"
+                        alt="Tuzas5"
+                    >
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        MCSTONE.LT
+                    </span>
+
+                    <h3>Tuzas5</h3>
+
+                    <p>
+                        Atsakingas už serverio sistemas,
+                        techninius darbus ir naujų funkcijų kūrimą.
+                    </p>
+
+                    <div class="member-bottom">
+                        <span class="member-status">
+                            <i></i>
+                            Komandos narys
+                        </span>
+
+                        <span class="arrow">→</span>
+                    </div>
+
+                </div>
+
+            </article>
+
         </div>
 
-      </article>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- ADMINISTRACIJA -->
+    <!-- ADMINISTRACIJA -->
+    <section class="team-section">
 
-  <section class="staff-section">
+        <div class="section-heading">
 
-    <div class="staff-section-title">
-      <h2>Administracija</h2>
-    </div>
+            <div class="section-number">02</div>
 
-    <div class="staff-grid">
+            <div>
+                <span>SERVERIO PRIEŽIŪRA</span>
+                <h2>ADMINISTRACIJA</h2>
+            </div>
 
-      <article class="staff-card">
-
-        <div class="staff-avatar">
-          <img src="murksi.png" alt="Murksi">
         </div>
 
-        <span class="role">Pagalba</span>
 
-        <h3>Murksi</h3>
+        <div class="team-grid">
 
-        <p>
-          Padeda žaidėjams spręsti problemas, atsako į klausimus
-          ir prisideda prie bendros serverio tvarkos.
-        </p>
+            <!-- MURKSI -->
+            <article class="team-card">
 
-      </article>
+                <div class="card-top">
+                    <span class="role-badge">
+                        PAGALBA
+                    </span>
+
+                    <span class="online-dot"></span>
+                </div>
+
+                <div class="skin-box">
+                    <div class="skin-glow"></div>
+
+                    <img
+                        src="murksi.png"
+                        alt="Murksi"
+                    >
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        MCSTONE.LT
+                    </span>
+
+                    <h3>Murksi</h3>
+
+                    <p>
+                        Padeda žaidėjams spręsti problemas
+                        ir atsako į bendruomenės klausimus.
+                    </p>
+
+                    <div class="member-bottom">
+                        <span class="member-status">
+                            <i></i>
+                            Komandos narys
+                        </span>
+
+                        <span class="arrow">→</span>
+                    </div>
+
+                </div>
+
+            </article>
 
 
-      <article class="staff-card empty">
+            <!-- LAISVA -->
+            <article class="team-card vacancy">
 
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
+                <div class="vacancy-box">
+                    <span>+</span>
+                </div>
+
+                <span class="role-badge">
+                    ADMIN
+                </span>
+
+                <h3>Laisva vieta</h3>
+
+                <p>
+                    Šiuo metu ši komandos pozicija yra laisva.
+                </p>
+
+            </article>
+
+
+            <!-- LAISVA -->
+            <article class="team-card vacancy">
+
+                <div class="vacancy-box">
+                    <span>+</span>
+                </div>
+
+                <span class="role-badge">
+                    ADMIN
+                </span>
+
+                <h3>Laisva vieta</h3>
+
+                <p>
+                    Šiuo metu ši komandos pozicija yra laisva.
+                </p>
+
+            </article>
+
         </div>
 
-        <span class="role">Admin</span>
-
-        <h3>Laisva vieta</h3>
-
-        <p>
-          Šiuo metu ši komandos pozicija yra laisva.
-        </p>
-
-      </article>
+    </section>
 
 
-      <article class="staff-card empty">
+    <!-- PAGALBA -->
+    <section class="team-section">
 
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
+        <div class="section-heading">
+
+            <div class="section-number">03</div>
+
+            <div>
+                <span>BENDRUOMENĖ</span>
+                <h2>PAGALBA</h2>
+            </div>
+
         </div>
 
-        <span class="role">Admin</span>
 
-        <h3>Laisva vieta</h3>
+        <div class="team-grid team-grid-2">
 
-        <p>
-          Šiuo metu ši komandos pozicija yra laisva.
-        </p>
+            <article class="team-card">
 
-      </article>
+                <div class="card-top">
+                    <span class="role-badge">
+                        PAGALBA
+                    </span>
 
-    </div>
+                    <span class="online-dot"></span>
+                </div>
 
-  </section>
+                <div class="skin-box">
+                    <div class="skin-glow"></div>
+
+                    <img
+                        src="gabukas123.png"
+                        alt="Gabukas123"
+                    >
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        MCSTONE.LT
+                    </span>
+
+                    <h3>Gabukas123</h3>
+
+                    <p>
+                        Padeda serverio žaidėjams ir prisideda
+                        prie tvarkingos bei draugiškos bendruomenės.
+                    </p>
+
+                </div>
+
+            </article>
 
 
-  <!-- VYR CHATMOD -->
+            <article class="team-card">
 
-  <section class="staff-section">
+                <div class="card-top">
+                    <span class="role-badge">
+                        PAGALBA
+                    </span>
 
-    <div class="staff-section-title">
-      <h2>Vyr. ChatMod</h2>
-    </div>
+                    <span class="online-dot"></span>
+                </div>
 
-    <div class="staff-grid one">
+                <div class="skin-box">
+                    <div class="skin-glow"></div>
 
-      <article class="staff-card empty">
+                    <img
+                        src="mergycka.png"
+                        alt="Mergycka"
+                    >
+                </div>
 
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
+                <div class="card-content">
+
+                    <span class="small-label">
+                        MCSTONE.LT
+                    </span>
+
+                    <h3>Mergycka</h3>
+
+                    <p>
+                        Padeda bendruomenei ir naujiems
+                        žaidėjams greičiau įsitraukti į serverį.
+                    </p>
+
+                </div>
+
+            </article>
+
         </div>
 
-        <span class="role">Vyr. ChatMod</span>
-
-        <h3>Laisva vieta</h3>
-
-        <p>
-          Šiuo metu Vyr. ChatMod pozicija yra laisva.
-        </p>
-
-      </article>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- PLAYERMOD -->
+    <!-- MODERACIJA -->
+    <section class="team-section">
 
-  <section class="staff-section">
+        <div class="section-heading">
 
-    <div class="staff-section-title">
-      <h2>PlayerMod</h2>
-    </div>
+            <div class="section-number">04</div>
 
-    <div class="staff-grid one">
+            <div>
+                <span>TVARKA</span>
+                <h2>MODERACIJA</h2>
+            </div>
 
-      <article class="staff-card empty">
-
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
         </div>
 
-        <span class="role">PlayerMod</span>
 
-        <h3>Laisva vieta</h3>
+        <div class="team-grid">
 
-        <p>
-          Šiuo metu PlayerMod pozicija yra laisva.
-        </p>
+            <!-- TSGMAROZAS -->
+            <article class="team-card">
 
-      </article>
+                <div class="card-top">
+                    <span class="role-badge">
+                        B-CHATMOD
+                    </span>
 
-    </div>
+                    <span class="online-dot"></span>
+                </div>
 
-  </section>
+                <div class="skin-box">
+                    <div class="skin-glow"></div>
+
+                    <img
+                        src="tsgmarozas.png"
+                        alt="TsgMarozas"
+                    >
+                </div>
+
+                <div class="card-content">
+
+                    <span class="small-label">
+                        MCSTONE.LT
+                    </span>
+
+                    <h3>TsgMarozas</h3>
+
+                    <p>
+                        Prižiūri serverio pokalbius,
+                        taisyklių laikymąsi ir padeda žaidėjams.
+                    </p>
+
+                </div>
+
+            </article>
 
 
-  <!-- PAGALBA -->
+            <article class="team-card vacancy">
 
-  <section class="staff-section">
+                <div class="vacancy-box">
+                    <span>+</span>
+                </div>
 
-    <div class="staff-section-title">
-      <h2>Pagalba</h2>
-    </div>
+                <span class="role-badge">
+                    CHATMOD
+                </span>
 
-    <div class="staff-grid two">
+                <h3>Laisva vieta</h3>
 
-      <article class="staff-card">
+                <p>
+                    Šiuo metu ChatMod pozicija yra laisva.
+                </p>
 
-        <div class="staff-avatar">
-          <img src="gabukas123.png" alt="Gabukas123">
+            </article>
+
+
+            <article class="team-card vacancy">
+
+                <div class="vacancy-box">
+                    <span>+</span>
+                </div>
+
+                <span class="role-badge">
+                    PLAYERMOD
+                </span>
+
+                <h3>Laisva vieta</h3>
+
+                <p>
+                    Šiuo metu PlayerMod pozicija yra laisva.
+                </p>
+
+            </article>
+
         </div>
 
-        <span class="role">Pagalba</span>
-
-        <h3>Gabukas123</h3>
-
-        <p>
-          Padeda žaidėjams, atsako į klausimus ir prisideda
-          prie draugiškos McStone bendruomenės.
-        </p>
-
-      </article>
-
-
-      <article class="staff-card">
-
-        <div class="staff-avatar">
-          <img src="mergycka.png" alt="Mergycka">
-        </div>
-
-        <span class="role">Pagalba</span>
-
-        <h3>Mergycka</h3>
-
-        <p>
-          Padeda naujiems ir esamiems žaidėjams bei rūpinasi,
-          kad bendruomenėje būtų malonu žaisti.
-        </p>
-
-      </article>
-
-    </div>
-
-  </section>
-
-
-  <!-- CHATMOD -->
-
-  <section class="staff-section">
-
-    <div class="staff-section-title">
-      <h2>ChatMod</h2>
-    </div>
-
-    <div class="staff-grid">
-
-      <article class="staff-card empty">
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
-        </div>
-        <span class="role">ChatMod</span>
-        <h3>Laisva vieta</h3>
-        <p>Šiuo metu ChatMod pozicija yra laisva.</p>
-      </article>
-
-
-      <article class="staff-card empty">
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
-        </div>
-        <span class="role">ChatMod</span>
-        <h3>Laisva vieta</h3>
-        <p>Šiuo metu ChatMod pozicija yra laisva.</p>
-      </article>
-
-
-      <article class="staff-card empty">
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
-        </div>
-        <span class="role">ChatMod</span>
-        <h3>Laisva vieta</h3>
-        <p>Šiuo metu ChatMod pozicija yra laisva.</p>
-      </article>
-
-    </div>
-
-  </section>
-
-
-  <!-- B-CHATMOD -->
-
-  <section class="staff-section">
-
-    <div class="staff-section-title">
-      <h2>B-ChatMod</h2>
-    </div>
-
-    <div class="staff-grid">
-
-      <article class="staff-card">
-
-        <div class="staff-avatar">
-          <img src="tsgmarozas.png" alt="TsgMarozas">
-        </div>
-
-        <span class="role">B-ChatMod</span>
-
-        <h3>TsgMarozas</h3>
-
-        <p>
-          Prižiūri serverio pokalbius, padeda žaidėjams ir
-          rūpinasi, kad būtų laikomasi bendruomenės taisyklių.
-        </p>
-
-      </article>
-
-
-      <article class="staff-card empty">
-
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
-        </div>
-
-        <span class="role">B-ChatMod</span>
-
-        <h3>Laisva vieta</h3>
-
-        <p>
-          Šiuo metu B-ChatMod pozicija yra laisva.
-        </p>
-
-      </article>
-
-
-      <article class="staff-card empty">
-
-        <div class="staff-avatar">
-          <div class="empty-icon">?</div>
-        </div>
-
-        <span class="role">B-ChatMod</span>
-
-        <h3>Laisva vieta</h3>
-
-        <p>
-          Šiuo metu B-ChatMod pozicija yra laisva.
-        </p>
-
-      </article>
-
-    </div>
-
-  </section>
+    </section>
 
 </main>
-
-
-<footer class="footer">
-
-  <div class="footer-brand">
-
-    <img src="logo.png" alt="McStone">
-
-    <div>
-      <strong>MCSTONE.LT</strong>
-      <p>Minecraft bendruomenė.</p>
-    </div>
-
-  </div>
-
-  <div class="foot-links">
-
-    <section>
-      <b>Serveris</b>
-      <a href="informacija.html">Informacija</a>
-      <a href="komanda.html">Komanda</a>
-    </section>
-
-    <section>
-      <b>Bendruomenė</b>
-      <a href="discord.html">Discord</a>
-      <a href="naujienos.html">Naujienos</a>
-    </section>
-
-  </div>
-
-</footer>
 
 
 <script src="script.js"></script>
