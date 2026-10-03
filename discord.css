@@ -1,875 +1,281 @@
-/* =========================================================
-   MCSTONE DISCORD PAGE
-========================================================= */
+/* =====================================================
+   DISCORD PAGE BACKGROUND
+   Juoda + violetinė + taškeliai + subtilus glow
+===================================================== */
 
+body {
+  background:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(139, 44, 255, 0.10),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 75%,
+      rgba(193, 112, 255, 0.05),
+      transparent 32%
+    ),
+    #050711;
+
+  background-attachment: fixed;
+}
+
+
+/* TAŠKELIAI */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: -2;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,0.30) 1px,
+      transparent 1.3px
+    );
+
+  background-size: 34px 34px;
+
+  opacity: 0.45;
+}
+
+
+/* LABAI SUBTILUS GRID */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: -1;
+
+  background-image:
+    linear-gradient(
+      rgba(139,44,255,0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(139,44,255,0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 68px 68px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.15)
+    );
+}
+
+
+/* DISCORD PUSLAPIO ZONA */
 .discord-page {
-    width: min(1180px, 90%);
-    margin: 0 auto;
-    padding: 42px 0 70px;
+  position: relative;
+  isolation: isolate;
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
-
+/* VIOLETINIS ŠVYTĖJIMAS APLINK HERO */
 .discord-hero {
-    position: relative;
+  position: relative;
+  overflow: hidden;
 
-    min-height: 330px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 40px;
-
-    padding: 45px 55px;
-
-    overflow: hidden;
-
-    border: 1px solid rgba(169, 60, 255, .55);
-    border-radius: 9px;
-
-    background:
-        radial-gradient(
-            circle at 82% 45%,
-            rgba(164, 45, 255, .24),
-            transparent 27%
-        ),
-        linear-gradient(
-            110deg,
-            rgba(10, 7, 14, .98),
-            rgba(24, 9, 35, .98) 55%,
-            rgba(61, 14, 91, .96)
-        );
-
-    box-shadow:
-        0 20px 60px rgba(0, 0, 0, .25);
+  box-shadow:
+    0 0 0 1px rgba(174, 68, 255, 0.08),
+    0 25px 70px rgba(0,0,0,0.35),
+    0 0 80px rgba(139,44,255,0.07);
 }
 
 
-/* GRID */
-
+/* DIDELIS BLUR GLOW DEŠINĖJE */
 .discord-hero::before {
-    content: "";
+  content: "";
+  position: absolute;
 
-    position: absolute;
-    inset: 0;
+  width: 520px;
+  height: 520px;
 
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.025) 1px,
-            transparent 1px
-        );
+  right: -180px;
+  top: -190px;
 
-    background-size: 28px 28px;
+  border-radius: 50%;
 
-    pointer-events: none;
+  background:
+    radial-gradient(
+      circle,
+      rgba(166, 55, 255, 0.22) 0%,
+      rgba(139, 44, 255, 0.08) 38%,
+      transparent 70%
+    );
+
+  filter: blur(15px);
+
+  pointer-events: none;
 }
 
 
-/* HERO CONTENT */
+/* MAŽESNIS GLOW KAIRĖJE */
+.discord-hero::after {
+  content: "";
+  position: absolute;
 
-.discord-hero-content {
-    position: relative;
-    z-index: 3;
+  width: 300px;
+  height: 300px;
 
-    width: 65%;
-    max-width: 680px;
+  left: -130px;
+  bottom: -180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(193,112,255,0.12),
+      transparent 70%
+    );
+
+  pointer-events: none;
 }
 
 
-.discord-eyebrow {
-    display: block;
+/* KORTELĖS */
+.discord-feature {
+  position: relative;
+  overflow: hidden;
 
-    margin-bottom: 17px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 12, 26, 0.92),
+      rgba(8, 8, 14, 0.96)
+    );
 
-    color: #c158ff;
+  border: 1px solid rgba(193,112,255,0.20);
 
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 8px;
-
-    letter-spacing: 1px;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 
-.discord-hero h1 {
-    margin: 0 0 20px;
+.discord-feature:hover {
+  transform: translateY(-4px);
 
-    color: #fff;
+  border-color: rgba(193,112,255,0.55);
 
-    font-family: "Press Start 2P", monospace;
-
-    font-size: clamp(34px, 4vw, 52px);
-
-    line-height: 1.18;
-
-    text-shadow:
-        4px 4px 0 rgba(0,0,0,.25);
+  box-shadow:
+    0 15px 35px rgba(0,0,0,0.35),
+    0 0 30px rgba(139,44,255,0.10);
 }
 
 
-.discord-hero h1 span {
-    display: block;
+/* VIOLETINĖ ŠVIESA KORTELĖSE */
+.discord-feature::before {
+  content: "";
 
-    color: #ad3dff;
+  position: absolute;
 
-    text-shadow:
-        0 0 25px rgba(173,61,255,.25);
+  width: 150px;
+  height: 150px;
+
+  right: -80px;
+  top: -80px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(168,65,255,0.12),
+      transparent 70%
+    );
+
+  pointer-events: none;
 }
 
 
-.discord-hero p {
-    max-width: 650px;
+/* APATINIS CTA BLOKAS */
+.discord-cta {
+  position: relative;
+  overflow: hidden;
 
-    margin: 0;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(18, 10, 25, 0.96),
+      rgba(60, 17, 82, 0.88)
+    );
 
-    color: #aaa5b1;
+  border: 1px solid rgba(193,112,255,0.45);
 
-    font-size: 13px;
-
-    line-height: 1.8;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.25),
+    inset 0 1px rgba(255,255,255,0.025);
 }
 
 
-/* =========================================================
-   BUTTON
-========================================================= */
+/* PAPILDOMAS CTA GLOW */
+.discord-cta::before {
+  content: "";
 
-.discord-actions {
-    display: flex;
-    align-items: center;
+  position: absolute;
 
-    gap: 18px;
+  width: 300px;
+  height: 300px;
 
-    margin-top: 25px;
+  right: 5%;
+  top: -190px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(181,72,255,0.20),
+      transparent 68%
+    );
+
+  pointer-events: none;
 }
 
 
-.discord-main-btn {
-    display: inline-flex;
+/* HEADER PALIEKAM TVARKINGĄ IR TAMSŲ */
+.topbar {
+  background: rgba(5, 7, 17, 0.91);
 
-    align-items: center;
-    justify-content: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
-    min-height: 45px;
-
-    padding: 0 20px;
-
-    border: 1px solid #c15cff;
-    border-radius: 4px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7e19d8,
-            #b43fff
-        );
-
-    color: #fff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 8px;
-
-    box-shadow:
-        0 0 25px rgba(176,58,255,.20);
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+  border-bottom:
+    1px solid rgba(193,112,255,0.16);
 }
 
 
-.discord-main-btn:hover {
-    transform: translateY(-2px);
+/* FOOTER */
+.footer {
+  position: relative;
 
-    box-shadow:
-        0 0 32px rgba(176,58,255,.38);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7,8,16,0.97),
+      rgba(4,5,10,1)
+    );
+
+  border-top:
+    1px solid rgba(193,112,255,0.16);
 }
 
 
-/* STATUS */
-
-.discord-status {
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    color: #77717e;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 5px;
-}
-
-
-.discord-status span {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #54f58a;
-
-    box-shadow:
-        0 0 10px rgba(84,245,138,.8);
-}
-
-
-/* =========================================================
-   RIGHT VISUAL
-========================================================= */
-
-.discord-visual {
-    position: relative;
-
-    z-index: 3;
-
-    width: 270px;
-    height: 230px;
-
-    flex: 0 0 270px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* LOGO BOX */
-
-.discord-logo-box {
-    position: relative;
-    z-index: 5;
-
-    width: 145px;
-
-    padding: 12px;
-
-    text-align: center;
-
-    border:
-        1px solid rgba(187,75,255,.55);
-
-    border-radius: 10px;
-
-    background:
-        rgba(9,6,13,.78);
-
-    box-shadow:
-        0 0 45px rgba(172,53,255,.25);
-}
-
-
-.discord-logo-box img {
-    width: 115px;
-    height: 115px;
-
-    display: block;
-
-    margin: 0 auto 10px;
-
-    object-fit: cover;
-
-    border-radius: 7px;
-}
-
-
-.discord-logo-box small {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #a647e9;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 5px;
-}
-
-
-.discord-logo-box strong {
-    color: #fff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 7px;
-}
-
-
-/* RINGS */
-
-.visual-ring {
-    position: absolute;
-
-    border:
-        1px solid rgba(185,68,255,.22);
-
-    transform: rotate(45deg);
-}
-
-
-.ring-one {
-    width: 195px;
-    height: 195px;
-
-    border-radius: 25px;
-}
-
-
-.ring-two {
-    width: 165px;
-    height: 165px;
-
-    border-style: dashed;
-
-    border-radius: 20px;
-
-    transform: rotate(22deg);
-}
-
-
-/* PLUS */
-
-.visual-plus {
-    position: absolute;
-
-    color: #b546ff;
-
-    font-family: "Press Start 2P", monospace;
-
-    text-shadow:
-        0 0 10px #b546ff;
-}
-
-
-.plus-a {
-    left: 18px;
-    top: 32px;
-}
-
-
-.plus-b {
-    right: 18px;
-    bottom: 30px;
-}
-
-
-.plus-c {
-    right: 25px;
-    top: 40px;
-
-    font-size: 7px;
-
-    opacity: .55;
-}
-
-
-/* HERO CODE */
-
-.hero-code {
-    position: absolute;
-
-    right: 15px;
-    bottom: 10px;
-
-    color: rgba(255,255,255,.16);
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 5px;
-}
-
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.discord-features {
-    margin-top: 45px;
-}
-
-
-.discord-section-title {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 18px;
-}
-
-
-.section-number {
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid rgba(176,61,255,.55);
-
-    border-radius: 4px;
-
-    background:
-        rgba(128,30,195,.12);
-
-    color: #bd4cff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 8px;
-}
-
-
-.discord-section-title small {
-    display: block;
-
-    margin-bottom: 5px;
-
-    color: #69636f;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 5px;
-}
-
-
-.discord-section-title h2 {
-    margin: 0;
-
-    color: #fff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 15px;
-}
-
-
-.title-line {
-    flex: 1;
-
-    height: 1px;
-
-    margin-left: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(168,61,255,.35),
-            rgba(255,255,255,.07)
-        );
-}
-
-
-/* =========================================================
-   FEATURE CARDS
-========================================================= */
-
-.feature-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 12px;
-}
-
-
-.feature-card {
-    position: relative;
-
-    min-height: 230px;
-
-    padding: 20px;
-
-    overflow: hidden;
-
-    border:
-        1px solid rgba(255,255,255,.10);
-
-    border-radius: 6px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(16,12,20,.96),
-            rgba(8,7,11,.98)
-        );
-
-    transition:
-        transform .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
-}
-
-
-.feature-card::before {
-    content: "";
-
-    position: absolute;
-
-    width: 130px;
-    height: 130px;
-
-    right: -60px;
-    top: -60px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(166,48,255,.10);
-
-    filter:
-        blur(35px);
-}
-
-
-.feature-card:hover {
-    transform: translateY(-3px);
-
-    border-color:
-        rgba(182,69,255,.55);
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.30);
-}
-
-
-.feature-top {
-    display: flex;
-    align-items: center;
-
-    gap: 9px;
-}
-
-
-.feature-top span {
-    color: #bc4eff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 7px;
-}
-
-
-.feature-top small {
-    color: #625c67;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 5px;
-}
-
-
-/* ICON */
-
-.feature-icon {
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 25px 0 18px;
-
-    border:
-        1px solid rgba(183,71,255,.55);
-
-    border-radius: 4px;
-
-    background:
-        rgba(154,41,231,.12);
-
-    color: #c354ff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 13px;
-
-    box-shadow:
-        0 0 20px rgba(170,55,255,.08);
-}
-
-
-.feature-card h3 {
-    margin: 0 0 11px;
-
-    color: #fff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 11px;
-}
-
-
-.feature-card p {
-    margin: 0;
-
-    color: #85808b;
-
-    font-size: 11px;
-
-    line-height: 1.7;
-}
-
-
-.feature-bottom {
-    position: absolute;
-
-    left: 20px;
-    bottom: 18px;
-
-    color: #b344ef;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 5px;
-}
-
-
-/* =========================================================
-   JOIN CTA
-========================================================= */
-
-.discord-join {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 30px;
-
-    margin-top: 25px;
-
-    padding: 28px 32px;
-
-    overflow: hidden;
-
-    border:
-        1px solid rgba(178,67,255,.38);
-
-    border-radius: 7px;
-
-    background:
-        linear-gradient(
-            110deg,
-            #0d0912,
-            #180c22,
-            #2c0d42
-        );
-}
-
-
-.discord-join::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background-image:
-        radial-gradient(
-            rgba(255,255,255,.12) .7px,
-            transparent .7px
-        );
-
-    background-size:
-        18px 18px;
-
-    opacity: .18;
-}
-
-
-.join-content {
-    position: relative;
-    z-index: 2;
-}
-
-
-.join-content > span {
-    display: block;
-
-    margin-bottom: 9px;
-
-    color: #b946f7;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 6px;
-}
-
-
-.join-content h2 {
-    margin: 0 0 10px;
-
-    color: #fff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 17px;
-
-    line-height: 1.45;
-}
-
-
-.join-content h2 strong {
-    color: #b644f6;
-}
-
-
-.join-content p {
-    margin: 0;
-
-    color: #817b87;
-
-    font-size: 11px;
-}
-
-
-.join-button {
-    position: relative;
-    z-index: 2;
-
-    flex-shrink: 0;
-
-    padding: 15px 20px;
-
-    border:
-        1px solid #bc54fa;
-
-    border-radius: 4px;
-
-    background:
-        #9d2ce6;
-
-    color: #fff;
-
-    font-family: "Press Start 2P", monospace;
-
-    font-size: 7px;
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-}
-
-
-.join-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 0 25px rgba(178,57,255,.35);
-}
-
-
-.join-decoration {
-    position: absolute;
-
-    right: 230px;
-    top: -40px;
-
-    color:
-        rgba(177,61,255,.08);
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size: 130px;
-
-    transform: rotate(10deg);
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 850px) {
-
-    .discord-hero {
-        padding: 35px;
-    }
-
-    .discord-visual {
-        width: 220px;
-        flex-basis: 220px;
-
-        transform: scale(.85);
-    }
-
-}
-
-
-@media (max-width: 700px) {
-
-    .discord-page {
-        width: 92%;
-        padding-top: 25px;
-    }
-
-    .discord-hero {
-        display: block;
-
-        padding: 28px 22px;
-    }
-
-    .discord-hero-content {
-        width: 100%;
-    }
-
-    .discord-hero h1 {
-        font-size: 28px;
-    }
-
-    .discord-actions {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .discord-visual {
-        width: 100%;
-        height: 210px;
-
-        margin: 15px auto 0;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .feature-card {
-        min-height: 220px;
-    }
-
-    .discord-join {
-        align-items: flex-start;
-        flex-direction: column;
-
-        padding: 25px;
-    }
-
-    .join-button {
-        width: 100%;
-
-        text-align: center;
-    }
-
-    .title-line {
-        display: none;
-    }
-
+/* VIOLETINIS TEKSTO PAŽYMĖJIMAS */
+::selection {
+  background: #922cff;
+  color: #fff;
 }
