@@ -1,267 +1,138 @@
-/* ==================================================
-   STAFF KORTELĖS — DYDIS KAIP PAVYZDYJE
-================================================== */
-
-.team-page {
-    width: min(1180px, calc(100% - 40px)) !important;
-    margin: 0 auto !important;
-}
-
-
-/* 3 KORTELĖS VIENOJE EILĖJE */
-
 .team-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 18px !important;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
-
-
-/* PATI KORTELĖ */
 
 .team-card {
-    width: 100% !important;
-    min-width: 0 !important;
+    height: 205px;
+    min-height: 0;
+    padding: 18px;
+    overflow: hidden;
 
-    height: 220px !important;
-    min-height: 220px !important;
+    background: #0d0c11;
+    border: 1px solid #29242f;
+    border-radius: 6px;
+}
 
-    padding: 18px !important;
+/* AVATARAS TIK MAŽAS KUBELIS */
+.staff-avatar {
+    width: 64px;
+    height: 64px;
+    margin: 0 0 12px 0;
 
-    display: block !important;
+    overflow: hidden;
+    border: 2px solid #a23cff;
+    border-radius: 5px;
 
-    border: 1px solid #29352f !important;
-    border-radius: 5px !important;
+    background: #111016;
+}
 
-    background: #101d16 !important;
+/* SVARBIAUSIA DALIS */
+.staff-avatar img {
+    display: block;
 
-    box-shadow:
-        5px 6px 0 rgba(0, 0, 0, .18) !important;
+    width: 64px;
+    height: 64px;
 
-    overflow: hidden !important;
+    max-width: 64px;
+    max-height: 64px;
+
+    object-fit: cover;
+    object-position: center top;
+
+    margin: 0;
+    padding: 0;
 
     transform: none;
 }
 
-
-/* HOVER */
-
-.team-card:hover {
-    transform: translateY(-2px) !important;
-
-    border-color: #8f35d6 !important;
-
-    box-shadow:
-        5px 8px 0 rgba(0, 0, 0, .20),
-        0 0 16px rgba(143, 53, 214, .08) !important;
-}
-
-
-/* ==================================================
-   MAŽAS KUBINIS AVATARAS
-================================================== */
-
-.staff-avatar {
-    width: 68px !important;
-    height: 68px !important;
-
-    margin: 0 0 15px 0 !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    border: 2px solid #48bfff !important;
-    border-radius: 5px !important;
-
-    background: #111a17 !important;
-
-    overflow: hidden !important;
-
-    box-shadow: none !important;
-}
-
-
-.staff-avatar img {
-    width: 100% !important;
-    height: 100% !important;
+/* joks kitas paveiksliukas negali išsiplėsti */
+.team-card > img {
+    width: 64px !important;
+    height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
 
     object-fit: cover !important;
-    object-position: center 10% !important;
-
-    transform: scale(1.15) !important;
 }
-
-
-/* ==================================================
-   ROLE
-================================================== */
 
 .role {
-    display: block !important;
+    display: block;
+    width: max-content;
 
-    width: auto !important;
+    margin: 0 0 7px;
+    padding: 0;
 
-    margin: 0 0 7px 0 !important;
-    padding: 0 !important;
+    border: 0;
+    background: none;
 
-    border: 0 !important;
+    color: #b84cff;
 
-    background: transparent !important;
-
-    color: #ffb72b !important;
-
-    font-family: "Press Start 2P", monospace !important;
-
-    font-size: 8px !important;
-    line-height: 1.4 !important;
-
-    letter-spacing: .4px !important;
+    font-family: "Press Start 2P", monospace;
+    font-size: 7px;
 }
-
-
-/* ==================================================
-   VARDAS
-================================================== */
 
 .team-card h3 {
-    margin: 0 0 13px 0 !important;
+    margin: 0 0 8px;
 
-    color: #ffffff !important;
+    font-family: "Press Start 2P", monospace;
+    font-size: 13px;
+    line-height: 1.3;
 
-    font-family: "Press Start 2P", monospace !important;
-
-    font-size: 17px !important;
-    line-height: 1.25 !important;
+    color: white;
 }
-
-
-/* ==================================================
-   APRAŠYMAS
-================================================== */
 
 .team-card p {
-    display: none !important;
+    margin: 0;
+
+    font-size: 10px;
+    line-height: 1.5;
+
+    color: #8f8998;
 }
-
-
-/* ==================================================
-   MYGTUKAS APAČIOJE
-================================================== */
 
 .staff-bottom {
-    display: inline-flex !important;
+    margin-top: 10px;
+    padding: 0;
 
-    width: auto !important;
+    border: 0;
 
-    margin: 0 !important;
-    padding: 8px 10px !important;
-
-    border: 1px solid #34483d !important;
-    border-radius: 4px !important;
-
-    background: #14241b !important;
-
-    color: #ffffff !important;
-
-    font-family: "Press Start 2P", monospace !important;
-
-    font-size: 8px !important;
-
-    gap: 0 !important;
+    font-size: 8px;
+    color: #aaa4b0;
 }
 
-
-.staff-bottom .status-dot {
-    display: none !important;
-}
-
-
-/* ==================================================
-   LAISVA VIETA
-================================================== */
-
+/* LAISVA VIETA */
 .team-card.vacancy {
-    height: 220px !important;
-    min-height: 220px !important;
-
-    opacity: .55 !important;
+    height: 205px;
+    min-height: 0;
 }
-
 
 .vacancy-avatar {
-    width: 68px !important;
-    height: 68px !important;
+    width: 64px;
+    height: 64px;
 
-    margin: 0 0 15px 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    margin-bottom: 12px;
 
-    border: 2px dashed #6c447d !important;
-    border-radius: 5px !important;
+    border: 1px dashed #71379c;
+    border-radius: 5px;
 
-    background: #17131a !important;
-
-    font-size: 16px !important;
+    font-size: 15px;
 }
 
-
-/* ==================================================
-   SEKCIJOS DYDIS
-================================================== */
-
-.team-section {
-    margin-top: 38px !important;
-}
-
-
-.section-heading {
-    margin-bottom: 18px !important;
-    padding-bottom: 12px !important;
-}
-
-
-.section-heading h2 {
-    font-size: 21px !important;
-}
-
-
-.section-heading span {
-    font-size: 7px !important;
-}
-
-
-/* ==================================================
-   PLANŠETĖ
-================================================== */
-
-@media (max-width: 900px) {
-
+/* TELEFONAI */
+@media (max-width: 850px) {
     .team-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
 }
 
-
-/* ==================================================
-   TELEFONAS
-================================================== */
-
-@media (max-width: 600px) {
-
-    .team-page {
-        width: calc(100% - 28px) !important;
-    }
-
+@media (max-width: 550px) {
     .team-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr;
     }
-
-    .team-card {
-        height: 220px !important;
-    }
-
 }
