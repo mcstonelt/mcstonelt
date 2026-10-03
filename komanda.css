@@ -1,0 +1,694 @@
+/* =========================================
+   MCSTONE TEAM PAGE
+   BLACK / PURPLE SHOP STYLE
+========================================= */
+
+.staff-body {
+    margin: 0;
+    min-height: 100vh;
+    color: #fff;
+
+    background:
+        radial-gradient(circle, rgba(255,255,255,.42) 1px, transparent 1.5px),
+        radial-gradient(circle at 75% 20%, rgba(139,44,255,.10), transparent 30%),
+        radial-gradient(circle at 20% 70%, rgba(110,30,220,.06), transparent 28%),
+        #07070b;
+
+    background-size:
+        34px 34px,
+        100% 100%,
+        100% 100%;
+
+    background-position:
+        0 0,
+        0 0,
+        0 0;
+}
+
+/* išjungiame seno body grid foną */
+
+.staff-body::before {
+    display: none;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.team-page {
+    width: min(1400px, 94%);
+    margin: auto;
+    padding: 40px 0 120px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.team-hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 310px;
+
+    padding: 55px 60px;
+
+    border: 1px solid rgba(168, 70, 255, .55);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(12,9,18,.98),
+            rgba(25,10,43,.94),
+            rgba(65,15,105,.72)
+        );
+
+    box-shadow:
+        inset 0 0 60px rgba(139,44,255,.08),
+        0 20px 60px rgba(0,0,0,.35);
+}
+
+.team-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .16;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+
+    background-size: 36px 36px;
+
+    pointer-events: none;
+}
+
+.team-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    right: -150px;
+    top: -180px;
+
+    background: #8b2cff;
+
+    filter: blur(160px);
+
+    opacity: .25;
+}
+
+.team-hero-glow {
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: 12%;
+    top: 30px;
+
+    border-radius: 50%;
+
+    background: rgba(176,65,255,.16);
+
+    filter: blur(55px);
+}
+
+.team-label,
+.small-label {
+    position: relative;
+    z-index: 2;
+
+    color: #b85cff;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+.team-hero h1 {
+    position: relative;
+    z-index: 2;
+
+    max-width: 850px;
+
+    margin: 24px 0;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: clamp(34px, 5vw, 62px);
+    line-height: 1.25;
+
+    color: #fff;
+
+    text-shadow:
+        5px 5px 0 rgba(0,0,0,.45);
+}
+
+.team-hero h1 span {
+    color: #b14cff;
+}
+
+.team-hero > p {
+    position: relative;
+    z-index: 2;
+
+    max-width: 720px;
+
+    color: #bcb8c7;
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HERO INFO
+========================================= */
+
+.hero-info {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+.hero-info div {
+    min-width: 180px;
+
+    padding: 14px 16px;
+
+    border: 1px solid rgba(180,80,255,.25);
+    border-radius: 8px;
+
+    background: rgba(8,8,12,.55);
+}
+
+.hero-info strong {
+    display: block;
+
+    color: white;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 9px;
+
+    margin-bottom: 8px;
+}
+
+.hero-info span {
+    color: #8f899b;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.team-section {
+    margin-top: 75px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    margin-bottom: 24px;
+
+    padding-bottom: 17px;
+
+    border-bottom: 1px solid #25222d;
+}
+
+.section-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #7130a8;
+    border-radius: 7px;
+
+    background: #21102e;
+
+    color: #c768ff;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 10px;
+}
+
+.section-heading span {
+    color: #746e7e;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 7px;
+}
+
+.section-heading h2 {
+    margin: 7px 0 0;
+
+    color: white;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 19px;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.team-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.team-grid-2 {
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.team-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 18px;
+
+    border: 1px solid #292631;
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(14,13,18,.98),
+            rgba(9,9,13,.98)
+        );
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.24);
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.team-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    left: -80px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background: #8b2cff;
+
+    filter: blur(100px);
+
+    opacity: 0;
+
+    transition: opacity .25s;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(174,66,255,.65);
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.4),
+        0 0 35px rgba(139,44,255,.08);
+}
+
+.team-card:hover::before {
+    opacity: .16;
+}
+
+
+/* special owner */
+
+.team-card.featured {
+    border-color: rgba(171,66,255,.55);
+
+    background:
+        radial-gradient(
+            circle at 50% 0,
+            rgba(125,35,190,.14),
+            transparent 45%
+        ),
+        #0d0c12;
+}
+
+
+/* =========================================
+   TOP
+========================================= */
+
+.card-top {
+    position: relative;
+    z-index: 3;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 14px;
+}
+
+.role-badge {
+    display: inline-flex;
+
+    padding: 8px 10px;
+
+    border: 1px solid #63318b;
+    border-radius: 5px;
+
+    background: #1e1029;
+
+    color: #c46bff;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 7px;
+}
+
+.owner-role {
+    border-color: #a64dff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #311548,
+            #1a0d27
+        );
+
+    color: white;
+}
+
+.online-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #a744ff;
+
+    box-shadow:
+        0 0 10px #a744ff;
+}
+
+
+/* =========================================
+   SKIN
+========================================= */
+
+.skin-box {
+    position: relative;
+
+    height: 280px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid #292531;
+    border-radius: 9px;
+
+    background:
+        radial-gradient(
+            circle at 50% 55%,
+            rgba(118,33,190,.17),
+            transparent 35%
+        ),
+        #09090e;
+}
+
+.skin-box::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .11;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+
+    background-size: 28px 28px;
+}
+
+.skin-glow {
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    background: rgba(140,40,220,.15);
+
+    filter: blur(45px);
+}
+
+.skin-box img {
+    position: relative;
+    z-index: 2;
+
+    max-height: 245px;
+    max-width: 90%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 18px 15px rgba(0,0,0,.75))
+        drop-shadow(0 0 18px rgba(147,50,220,.16));
+
+    transition:
+        transform .3s ease;
+}
+
+.team-card:hover .skin-box img {
+    transform:
+        translateY(-5px)
+        scale(1.035);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.card-content {
+    position: relative;
+    z-index: 3;
+
+    padding: 22px 4px 5px;
+}
+
+.card-content h3,
+.vacancy h3 {
+    margin: 10px 0;
+
+    color: #fff;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 16px;
+}
+
+.card-content p,
+.vacancy p {
+    min-height: 48px;
+
+    color: #8f8999;
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.member-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 22px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #211f27;
+}
+
+.member-status {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #716b7a;
+
+    font-size: 10px;
+}
+
+.member-status i {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #a63fff;
+
+    box-shadow:
+        0 0 8px #a63fff;
+}
+
+.arrow {
+    color: #a94bff;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   VACANCY
+========================================= */
+
+.team-card.vacancy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 420px;
+
+    opacity: .55;
+
+    border-style: dashed;
+}
+
+.team-card.vacancy:hover {
+    opacity: .85;
+}
+
+.vacancy-box {
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 28px;
+
+    border: 1px dashed #7036a0;
+    border-radius: 10px;
+
+    background: rgba(130,40,190,.07);
+}
+
+.vacancy-box span {
+    color: #9841d8;
+
+    font-family: "Press Start 2P", monospace;
+
+    font-size: 25px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 950px) {
+
+    .team-grid,
+    .team-grid-2 {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+
+    .team-hero {
+        padding: 45px 35px;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .team-page {
+        width: 91%;
+    }
+
+    .team-grid,
+    .team-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .team-hero {
+        min-height: auto;
+
+        padding: 35px 23px;
+    }
+
+    .team-hero h1 {
+        font-size: 28px;
+    }
+
+    .hero-info {
+        flex-direction: column;
+    }
+
+    .skin-box {
+        height: 240px;
+    }
+
+    .skin-box img {
+        max-height: 210px;
+    }
+
+    .team-card.vacancy {
+        min-height: 300px;
+    }
+
+    .section-heading h2 {
+        font-size: 14px;
+    }
+}
