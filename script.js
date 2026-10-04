@@ -1,27 +1,50 @@
 /* ============================================================
-   MCSTONE.LT - MAIN JAVASCRIPT
-   Server IP: mcstone.srw.lt
+   MCSTONE.LT
+   LIVE SERVER STATUS
 ============================================================ */
 
 
 /* ============================================================
-   NUSTATYMAI
+   SERVERIO NUSTATYMAI
 ============================================================ */
 
-const SERVER_IP = "mcstone.srw.lt";
+const SERVER_HOST = "mcstone.srw.lt";
+const SERVER_PORT = "25565";
+
+const DISPLAY_IP = "mcstone.srw.lt";
 
 const SERVER_VERSION = "1.21.11";
 
-const STATUS_API =
-  `https://api.mcstatus.io/v2/status/java/${SERVER_IP}`;
+/*
+  Serverio informacija persitikrina kas 20 sekundžių.
+*/
 
-const STATUS_REFRESH_TIME = 60000;
+const STATUS_REFRESH_TIME = 20000;
+
+
+/*
+  Pagrindinis API.
+*/
+
+const MCSTATUS_API =
+  `https://api.mcstatus.io/v2/status/java/${SERVER_HOST}:${SERVER_PORT}`;
+
+
+/*
+  Atsarginis API.
+*/
+
+const MCSRVSTAT_API =
+  `https://api.mcsrvstat.us/3/${SERVER_HOST}:${SERVER_PORT}`;
+
 
 let toastTimer = null;
 
+let statusRequestRunning = false;
+
 
 /* ============================================================
-   ELEMENTŲ PAĖMIMAS
+   ELEMENTAI
 ============================================================ */
 
 function getServerElements() {
@@ -68,7 +91,7 @@ async function copyIP(button) {
     ) {
 
       await navigator.clipboard.writeText(
-        SERVER_IP
+        DISPLAY_IP
       );
 
     } else {
@@ -102,7 +125,7 @@ async function copyIP(button) {
 
 
 /* ============================================================
-   ATSARGINIS IP KOPIJAVIMAS
+   ATSARGINIS COPY
 ============================================================ */
 
 function fallbackCopy() {
@@ -111,7 +134,7 @@ function fallbackCopy() {
     document.createElement("textarea");
 
   textarea.value =
-    SERVER_IP;
+    DISPLAY_IP;
 
   textarea.setAttribute(
     "readonly",
@@ -163,7 +186,7 @@ function fallbackCopy() {
 
 
 /* ============================================================
-   COPY PRANEŠIMAS
+   COPY TOAST
 ============================================================ */
 
 function showCopyToast() {
@@ -201,7 +224,7 @@ function showCopyToast() {
 
 
 /* ============================================================
-   MYGTUKO ANIMACIJA
+   COPY MYGTUKO EFEKTAS
 ============================================================ */
 
 function showCopiedButton(button) {
@@ -210,11 +233,9 @@ function showCopiedButton(button) {
     return;
   }
 
-  const canChangeText =
-    button.classList.contains("nav-ip") ||
-    button.classList.contains("button-purple");
-
-  if (!canChangeText) {
+  if (
+    !button.classList.contains("nav-ip")
+  ) {
     return;
   }
 
@@ -241,53 +262,149 @@ function showCopiedButton(button) {
 
 
 /* ============================================================
-   LOADING STATUSAS
+   FETCH SU TIMEOUT
 ============================================================ */
 
-function setLoadingStatus() {
+async function fetchWithTimeout(
+  url,
+  timeout = 8000
+) {
 
-  const el =
-    getServerElements();
+  const controller =
+    new AbortController();
 
-  if (el.statusText) {
+  const timer =
+    setTimeout(
+      () => controller.abort(),
+      timeout
+    );
 
-    el.statusText.textContent =
-      "TIKRINAMA...";
+  try {
+
+    const response =
+      await fetch(
+        `${url}${url.includes("?") ? "&" : "?"}t=${Date.now()}`,
+        {
+          method: "GET",
+
+          cache: "no-store",
+
+          signal:
+            controller.signal,
+
+          headers: {
+            "Accept": "application/json"
+          }
+        }
+      );
+
+    if (!response.ok) {
+
+      throw new Error(
+        `HTTP ${response.status}`
+      );
+
+    }
+
+    return await response.json();
 
   }
 
-  /*
-    Versija sąmoningai nefiksuojama pagal API.
-    Svetainėje visada rodome 1.21.11.
-  */
+  finally {
 
-  if (el.serverVersion) {
-
-    el.serverVersion.textContent =
-      SERVER_VERSION;
+    clearTimeout(
+      timer
+    );
 
   }
 
-  if (el.playerCount) {
+}
 
-    el.playerCount.textContent =
-      "-- / --";
+
+/* ============================================================
+   MCSTATUS.IO
+============================================================ */
+
+async function getMcStatusData() {
+
+  const data =
+    await fetchWithTimeout(
+      MCSTATUS_API
+    );
+
+  if (
+    !data ||
+    data.online !== true
+  ) {
+
+    return {
+      online: false,
+      playersOnline: 0,
+      playersMax: 0
+    };
 
   }
 
-  if (el.cardStatusText) {
 
-    el.cardStatusText.textContent =
-      "TIKRINAMA...";
+  return {
+
+    online: true,
+
+    playersOnline:
+      Number(
+        data?.players?.online ?? 0
+      ),
+
+    playersMax:
+      Number(
+        data?.players?.max ?? 0
+      )
+
+  };
+
+}
+
+
+/* ============================================================
+   MCSRVSTAT.US FALLBACK
+============================================================ */
+
+async function getMcsrvstatData() {
+
+  const data =
+    await fetchWithTimeout(
+      MCSRVSTAT_API
+    );
+
+  if (
+    !data ||
+    data.online !== true
+  ) {
+
+    return {
+      online: false,
+      playersOnline: 0,
+      playersMax: 0
+    };
 
   }
 
-  if (el.footerStatus) {
 
-    el.footerStatus.textContent =
-      "Tikrinama...";
+  return {
 
-  }
+    online: true,
+
+    playersOnline:
+      Number(
+        data?.players?.online ?? 0
+      ),
+
+    playersMax:
+      Number(
+        data?.players?.max ?? 0
+      )
+
+  };
 
 }
 
@@ -296,25 +413,43 @@ function setLoadingStatus() {
    ONLINE STATUSAS
 ============================================================ */
 
-function setOnlineStatus(data) {
+function setOnlineStatus(serverData) {
 
   const el =
     getServerElements();
 
 
-  /* ŽAIDĖJAI */
-
   const onlinePlayers =
-    data?.players?.online ?? 0;
+    Number.isFinite(
+      serverData.playersOnline
+    )
+      ? serverData.playersOnline
+      : 0;
+
 
   const maxPlayers =
-    data?.players?.max ?? "?";
+    Number.isFinite(
+      serverData.playersMax
+    )
+      ? serverData.playersMax
+      : 0;
+
 
   const playersText =
     `${onlinePlayers} / ${maxPlayers}`;
 
 
-  /* KAIRĖS PUSĖS STATUSAS */
+  /* VERSIJA */
+
+  if (el.serverVersion) {
+
+    el.serverVersion.textContent =
+      SERVER_VERSION;
+
+  }
+
+
+  /* STATUSAS */
 
   if (el.statusText) {
 
@@ -322,6 +457,7 @@ function setOnlineStatus(data) {
       "ONLINE";
 
   }
+
 
   if (el.statusDot) {
 
@@ -336,7 +472,7 @@ function setOnlineStatus(data) {
   }
 
 
-  /* ŽAIDĖJŲ SKAIČIUS */
+  /* ŽAIDĖJAI */
 
   if (el.playerCount) {
 
@@ -346,24 +482,15 @@ function setOnlineStatus(data) {
   }
 
 
-  /* VERSIJA VISADA 1.21.11 */
-
-  if (el.serverVersion) {
-
-    el.serverVersion.textContent =
-      SERVER_VERSION;
-
-  }
-
-
   /* DEŠINĖ KORTELĖ */
 
   if (el.cardStatusText) {
 
     el.cardStatusText.textContent =
-      "SERVERIS ONLINE";
+      "ONLINE";
 
   }
+
 
   if (el.cardStatusDot) {
 
@@ -400,6 +527,14 @@ function setOfflineStatus() {
     getServerElements();
 
 
+  if (el.serverVersion) {
+
+    el.serverVersion.textContent =
+      SERVER_VERSION;
+
+  }
+
+
   if (el.statusText) {
 
     el.statusText.textContent =
@@ -429,23 +564,10 @@ function setOfflineStatus() {
   }
 
 
-  /*
-    Net jei serveris trumpam offline,
-    svetainėje versija lieka 1.21.11.
-  */
-
-  if (el.serverVersion) {
-
-    el.serverVersion.textContent =
-      SERVER_VERSION;
-
-  }
-
-
   if (el.cardStatusText) {
 
     el.cardStatusText.textContent =
-      "SERVERIS OFFLINE";
+      "OFFLINE";
 
   }
 
@@ -474,19 +596,35 @@ function setOfflineStatus() {
 
 
 /* ============================================================
-   API KLAIDOS STATUSAS
+   API KLAIDA
 ============================================================ */
 
-function setErrorStatus() {
+function setStatusError() {
 
   const el =
     getServerElements();
+
+
+  if (el.serverVersion) {
+
+    el.serverVersion.textContent =
+      SERVER_VERSION;
+
+  }
 
 
   if (el.statusText) {
 
     el.statusText.textContent =
       "NEPASIEKIAMAS";
+
+  }
+
+
+  if (el.playerCount) {
+
+    el.playerCount.textContent =
+      "-- / --";
 
   }
 
@@ -504,26 +642,10 @@ function setErrorStatus() {
   }
 
 
-  if (el.playerCount) {
-
-    el.playerCount.textContent =
-      "-- / --";
-
-  }
-
-
-  if (el.serverVersion) {
-
-    el.serverVersion.textContent =
-      SERVER_VERSION;
-
-  }
-
-
   if (el.cardStatusText) {
 
     el.cardStatusText.textContent =
-      "STATUSAS NEPASIEKIAMAS";
+      "NEPASIEKIAMAS";
 
   }
 
@@ -552,107 +674,140 @@ function setErrorStatus() {
 
 
 /* ============================================================
-   SERVERIO STATUSO UŽKLAUSA
+   LIVE SERVERIO TIKRINIMAS
 ============================================================ */
 
 async function loadServerStatus() {
 
-  console.log(
-    "Tikrinamas McStone serveris:",
-    SERVER_IP
-  );
+  /*
+    Neleidžiam dviem statuso užklausoms
+    veikti vienu metu.
+  */
+
+  if (statusRequestRunning) {
+    return;
+  }
 
 
-  const controller =
-    new AbortController();
-
-
-  const timeout =
-    setTimeout(() => {
-
-      controller.abort();
-
-    }, 10000);
+  statusRequestRunning =
+    true;
 
 
   try {
 
-    const response =
-      await fetch(
-        STATUS_API,
-        {
-          method: "GET",
-
-          cache: "no-store",
-
-          signal:
-            controller.signal,
-
-          headers: {
-            "Accept":
-              "application/json"
-          }
-        }
-      );
+    let serverData = null;
 
 
-    clearTimeout(
-      timeout
-    );
+    /*
+      Pirmiausia bandom mcstatus.io.
+    */
 
+    try {
 
-    if (!response.ok) {
+      serverData =
+        await getMcStatusData();
 
-      throw new Error(
-        `API HTTP klaida: ${response.status}`
+      /*
+        Jeigu API sako, kad serveris online,
+        iškart naudojam šituos duomenis.
+      */
+
+      if (
+        serverData &&
+        serverData.online === true
+      ) {
+
+        setOnlineStatus(
+          serverData
+        );
+
+        return;
+
+      }
+
+    }
+
+    catch (error) {
+
+      console.warn(
+        "mcstatus.io klaida:",
+        error
       );
 
     }
 
 
-    const data =
-      await response.json();
+    /*
+      Jeigu pirmas API nepavyko arba
+      nerado online serverio,
+      tikrinam per antrą API.
+    */
+
+    try {
+
+      serverData =
+        await getMcsrvstatData();
 
 
-    console.log(
-      "McStone API atsakymas:",
-      data
-    );
+      if (
+        serverData &&
+        serverData.online === true
+      ) {
+
+        setOnlineStatus(
+          serverData
+        );
+
+        return;
+
+      }
 
 
-    if (
-      data &&
-      data.online === true
-    ) {
-
-      setOnlineStatus(
-        data
-      );
-
-    }
-
-    else {
+      /*
+        Abu API pasiekėm, bet serveris offline.
+      */
 
       setOfflineStatus();
 
     }
 
+    catch (error) {
+
+      console.warn(
+        "mcsrvstat.us klaida:",
+        error
+      );
+
+
+      /*
+        Jeigu pirmas API atsakė OFFLINE,
+        o antras API nulūžo,
+        rodome pirmo API rezultatą.
+      */
+
+      if (
+        serverData &&
+        serverData.online === false
+      ) {
+
+        setOfflineStatus();
+
+      }
+
+      else {
+
+        setStatusError();
+
+      }
+
+    }
+
   }
 
-  catch (error) {
+  finally {
 
-    clearTimeout(
-      timeout
-    );
-
-
-    console.error(
-      "Serverio statuso klaida:",
-      error
-    );
-
-
-    setErrorStatus();
+    statusRequestRunning =
+      false;
 
   }
 
@@ -660,7 +815,7 @@ async function loadServerStatus() {
 
 
 /* ============================================================
-   NAVBAR EFEKTAS
+   NAVBAR
 ============================================================ */
 
 function setupNavbar() {
@@ -733,13 +888,15 @@ function setupRevealAnimations() {
     !("IntersectionObserver" in window)
   ) {
 
-    items.forEach(item => {
+    items.forEach(
+      item => {
 
-      item.classList.add(
-        "revealed"
-      );
+        item.classList.add(
+          "revealed"
+        );
 
-    });
+      }
+    );
 
     return;
 
@@ -761,7 +918,6 @@ function setupRevealAnimations() {
               entry.target.classList.add(
                 "revealed"
               );
-
 
               observer.unobserve(
                 entry.target
@@ -804,7 +960,7 @@ function setupRevealAnimations() {
 
 
 /* ============================================================
-   ANIMACIJŲ CSS
+   PAPILDOMAS ANIMACIJŲ CSS
 ============================================================ */
 
 function addAnimationStyles() {
@@ -870,32 +1026,49 @@ function addAnimationStyles() {
 
 
 /* ============================================================
-   PUSLAPIO PALEIDIMAS
+   START
 ============================================================ */
 
 document.addEventListener(
   "DOMContentLoaded",
   () => {
 
-    console.log(
-      "MCSTONE.LT script.js paleistas."
-    );
-
-
     addAnimationStyles();
 
-
     setupNavbar();
-
 
     setupRevealAnimations();
 
 
-    setLoadingStatus();
+    /*
+      Versiją parodom iškart.
+    */
 
+    const serverVersion =
+      document.getElementById(
+        "serverVersion"
+      );
+
+
+    if (serverVersion) {
+
+      serverVersion.textContent =
+        SERVER_VERSION;
+
+    }
+
+
+    /*
+      Pirmas statuso patikrinimas
+      iškart užkrovus puslapį.
+    */
 
     loadServerStatus();
 
+
+    /*
+      Po to automatiškai kas 20 sekundžių.
+    */
 
     setInterval(
       loadServerStatus,
