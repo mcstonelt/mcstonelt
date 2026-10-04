@@ -1,65 +1,152 @@
-const serverIP = "mc.mcstone.lt";
+const SERVER_IP = "mc.mcstone.lt";
+
+let toastTimer;
 
 
-function copyIP() {
+/* =========================
+   COPY SERVER IP
+========================= */
 
-  navigator.clipboard
-    .writeText(serverIP)
-    .then(() => {
+async function copyIP(button) {
 
-      const copyText =
-        document.getElementById("copyText");
+  try {
 
+    await navigator.clipboard.writeText(
+      SERVER_IP
+    );
 
-      if (copyText) {
+    showCopyToast();
 
-        copyText.textContent =
-          "✓ IP nukopijuotas!";
+    temporaryButtonText(button);
 
+  } catch (error) {
 
-        setTimeout(() => {
+    fallbackCopy();
 
-          copyText.textContent =
-            "Spausk, kad nukopijuotum";
+    showCopyToast();
 
-        }, 2000);
+    temporaryButtonText(button);
 
-      }
-
-    })
-    .catch(() => {
-
-      alert(
-        "Serverio IP: " + serverIP
-      );
-
-    });
+  }
 
 }
 
 
-/* NAVBAR SHADOW */
+/* =========================
+   FALLBACK COPY
+========================= */
+
+function fallbackCopy() {
+
+  const input =
+    document.createElement("textarea");
+
+  input.value = SERVER_IP;
+
+  input.style.position = "fixed";
+  input.style.opacity = "0";
+
+  document.body.appendChild(input);
+
+  input.select();
+
+  document.execCommand("copy");
+
+  document.body.removeChild(input);
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showCopyToast() {
+
+  const toast =
+    document.getElementById("copyToast");
+
+  if (!toast) return;
+
+
+  clearTimeout(toastTimer);
+
+
+  toast.classList.add("show");
+
+
+  toastTimer =
+    setTimeout(() => {
+
+      toast.classList.remove("show");
+
+    }, 2200);
+
+}
+
+
+/* =========================
+   BUTTON FEEDBACK
+========================= */
+
+function temporaryButtonText(button) {
+
+  if (!button) return;
+
+
+  const originalHTML =
+    button.innerHTML;
+
+
+  /*
+    Paprastiems IP mygtukams
+  */
+
+  if (
+    button.classList.contains("nav-ip") ||
+    button.classList.contains("button-purple")
+  ) {
+
+    button.textContent =
+      "NUKOPIJUOTA ✓";
+
+
+    setTimeout(() => {
+
+      button.innerHTML =
+        originalHTML;
+
+    }, 1600);
+
+  }
+
+}
+
+
+/* =========================
+   NAVBAR SCROLL
+========================= */
+
+const navbar =
+  document.querySelector(".navbar");
+
 
 window.addEventListener(
   "scroll",
   () => {
-
-    const navbar =
-      document.querySelector(".topbar");
-
 
     if (!navbar) return;
 
 
     if (window.scrollY > 20) {
 
-      navbar.style.boxShadow =
-        "0 12px 45px rgba(0,0,0,.45)";
+      navbar.style.background =
+        "rgba(5,4,8,.97)";
 
     } else {
 
-      navbar.style.boxShadow =
-        "0 10px 40px rgba(0,0,0,.22)";
+      navbar.style.background =
+        "rgba(5,4,8,.90)";
 
     }
 
@@ -67,11 +154,13 @@ window.addEventListener(
 );
 
 
-/* SMOOTH APPEAR ANIMATION */
+/* =========================
+   REVEAL ANIMATIONS
+========================= */
 
-const animatedElements =
+const revealItems =
   document.querySelectorAll(
-    ".mode-grid article, .join-box, .quote-section"
+    ".feature, .mode-card, .cta"
   );
 
 
@@ -82,10 +171,12 @@ const observer =
 
       entries.forEach(entry => {
 
-        if (entry.isIntersecting) {
+        if (
+          entry.isIntersecting
+        ) {
 
           entry.target.classList.add(
-            "visible"
+            "revealed"
           );
 
           observer.unobserve(
@@ -99,49 +190,60 @@ const observer =
     },
 
     {
-      threshold: 0.12
+      threshold: 0.10
     }
 
   );
 
 
-animatedElements.forEach(element => {
+revealItems.forEach(item => {
 
-  element.classList.add(
-    "reveal"
-  );
+  item.classList.add("reveal");
 
-  observer.observe(
-    element
-  );
+  observer.observe(item);
 
 });
 
 
-/* CSS FOR REVEAL ANIMATION */
+/* =========================
+   ANIMATION CSS
+========================= */
 
-const animationStyle =
+const animationCSS =
   document.createElement("style");
 
 
-animationStyle.textContent = `
+animationCSS.textContent = `
 
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition:
-    opacity .65s ease,
-    transform .65s ease;
-}
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    transition:
+      opacity .6s ease,
+      transform .6s ease;
+  }
+
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+  }
 
 `;
 
 
 document.head.appendChild(
-  animationStyle
+  animationCSS
 );
