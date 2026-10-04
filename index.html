@@ -17,14 +17,24 @@
 
   <title>McStone.lt | Minecraft serveris</title>
 
-  <link rel="icon" type="image/png" href="logo.png">
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.png"
+  >
 
-  <link rel="stylesheet" href="style.css?v=48">
+  <link
+    rel="stylesheet"
+    href="style.css?v=52"
+  >
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+
+  <!-- =====================================================
+       NAVBAR
+  ====================================================== -->
 
   <header class="navbar">
 
@@ -41,7 +51,9 @@
           alt="McStone.lt"
         >
 
-        <span>MCSTONE.LT</span>
+        <span>
+          MCSTONE.LT
+        </span>
 
       </a>
 
@@ -51,7 +63,10 @@
         aria-label="Pagrindinė navigacija"
       >
 
-        <a class="active" href="index.html">
+        <a
+          class="active"
+          href="index.html"
+        >
           Pradžia
         </a>
 
@@ -96,9 +111,16 @@
 
 
 
+  <!-- =====================================================
+       MAIN
+  ====================================================== -->
+
   <main>
 
-    <!-- HERO -->
+
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
 
     <section class="hero">
 
@@ -111,9 +133,13 @@
 
       <div class="hero-inner">
 
-        <!-- LEFT -->
+
+        <!-- ===============================================
+             LEFT
+        ================================================ -->
 
         <div class="hero-left">
+
 
           <div class="hero-tag">
 
@@ -187,7 +213,10 @@
           </div>
 
 
-          <!-- PLAYER COUNT PAŠALINTAS -->
+          <!-- =============================================
+               SERVER INFO
+               ŽAIDĖJŲ SKAIČIAUS ČIA NEBĖRA
+          ============================================== -->
 
           <div class="server-stats">
 
@@ -231,37 +260,41 @@
 
 
 
-        <!-- RIGHT -->
+        <!-- ===============================================
+             RIGHT
+        ================================================ -->
 
         <div class="hero-right">
 
           <div class="visual-glow"></div>
 
 
-          <!-- =========================================
-               MINECRAFT PERGAMENTAS
-          ========================================== -->
+          <!-- =============================================
+               HORIZONTALUS PERGAMENTAS
+          ============================================== -->
 
-          <div class="minecraft-letter">
+          <div class="scroll-card">
 
 
-            <!-- VIRŠUTINIS SUSUKIMAS -->
+            <!-- KAIRYS SUSUKTAS GALAS -->
 
-            <div class="letter-roll letter-roll-top">
+            <div
+              class="scroll-roll scroll-roll-left"
+              aria-hidden="true"
+            >
 
-              <div class="roll-cap roll-cap-left"></div>
+              <div class="roll-outer">
 
-              <div class="roll-center">
+                <div class="roll-highlight"></div>
 
-                <span class="roll-block block-1"></span>
-                <span class="roll-block block-2"></span>
-                <span class="roll-block block-3"></span>
-                <span class="roll-block block-4"></span>
-                <span class="roll-block block-5"></span>
+                <div class="roll-lines"></div>
 
               </div>
 
-              <div class="roll-cap roll-cap-right"></div>
+
+              <div class="roll-tip roll-tip-top"></div>
+
+              <div class="roll-tip roll-tip-bottom"></div>
 
             </div>
 
@@ -269,28 +302,33 @@
 
             <!-- PAGRINDINIS LAPAS -->
 
-            <div class="letter-sheet">
+            <div class="scroll-paper">
 
-              <div class="letter-texture"></div>
+              <div class="paper-dots"></div>
 
-              <div class="letter-center-glow"></div>
+              <div class="paper-noise"></div>
 
-              <div class="letter-shadow"></div>
+              <div class="paper-vignette"></div>
+
+              <div class="paper-inner-glow"></div>
 
 
-              <!-- CORNERS -->
+              <!-- PIXEL DETALĖS -->
 
-              <span class="letter-corner corner-tl"></span>
-              <span class="letter-corner corner-tr"></span>
-              <span class="letter-corner corner-bl"></span>
-              <span class="letter-corner corner-br"></span>
+              <span class="paper-pixel pixel-one"></span>
+
+              <span class="paper-pixel pixel-two"></span>
+
+              <span class="paper-pixel pixel-three"></span>
+
+              <span class="paper-pixel pixel-four"></span>
 
 
               <!-- LOGO -->
 
-              <div class="letter-logo">
+              <div class="scroll-logo-wrap">
 
-                <div class="letter-logo-ring">
+                <div class="scroll-logo-ring">
 
                   <img
                     src="logo.png"
@@ -302,7 +340,7 @@
               </div>
 
 
-              <!-- TITLE -->
+              <!-- PAVADINIMAS -->
 
               <div class="visual-name">
 
@@ -318,9 +356,9 @@
               </div>
 
 
-              <!-- DIVIDER -->
+              <!-- ORNAMENTAS -->
 
-              <div class="letter-divider">
+              <div class="scroll-divider">
 
                 <span></span>
 
@@ -331,7 +369,7 @@
               </div>
 
 
-              <!-- IP -->
+              <!-- SERVERIO IP -->
 
               <button
                 class="visual-ip"
@@ -354,9 +392,9 @@
               </button>
 
 
-              <!-- BOTTOM DIVIDER -->
+              <!-- APATINIS ORNAMENTAS -->
 
-              <div class="letter-divider letter-divider-bottom">
+              <div class="scroll-divider scroll-divider-bottom">
 
                 <span></span>
 
@@ -366,40 +404,29 @@
 
               </div>
 
-
-              <!-- PIXELS -->
-
-              <i class="magic-pixel magic-pixel-1"></i>
-
-              <i class="magic-pixel magic-pixel-2"></i>
-
-              <i class="magic-pixel magic-pixel-3"></i>
-
-              <i class="magic-pixel magic-pixel-4"></i>
-
-              <i class="magic-pixel magic-pixel-5"></i>
-
             </div>
 
 
 
-            <!-- APATINIS SUSUKIMAS -->
+            <!-- DEŠINYS SUSUKTAS GALAS -->
 
-            <div class="letter-roll letter-roll-bottom">
+            <div
+              class="scroll-roll scroll-roll-right"
+              aria-hidden="true"
+            >
 
-              <div class="roll-cap roll-cap-left"></div>
+              <div class="roll-outer">
 
-              <div class="roll-center">
+                <div class="roll-highlight"></div>
 
-                <span class="roll-block block-1"></span>
-                <span class="roll-block block-2"></span>
-                <span class="roll-block block-3"></span>
-                <span class="roll-block block-4"></span>
-                <span class="roll-block block-5"></span>
+                <div class="roll-lines"></div>
 
               </div>
 
-              <div class="roll-cap roll-cap-right"></div>
+
+              <div class="roll-tip roll-tip-top"></div>
+
+              <div class="roll-tip roll-tip-bottom"></div>
 
             </div>
 
@@ -408,6 +435,7 @@
         </div>
 
       </div>
+
 
 
       <div class="scroll-hint">
@@ -422,7 +450,9 @@
 
 
 
-    <!-- CONTENT -->
+    <!-- ===================================================
+         FEATURES
+    ==================================================== -->
 
     <section class="section">
 
@@ -449,6 +479,7 @@
 
 
       <div class="feature-row">
+
 
         <article class="feature">
 
@@ -508,6 +539,10 @@
 
 
 
+      <!-- =================================================
+           MODES
+      ================================================== -->
+
       <div class="modes">
 
         <div class="modes-info">
@@ -537,6 +572,7 @@
 
 
         <div class="mode-cards">
+
 
           <article class="mode-card">
 
@@ -671,7 +707,9 @@
 
 
 
-    <!-- CTA -->
+    <!-- ===================================================
+         CTA
+    ==================================================== -->
 
     <section class="cta-wrap">
 
@@ -738,7 +776,9 @@
 
 
 
-  <!-- FOOTER -->
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
   <footer class="footer">
 
@@ -767,6 +807,7 @@
 
 
       <div class="footer-links">
+
 
         <div>
 
@@ -854,6 +895,11 @@
   </footer>
 
 
+
+  <!-- =====================================================
+       COPY TOAST
+  ====================================================== -->
+
   <div
     class="copy-toast"
     id="copyToast"
@@ -862,7 +908,7 @@
   </div>
 
 
-  <script src="script.js?v=48"></script>
+  <script src="script.js?v=52"></script>
 
 </body>
 </html>
