@@ -1,89 +1,174 @@
-/* =========================================
-   MCSTONE.LT
-========================================= */
+/* ============================================================
+   MCSTONE.LT - MAIN JAVASCRIPT
+   Server IP: mcstone.srw.lt
+============================================================ */
+
+
+/* ============================================================
+   NUSTATYMAI
+============================================================ */
 
 const SERVER_IP = "mcstone.srw.lt";
 
 const STATUS_API =
-  "https://api.mcsrvstat.us/3/" + SERVER_IP;
+  `https://api.mcstatus.io/v2/status/java/${SERVER_IP}`;
 
-let toastTimer;
+const STATUS_REFRESH_TIME = 60000;
+
+let toastTimer = null;
 
 
-/* =========================================
-   COPY SERVER IP
-========================================= */
+/* ============================================================
+   ELEMENTŲ PAĖMIMAS
+============================================================ */
+
+function getServerElements() {
+
+  return {
+
+    statusText:
+      document.getElementById("serverStatusText"),
+
+    statusDot:
+      document.getElementById("serverDot"),
+
+    playerCount:
+      document.getElementById("playerCount"),
+
+    serverVersion:
+      document.getElementById("serverVersion"),
+
+    cardStatusText:
+      document.getElementById("cardStatusText"),
+
+    cardStatusDot:
+      document.getElementById("cardStatusDot"),
+
+    cardPlayers:
+      document.getElementById("cardPlayers"),
+
+    cardVersion:
+      document.getElementById("cardVersion"),
+
+    footerStatus:
+      document.getElementById("footerStatus")
+
+  };
+
+}
+
+
+/* ============================================================
+   IP KOPIJAVIMAS
+============================================================ */
 
 async function copyIP(button) {
 
   try {
 
-    await navigator.clipboard.writeText(
-      SERVER_IP
-    );
+    if (
+      navigator.clipboard &&
+      window.isSecureContext
+    ) {
+
+      await navigator.clipboard.writeText(
+        SERVER_IP
+      );
+
+    } else {
+
+      fallbackCopy();
+
+    }
 
     showCopyToast();
 
-    temporaryButtonText(button);
+    showCopiedButton(button);
 
-  } catch (error) {
+  }
+
+  catch (error) {
+
+    console.error(
+      "Nepavyko nukopijuoti IP:",
+      error
+    );
 
     fallbackCopy();
 
     showCopyToast();
 
-    temporaryButtonText(button);
+    showCopiedButton(button);
 
   }
 
 }
 
 
-/* =========================================
-   FALLBACK COPY
-========================================= */
+/* ============================================================
+   ATSARGINIS IP KOPIJAVIMAS
+============================================================ */
 
 function fallbackCopy() {
 
-  const input =
+  const textarea =
     document.createElement("textarea");
 
-
-  input.value =
+  textarea.value =
     SERVER_IP;
 
+  textarea.setAttribute(
+    "readonly",
+    ""
+  );
 
-  input.style.position =
+  textarea.style.position =
     "fixed";
 
+  textarea.style.left =
+    "-9999px";
 
-  input.style.opacity =
+  textarea.style.opacity =
     "0";
 
-
   document.body.appendChild(
-    input
+    textarea
   );
 
+  textarea.select();
 
-  input.select();
-
-
-  document.execCommand(
-    "copy"
+  textarea.setSelectionRange(
+    0,
+    textarea.value.length
   );
 
+  try {
+
+    document.execCommand(
+      "copy"
+    );
+
+  }
+
+  catch (error) {
+
+    console.error(
+      "Fallback copy klaida:",
+      error
+    );
+
+  }
 
   document.body.removeChild(
-    input
+    textarea
   );
 
 }
 
 
-/* =========================================
-   COPY TOAST
-========================================= */
+/* ============================================================
+   COPY PRANEŠIMAS
+============================================================ */
 
 function showCopyToast() {
 
@@ -92,23 +177,20 @@ function showCopyToast() {
       "copyToast"
     );
 
-
-  if (!toast) return;
-
+  if (!toast) {
+    return;
+  }
 
   toast.textContent =
     "✓ MCSTONE.SRW.LT NUKOPIJUOTAS";
-
-
-  clearTimeout(
-    toastTimer
-  );
-
 
   toast.classList.add(
     "show"
   );
 
+  clearTimeout(
+    toastTimer
+  );
 
   toastTimer =
     setTimeout(() => {
@@ -122,101 +204,500 @@ function showCopyToast() {
 }
 
 
-/* =========================================
-   BUTTON FEEDBACK
-========================================= */
+/* ============================================================
+   MYGTUKO ANIMACIJA
+============================================================ */
 
-function temporaryButtonText(button) {
+function showCopiedButton(button) {
 
-  if (!button) return;
-
-
-  if (
-    !button.classList.contains("nav-ip") &&
-    !button.classList.contains("button-purple")
-  ) {
-
+  if (!button) {
     return;
-
   }
 
+  /*
+    Kortelės ir didelis IP mygtukas turi
+    daugiau HTML viduje, todėl jų teksto
+    nekeičiame.
+  */
 
-  const originalText =
-    button.textContent;
+  const canChangeText =
+    button.classList.contains("nav-ip") ||
+    button.classList.contains("button-purple");
 
+  if (!canChangeText) {
+    return;
+  }
 
-  button.textContent =
+  const oldHTML =
+    button.innerHTML;
+
+  button.innerHTML =
     "NUKOPIJUOTA ✓";
 
+  button.disabled =
+    true;
 
   setTimeout(() => {
 
-    button.textContent =
-      originalText;
+    button.innerHTML =
+      oldHTML;
 
-  }, 1600);
+    button.disabled =
+      false;
+
+  }, 1500);
 
 }
 
 
-/* =========================================
-   LOAD SERVER STATUS
-========================================= */
+/* ============================================================
+   LOADING STATUSAS
+============================================================ */
+
+function setLoadingStatus() {
+
+  const el =
+    getServerElements();
+
+  if (el.statusText) {
+
+    el.statusText.textContent =
+      "TIKRINAMA...";
+
+  }
+
+  if (el.serverVersion) {
+
+    el.serverVersion.textContent =
+      "TIKRINAMA...";
+
+  }
+
+  if (el.playerCount) {
+
+    el.playerCount.textContent =
+      "-- / --";
+
+  }
+
+  if (el.cardStatusText) {
+
+    el.cardStatusText.textContent =
+      "TIKRINAMA...";
+
+  }
+
+  if (el.cardPlayers) {
+
+    el.cardPlayers.textContent =
+      "-- / --";
+
+  }
+
+  if (el.cardVersion) {
+
+    el.cardVersion.textContent =
+      "--";
+
+  }
+
+  if (el.footerStatus) {
+
+    el.footerStatus.textContent =
+      "Tikrinama...";
+
+  }
+
+}
+
+
+/* ============================================================
+   ONLINE STATUSAS
+============================================================ */
+
+function setOnlineStatus(data) {
+
+  const el =
+    getServerElements();
+
+
+  /* ----------------------------
+     ŽAIDĖJAI
+  ---------------------------- */
+
+  const onlinePlayers =
+    data?.players?.online ?? 0;
+
+  const maxPlayers =
+    data?.players?.max ?? "?";
+
+  const playersText =
+    `${onlinePlayers} / ${maxPlayers}`;
+
+
+  /* ----------------------------
+     VERSIJA
+  ---------------------------- */
+
+  let version =
+    "ONLINE";
+
+
+  if (
+    data?.version?.name_clean
+  ) {
+
+    version =
+      data.version.name_clean;
+
+  }
+
+  else if (
+    data?.version?.name_raw
+  ) {
+
+    version =
+      data.version.name_raw;
+
+  }
+
+  else if (
+    typeof data?.version === "string"
+  ) {
+
+    version =
+      data.version;
+
+  }
+
+
+  /*
+    Kartais API grąžina ilgą serverio
+    programinės įrangos tekstą.
+    Svetainėje paliekame trumpesnį.
+  */
+
+  if (
+    typeof version === "string" &&
+    version.length > 22
+  ) {
+
+    version =
+      version.substring(0, 22);
+
+  }
+
+
+  /* ----------------------------
+     PAGRINDINIS STATUSAS
+  ---------------------------- */
+
+  if (el.statusText) {
+
+    el.statusText.textContent =
+      "ONLINE";
+
+  }
+
+  if (el.statusDot) {
+
+    el.statusDot.classList.remove(
+      "offline-dot"
+    );
+
+    el.statusDot.classList.add(
+      "online-dot"
+    );
+
+  }
+
+
+  /* ----------------------------
+     PAGRINDINIAI DUOMENYS
+  ---------------------------- */
+
+  if (el.playerCount) {
+
+    el.playerCount.textContent =
+      playersText;
+
+  }
+
+  if (el.serverVersion) {
+
+    el.serverVersion.textContent =
+      version;
+
+  }
+
+
+  /* ----------------------------
+     DEŠINĖ KORTELĖ
+  ---------------------------- */
+
+  if (el.cardStatusText) {
+
+    el.cardStatusText.textContent =
+      "SERVERIS ONLINE";
+
+  }
+
+  if (el.cardStatusDot) {
+
+    el.cardStatusDot.classList.remove(
+      "offline-dot"
+    );
+
+    el.cardStatusDot.classList.add(
+      "online-dot"
+    );
+
+  }
+
+  if (el.cardPlayers) {
+
+    el.cardPlayers.textContent =
+      playersText;
+
+  }
+
+  if (el.cardVersion) {
+
+    el.cardVersion.textContent =
+      version;
+
+  }
+
+
+  /* ----------------------------
+     FOOTER
+  ---------------------------- */
+
+  if (el.footerStatus) {
+
+    el.footerStatus.textContent =
+      `Online • ${playersText}`;
+
+  }
+
+}
+
+
+/* ============================================================
+   OFFLINE STATUSAS
+============================================================ */
+
+function setOfflineStatus() {
+
+  const el =
+    getServerElements();
+
+
+  if (el.statusText) {
+
+    el.statusText.textContent =
+      "OFFLINE";
+
+  }
+
+
+  if (el.statusDot) {
+
+    el.statusDot.classList.remove(
+      "online-dot"
+    );
+
+    el.statusDot.classList.add(
+      "offline-dot"
+    );
+
+  }
+
+
+  if (el.playerCount) {
+
+    el.playerCount.textContent =
+      "0 / 0";
+
+  }
+
+
+  if (el.serverVersion) {
+
+    el.serverVersion.textContent =
+      "--";
+
+  }
+
+
+  if (el.cardStatusText) {
+
+    el.cardStatusText.textContent =
+      "SERVERIS OFFLINE";
+
+  }
+
+
+  if (el.cardStatusDot) {
+
+    el.cardStatusDot.classList.remove(
+      "online-dot"
+    );
+
+    el.cardStatusDot.classList.add(
+      "offline-dot"
+    );
+
+  }
+
+
+  if (el.cardPlayers) {
+
+    el.cardPlayers.textContent =
+      "0 / 0";
+
+  }
+
+
+  if (el.cardVersion) {
+
+    el.cardVersion.textContent =
+      "--";
+
+  }
+
+
+  if (el.footerStatus) {
+
+    el.footerStatus.textContent =
+      "Serveris offline";
+
+  }
+
+}
+
+
+/* ============================================================
+   API KLAIDOS STATUSAS
+============================================================ */
+
+function setErrorStatus() {
+
+  const el =
+    getServerElements();
+
+
+  if (el.statusText) {
+
+    el.statusText.textContent =
+      "NEPASIEKIAMAS";
+
+  }
+
+
+  if (el.statusDot) {
+
+    el.statusDot.classList.remove(
+      "online-dot"
+    );
+
+    el.statusDot.classList.add(
+      "offline-dot"
+    );
+
+  }
+
+
+  if (el.playerCount) {
+
+    el.playerCount.textContent =
+      "-- / --";
+
+  }
+
+
+  if (el.serverVersion) {
+
+    el.serverVersion.textContent =
+      "--";
+
+  }
+
+
+  if (el.cardStatusText) {
+
+    el.cardStatusText.textContent =
+      "STATUSAS NEPASIEKIAMAS";
+
+  }
+
+
+  if (el.cardStatusDot) {
+
+    el.cardStatusDot.classList.remove(
+      "online-dot"
+    );
+
+    el.cardStatusDot.classList.add(
+      "offline-dot"
+    );
+
+  }
+
+
+  if (el.cardPlayers) {
+
+    el.cardPlayers.textContent =
+      "-- / --";
+
+  }
+
+
+  if (el.cardVersion) {
+
+    el.cardVersion.textContent =
+      "--";
+
+  }
+
+
+  if (el.footerStatus) {
+
+    el.footerStatus.textContent =
+      "Statusas nepasiekiamas";
+
+  }
+
+}
+
+
+/* ============================================================
+   SERVERIO STATUSO UŽKLAUSA
+============================================================ */
 
 async function loadServerStatus() {
 
-  const statusText =
-    document.getElementById(
-      "serverStatusText"
-    );
+  console.log(
+    "Tikrinamas McStone serveris:",
+    SERVER_IP
+  );
 
 
-  const statusDot =
-    document.getElementById(
-      "serverDot"
-    );
+  /*
+    AbortController neleis užklausai
+    amžinai likti ant "Tikrinama..."
+  */
+
+  const controller =
+    new AbortController();
 
 
-  const playerCount =
-    document.getElementById(
-      "playerCount"
-    );
+  const timeout =
+    setTimeout(() => {
 
+      controller.abort();
 
-  const serverVersion =
-    document.getElementById(
-      "serverVersion"
-    );
-
-
-  const cardStatusText =
-    document.getElementById(
-      "cardStatusText"
-    );
-
-
-  const cardStatusDot =
-    document.getElementById(
-      "cardStatusDot"
-    );
-
-
-  const cardPlayers =
-    document.getElementById(
-      "cardPlayers"
-    );
-
-
-  const cardVersion =
-    document.getElementById(
-      "cardVersion"
-    );
-
-
-  const footerStatus =
-    document.getElementById(
-      "footerStatus"
-    );
+    }, 10000);
 
 
   try {
@@ -225,15 +706,30 @@ async function loadServerStatus() {
       await fetch(
         STATUS_API,
         {
-          cache: "no-store"
+          method: "GET",
+
+          cache: "no-store",
+
+          signal:
+            controller.signal,
+
+          headers: {
+            "Accept":
+              "application/json"
+          }
         }
       );
+
+
+    clearTimeout(
+      timeout
+    );
 
 
     if (!response.ok) {
 
       throw new Error(
-        "Server status API error"
+        `API HTTP klaida: ${response.status}`
       );
 
     }
@@ -243,496 +739,311 @@ async function loadServerStatus() {
       await response.json();
 
 
-    /* =========================
-       SERVER ONLINE
-    ========================= */
-
-    if (data.online === true) {
-
-      const playersOnline =
-        data.players?.online ?? 0;
+    console.log(
+      "McStone API atsakymas:",
+      data
+    );
 
 
-      const playersMax =
-        data.players?.max ?? "?";
+    /*
+      mcstatus.io grąžina
+      online: true / false
+    */
 
+    if (
+      data &&
+      data.online === true
+    ) {
 
-      const version =
-        data.version ?? "ONLINE";
-
-
-      /* MAIN STATUS */
-
-      if (statusText) {
-
-        statusText.textContent =
-          "ONLINE";
-
-      }
-
-
-      if (statusDot) {
-
-        statusDot.classList.remove(
-          "offline-dot"
-        );
-
-      }
-
-
-      /* PLAYERS */
-
-      if (playerCount) {
-
-        playerCount.textContent =
-          playersOnline +
-          " / " +
-          playersMax;
-
-      }
-
-
-      /* VERSION */
-
-      if (serverVersion) {
-
-        serverVersion.textContent =
-          version;
-
-      }
-
-
-      /* CARD STATUS */
-
-      if (cardStatusText) {
-
-        cardStatusText.textContent =
-          "SERVERIS ONLINE";
-
-      }
-
-
-      if (cardStatusDot) {
-
-        cardStatusDot.classList.remove(
-          "offline-dot"
-        );
-
-      }
-
-
-      /* CARD PLAYERS */
-
-      if (cardPlayers) {
-
-        cardPlayers.textContent =
-          playersOnline +
-          " / " +
-          playersMax;
-
-      }
-
-
-      /* CARD VERSION */
-
-      if (cardVersion) {
-
-        cardVersion.textContent =
-          version;
-
-      }
-
-
-      /* FOOTER */
-
-      if (footerStatus) {
-
-        footerStatus.textContent =
-          "Serveris online";
-
-      }
+      setOnlineStatus(
+        data
+      );
 
     }
 
-
-    /* =========================
-       SERVER OFFLINE
-    ========================= */
-
     else {
 
-      setServerOffline();
+      setOfflineStatus();
 
     }
 
   }
 
-
-  /* =========================
-     API ERROR
-  ========================= */
-
   catch (error) {
 
+    clearTimeout(
+      timeout
+    );
+
+
     console.error(
-      "Nepavyko gauti serverio statuso:",
+      "Serverio statuso klaida:",
       error
     );
 
 
-    if (statusText) {
-
-      statusText.textContent =
-        "NEŽINOMA";
-
-    }
-
-
-    if (playerCount) {
-
-      playerCount.textContent =
-        "-- / --";
-
-    }
-
-
-    if (serverVersion) {
-
-      serverVersion.textContent =
-        "--";
-
-    }
-
-
-    if (cardStatusText) {
-
-      cardStatusText.textContent =
-        "STATUSAS NEPASIEKIAMAS";
-
-    }
-
-
-    if (cardPlayers) {
-
-      cardPlayers.textContent =
-        "-- / --";
-
-    }
-
-
-    if (cardVersion) {
-
-      cardVersion.textContent =
-        "--";
-
-    }
-
-
-    if (footerStatus) {
-
-      footerStatus.textContent =
-        "Statusas nepasiekiamas";
-
-    }
+    setErrorStatus();
 
   }
 
 }
 
 
-/* =========================================
-   SET SERVER OFFLINE
-========================================= */
+/* ============================================================
+   NAVBAR EFEKTAS
+============================================================ */
 
-function setServerOffline() {
+function setupNavbar() {
 
-  const statusText =
-    document.getElementById(
-      "serverStatusText"
+  const navbar =
+    document.querySelector(
+      ".navbar"
     );
 
 
-  const statusDot =
-    document.getElementById(
-      "serverDot"
-    );
-
-
-  const playerCount =
-    document.getElementById(
-      "playerCount"
-    );
-
-
-  const serverVersion =
-    document.getElementById(
-      "serverVersion"
-    );
-
-
-  const cardStatusText =
-    document.getElementById(
-      "cardStatusText"
-    );
-
-
-  const cardStatusDot =
-    document.getElementById(
-      "cardStatusDot"
-    );
-
-
-  const cardPlayers =
-    document.getElementById(
-      "cardPlayers"
-    );
-
-
-  const cardVersion =
-    document.getElementById(
-      "cardVersion"
-    );
-
-
-  const footerStatus =
-    document.getElementById(
-      "footerStatus"
-    );
-
-
-  if (statusText) {
-
-    statusText.textContent =
-      "OFFLINE";
-
+  if (!navbar) {
+    return;
   }
 
 
-  if (statusDot) {
+  function updateNavbar() {
 
-    statusDot.classList.add(
-      "offline-dot"
-    );
-
-  }
-
-
-  if (playerCount) {
-
-    playerCount.textContent =
-      "0 / 0";
-
-  }
-
-
-  if (serverVersion) {
-
-    serverVersion.textContent =
-      "--";
-
-  }
-
-
-  if (cardStatusText) {
-
-    cardStatusText.textContent =
-      "SERVERIS OFFLINE";
-
-  }
-
-
-  if (cardStatusDot) {
-
-    cardStatusDot.classList.add(
-      "offline-dot"
-    );
-
-  }
-
-
-  if (cardPlayers) {
-
-    cardPlayers.textContent =
-      "0 / 0";
-
-  }
-
-
-  if (cardVersion) {
-
-    cardVersion.textContent =
-      "--";
-
-  }
-
-
-  if (footerStatus) {
-
-    footerStatus.textContent =
-      "Serveris offline";
-
-  }
-
-}
-
-
-/* =========================================
-   NAVBAR SCROLL
-========================================= */
-
-const navbar =
-  document.querySelector(
-    ".navbar"
-  );
-
-
-window.addEventListener(
-  "scroll",
-  () => {
-
-    if (!navbar) return;
-
-
-    if (window.scrollY > 20) {
+    if (
+      window.scrollY > 25
+    ) {
 
       navbar.style.background =
-        "rgba(5,4,8,.97)";
+        "rgba(5, 4, 8, .98)";
 
-    } else {
+      navbar.style.boxShadow =
+        "0 8px 30px rgba(0, 0, 0, .25)";
+
+    }
+
+    else {
 
       navbar.style.background =
-        "rgba(5,4,8,.90)";
+        "rgba(5, 4, 8, .90)";
+
+      navbar.style.boxShadow =
+        "none";
 
     }
 
   }
-);
 
 
-/* =========================================
-   REVEAL ANIMATIONS
-========================================= */
-
-const revealItems =
-  document.querySelectorAll(
-    ".feature, .mode-card, .cta"
-  );
-
-
-const observer =
-  new IntersectionObserver(
-
-    entries => {
-
-      entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.classList.add(
-            "revealed"
-          );
-
-
-          observer.unobserve(
-            entry.target
-          );
-
-        }
-
-      });
-
-    },
-
+  window.addEventListener(
+    "scroll",
+    updateNavbar,
     {
-      threshold: 0.10
+      passive: true
+    }
+  );
+
+
+  updateNavbar();
+
+}
+
+
+/* ============================================================
+   SCROLL ANIMACIJOS
+============================================================ */
+
+function setupRevealAnimations() {
+
+  const items =
+    document.querySelectorAll(
+      ".feature, .mode-card, .cta"
+    );
+
+
+  if (
+    !("IntersectionObserver" in window)
+  ) {
+
+    items.forEach(item => {
+
+      item.classList.add(
+        "revealed"
+      );
+
+    });
+
+    return;
+
+  }
+
+
+  const observer =
+    new IntersectionObserver(
+
+      entries => {
+
+        entries.forEach(
+          entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "revealed"
+              );
+
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+  items.forEach(
+    (item, index) => {
+
+      item.classList.add(
+        "reveal-item"
+      );
+
+
+      item.style.transitionDelay =
+        `${Math.min(index * 40, 200)}ms`;
+
+
+      observer.observe(
+        item
+      );
+
+    }
+  );
+
+}
+
+
+/* ============================================================
+   ANIMACIJŲ CSS
+============================================================ */
+
+function addAnimationStyles() {
+
+  const style =
+    document.createElement(
+      "style"
+    );
+
+
+  style.textContent = `
+
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(22px);
+
+      transition:
+        opacity .6s ease,
+        transform .6s ease;
     }
 
-  );
 
-
-revealItems.forEach(item => {
-
-  item.classList.add(
-    "reveal"
-  );
-
-
-  observer.observe(
-    item
-  );
-
-});
-
-
-/* =========================================
-   REVEAL CSS
-========================================= */
-
-const animationCSS =
-  document.createElement(
-    "style"
-  );
-
-
-animationCSS.textContent = `
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-
-    transition:
-      opacity .6s ease,
-      transform .6s ease;
-  }
-
-
-  .reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-
-  @media (prefers-reduced-motion: reduce) {
-
-    .reveal {
+    .reveal-item.revealed {
       opacity: 1;
-      transform: none;
-      transition: none;
+      transform: translateY(0);
     }
 
-  }
 
-`;
+    .online-dot {
+      background: #52f38b !important;
+
+      box-shadow:
+        0 0 10px #52f38b !important;
+    }
 
 
-document.head.appendChild(
-  animationCSS
-);
+    .offline-dot {
+      background: #ff4d68 !important;
+
+      box-shadow:
+        0 0 10px #ff4d68 !important;
+    }
 
 
-/* =========================================
-   START
-========================================= */
+    @media (
+      prefers-reduced-motion: reduce
+    ) {
+
+      .reveal-item {
+        opacity: 1 !important;
+
+        transform: none !important;
+
+        transition: none !important;
+      }
+
+    }
+
+  `;
+
+
+  document.head.appendChild(
+    style
+  );
+
+}
+
+
+/* ============================================================
+   PUSLAPIO PALEIDIMAS
+============================================================ */
 
 document.addEventListener(
   "DOMContentLoaded",
   () => {
 
+    console.log(
+      "MCSTONE.LT script.js paleistas."
+    );
+
+
+    addAnimationStyles();
+
+
+    setupNavbar();
+
+
+    setupRevealAnimations();
+
+
+    setLoadingStatus();
+
+
     /*
-      Patikrinam iš karto.
+      Serverio statusas
+      patikrinamas iš karto.
     */
 
     loadServerStatus();
 
 
     /*
-      Po to atnaujinam statusą
-      kas 60 sekundžių.
+      Statusas automatiškai
+      atnaujinamas kas 60 sekundžių.
     */
 
     setInterval(
       loadServerStatus,
-      60000
+      STATUS_REFRESH_TIME
     );
 
   }
