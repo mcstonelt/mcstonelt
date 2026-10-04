@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="lt">
-
 <head>
   <meta charset="UTF-8">
 
@@ -14,10 +13,7 @@
     content="McStone.lt – vienas populiariausių lietuviškų Minecraft serverių. Survival, Dungeons, Events, PvP ir dar daugiau."
   >
 
-  <meta
-    name="theme-color"
-    content="#08050d"
-  >
+  <meta name="theme-color" content="#08050d">
 
   <title>McStone.lt | Minecraft serveris</title>
 
@@ -29,16 +25,11 @@
 
   <link
     rel="stylesheet"
-    href="style.css?v=10"
+    href="style.css?v=20"
   >
 </head>
 
-
 <body>
-
-  <!-- ======================================================
-       NAVBAR
-  ======================================================= -->
 
   <header class="navbar">
 
@@ -49,14 +40,12 @@
         class="logo"
         aria-label="McStone.lt pradžia"
       >
-
         <img
           src="logo.png"
           alt="McStone.lt"
         >
 
         <span>MCSTONE.LT</span>
-
       </a>
 
 
@@ -64,7 +53,6 @@
         class="nav-links"
         aria-label="Pagrindinė navigacija"
       >
-
         <a
           class="active"
           href="index.html"
@@ -95,7 +83,6 @@
         >
           Parduotuvė
         </a>
-
       </nav>
 
 
@@ -112,37 +99,21 @@
   </header>
 
 
-  <!-- ======================================================
-       MAIN
-  ======================================================= -->
-
   <main>
-
-
-    <!-- ====================================================
-         HERO
-    ===================================================== -->
 
     <section class="hero">
 
       <div class="hero-overlay"></div>
-
       <div class="hero-grid"></div>
-
       <div class="hero-glow"></div>
 
 
       <div class="hero-inner">
 
 
-        <!-- ================================================
-             HERO LEFT
-        ================================================= -->
+        <!-- LEFT -->
 
         <div class="hero-left">
-
-
-          <!-- HERO TAG -->
 
           <div class="hero-tag">
 
@@ -169,46 +140,31 @@
           </div>
 
 
-          <!-- TITLE -->
-
           <h1 class="hero-title">
-
             MC<span>STONE</span><em>.LT</em>
-
           </h1>
 
-
-          <!-- HERO APRAŠYMAS -->
 
           <div class="hero-description">
 
             <div class="hero-description-line"></div>
 
             <p>
-
               <strong>McStone</strong> – vienas populiariausių
               lietuviškų Minecraft serverių, subūręs aktyvią ir
               nuolat augančią bendruomenę. Tavęs laukia
-
               <strong>Survival</strong>,
-
               <strong>Dungeons</strong>,
-
               <strong>Events</strong>,
-
               <strong>PvP</strong>,
-
               išvystyta ekonomika, unikalios sistemos bei nuolat
               atnaujinamas turinys. Kurk savo istoriją, varžykis
               su kitais ir tapk <strong>McStone</strong>
               bendruomenės dalimi.
-
             </p>
 
           </div>
 
-
-          <!-- BUTTONS -->
 
           <div class="hero-actions">
 
@@ -233,12 +189,7 @@
           </div>
 
 
-          <!-- ==============================================
-               SERVER STATS
-          =============================================== -->
-
           <div class="server-stats">
-
 
             <div class="stat">
 
@@ -292,9 +243,7 @@
         </div>
 
 
-        <!-- ================================================
-             HERO RIGHT
-        ================================================= -->
+        <!-- RIGHT -->
 
         <div class="hero-right">
 
@@ -304,95 +253,241 @@
           <div class="visual-card">
 
 
-            <!-- STATUS -->
+            <!-- DECORATIONS -->
 
-            <div class="visual-top">
+            <div class="card-corner corner-tl"></div>
+            <div class="card-corner corner-tr"></div>
+            <div class="card-corner corner-bl"></div>
+            <div class="card-corner corner-br"></div>
 
-              <span
-                class="status-dot"
-                id="cardStatusDot"
-              ></span>
 
-              <span id="cardStatusText">
-                TIKRINAMA...
-              </span>
+            <!-- ENVELOPE TOP -->
+
+            <div class="envelope-top">
+
+              <div class="envelope-wing envelope-wing-left"></div>
+
+              <div class="envelope-wing envelope-wing-right"></div>
+
+              <div class="envelope-flap">
+
+                <div class="flap-glow"></div>
+
+                <img
+                  src="logo.png"
+                  alt="McStone.lt"
+                  class="hero-logo"
+                >
+
+              </div>
 
             </div>
 
 
-            <!-- LOGO -->
+            <!-- TOP STATUS -->
 
-            <img
-              src="logo.png"
-              alt="McStone.lt"
-              class="hero-logo"
-            >
+            <div class="visual-status-row">
 
+              <div class="visual-top">
 
-            <!-- NAME -->
+                <span
+                  class="status-dot"
+                  id="cardStatusDot"
+                ></span>
 
-            <div class="visual-name">
-              MCSTONE
-            </div>
+                <div>
 
+                  <small>
+                    SERVERIS
+                  </small>
 
-            <div class="visual-sub">
-              LIETUVIŠKAS MINECRAFT SERVERIS
-            </div>
+                  <strong id="cardStatusText">
+                    TIKRINAMA...
+                  </strong>
 
-
-            <!-- IP -->
-
-            <button
-              class="visual-ip"
-              type="button"
-              onclick="copyIP(this)"
-            >
-
-              <small>
-                SERVERIO IP
-              </small>
-
-              <b>
-                MCSTONE.SRW.LT
-              </b>
-
-              <span>
-                SPAUSK, KAD NUKOPIJUOTUM
-              </span>
-
-            </button>
-
-
-            <!-- CARD INFO -->
-
-            <div class="card-live-info">
-
-              <div>
-
-                <span>
-                  ŽAIDĖJAI
-                </span>
-
-                <strong id="cardPlayers">
-                  -- / --
-                </strong>
+                </div>
 
               </div>
 
 
-              <div>
+              <div class="top-players">
 
-                <span>
-                  VERSIJA
+                <span class="players-icon">
+                  ♟
                 </span>
 
-                <strong id="cardVersion">
-                  --
-                </strong>
+                <div>
+
+                  <strong id="topCardPlayers">
+                    ŽAIDĖJAI
+                  </strong>
+
+                  <small>
+                    LIVE
+                  </small>
+
+                </div>
 
               </div>
 
+            </div>
+
+
+            <!-- MAIN CARD CONTENT -->
+
+            <div class="card-main-content">
+
+              <div class="visual-name">
+                MC<span>STONE</span>
+              </div>
+
+
+              <div class="visual-sub">
+                LIETUVIŠKAS MINECRAFT SERVERIS
+              </div>
+
+
+              <!-- MODES -->
+
+              <div class="card-modes">
+
+                <div class="card-mode">
+                  <span>⛏</span>
+                  <b>SURVIVAL</b>
+                </div>
+
+
+                <div class="card-mode">
+                  <span>☠</span>
+                  <b>DUNGEONS</b>
+                </div>
+
+
+                <div class="card-mode">
+                  <span>★</span>
+                  <b>EVENTS</b>
+                </div>
+
+
+                <div class="card-mode">
+                  <span>⚔</span>
+                  <b>PVP</b>
+                </div>
+
+
+                <div class="card-mode card-mode-more">
+                  <span>•••</span>
+                  <b>DAUGIAU</b>
+                </div>
+
+              </div>
+
+
+              <!-- IP -->
+
+              <button
+                class="visual-ip"
+                type="button"
+                onclick="copyIP(this)"
+              >
+
+                <div class="ip-decoration ip-decoration-left"></div>
+                <div class="ip-decoration ip-decoration-right"></div>
+
+                <small>
+                  SERVERIO IP
+                </small>
+
+                <b>
+                  MCSTONE.SRW.LT
+                </b>
+
+                <span>
+                  SPAUSK, KAD NUKOPIJUOTUM
+                </span>
+
+
+                <div class="copy-symbol">
+                  ⧉
+                </div>
+
+              </button>
+
+
+              <!-- LIVE INFO -->
+
+              <div class="card-live-info">
+
+
+                <div class="live-stat">
+
+                  <div class="live-icon">
+                    ♟
+                  </div>
+
+                  <div>
+
+                    <span>
+                      ŽAIDĖJAI
+                    </span>
+
+                    <strong id="cardPlayers">
+                      -- / --
+                    </strong>
+
+                  </div>
+
+                </div>
+
+
+                <div class="live-stat live-status">
+
+                  <div class="live-icon">
+                    ⌁
+                  </div>
+
+                  <div>
+
+                    <span>
+                      STATUSAS
+                    </span>
+
+                    <strong class="live-online-text">
+                      ONLINE
+                    </strong>
+
+                  </div>
+
+                </div>
+
+
+                <div class="live-stat">
+
+                  <div class="live-icon">
+                    ◇
+                  </div>
+
+                  <div>
+
+                    <span>
+                      VERSIJA
+                    </span>
+
+                    <strong id="cardVersion">
+                      --
+                    </strong>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="bottom-diamond">
+              <span></span>
             </div>
 
           </div>
@@ -413,12 +508,9 @@
     </section>
 
 
-    <!-- ====================================================
-         KODĖL MCSTONE
-    ===================================================== -->
+    <!-- KODĖL MCSTONE -->
 
     <section class="section">
-
 
       <div class="section-heading">
 
@@ -435,18 +527,14 @@
 
 
         <p>
-
           Pasirink savo žaidimo stilių. Kurk bazę,
           kovok su kitais žaidėjais, tyrinėk požemius,
           dalyvauk eventuose ir tapk McStone
           bendruomenės dalimi.
-
         </p>
 
       </div>
 
-
-      <!-- FEATURES -->
 
       <div class="feature-row">
 
@@ -462,10 +550,8 @@
           </h3>
 
           <p>
-
             Rink resursus, statyk savo bazę,
             prekiauk ir kurk savo istoriją.
-
           </p>
 
         </article>
@@ -482,11 +568,9 @@
           </h3>
 
           <p>
-
             Tyrinėk pavojingus požemius,
             kovok su priešais ir ieškok
             vertingo loot'o.
-
           </p>
 
         </article>
@@ -503,20 +587,14 @@
           </h3>
 
           <p>
-
             Išbandyk savo įgūdžius kovose
             ir varžykis su kitais žaidėjais.
-
           </p>
 
         </article>
 
       </div>
 
-
-      <!-- ==================================================
-           MODES
-      =================================================== -->
 
       <div class="modes">
 
@@ -534,11 +612,9 @@
 
 
           <p>
-
             McStone nėra tik paprastas Survival serveris.
             Čia rasi skirtingų veiklų, todėl visada
             turėsi ką veikti.
-
           </p>
 
 
@@ -687,12 +763,9 @@
     </section>
 
 
-    <!-- ====================================================
-         CTA
-    ===================================================== -->
+    <!-- CTA -->
 
     <section class="cta-wrap">
-
 
       <div class="cta">
 
@@ -714,11 +787,9 @@
 
 
           <p>
-
             Paleisk Minecraft Java Edition,
-            pridėk McStone serverį
-            ir pradėk savo kelionę.
-
+            pridėk McStone serverį ir pradėk
+            savo kelionę kartu su mūsų bendruomene.
           </p>
 
 
@@ -761,15 +832,11 @@
   </main>
 
 
-  <!-- ======================================================
-       FOOTER
-  ======================================================= -->
+  <!-- FOOTER -->
 
   <footer class="footer">
 
-
     <div class="footer-inner">
-
 
       <div class="footer-brand">
 
@@ -785,7 +852,7 @@
           </strong>
 
           <p>
-            Lietuviškas Minecraft serveris.
+            Vienas populiariausių lietuviškų Minecraft serverių.
           </p>
 
         </div>
@@ -794,7 +861,6 @@
 
 
       <div class="footer-links">
-
 
         <div>
 
@@ -874,15 +940,13 @@
       </span>
 
       <span>
-        Minecraft serverio projektas
+        Lietuviškas Minecraft serveris
       </span>
 
     </div>
 
   </footer>
 
-
-  <!-- COPY MESSAGE -->
 
   <div
     class="copy-toast"
@@ -892,10 +956,7 @@
   </div>
 
 
-  <!-- JAVASCRIPT -->
-
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=20"></script>
 
 </body>
-
 </html>
