@@ -3,15 +3,19 @@
 :root {
   --bg: #050407;
   --bg-2: #08050d;
+
   --purple: #a72cff;
   --purple-2: #c45cff;
   --purple-3: #7d19c8;
   --purple-light: #df7cff;
+
   --white: #ffffff;
   --text: #f5f1f8;
   --muted: #aaa1b2;
+
   --green: #52f38b;
   --red: #ff4d68;
+
   --max-width: 1600px;
 }
 
@@ -28,10 +32,13 @@ html {
 body {
   min-height: 100vh;
   overflow-x: hidden;
+
   background: #050407;
   color: var(--text);
+
   font-family: "Inter", Arial, sans-serif;
   line-height: 1.6;
+
   -webkit-font-smoothing: antialiased;
 }
 
@@ -48,6 +55,11 @@ img {
   display: block;
   max-width: 100%;
 }
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -73,9 +85,11 @@ img {
 
 .navbar {
   position: fixed;
+
   top: 0;
   left: 0;
   right: 0;
+
   z-index: 1000;
 
   height: 82px;
@@ -94,6 +108,7 @@ img {
 
 .nav-inner {
   width: min(calc(100% - 64px), var(--max-width));
+
   height: 100%;
 
   margin: 0 auto;
@@ -205,7 +220,11 @@ img {
   font-family: "Press Start 2P", monospace;
   font-size: 9px;
 
-  transition: 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .nav-ip:hover {
@@ -238,7 +257,7 @@ img {
   padding: 145px 0 100px;
 
   background-image:
-    url("hero-bg.png?v=40");
+    url("hero-bg.png?v=42");
 
   background-size: cover;
   background-position: center;
@@ -391,7 +410,7 @@ img {
 
 
 /* =========================================================
-   TITLE
+   HERO TITLE
 ========================================================= */
 
 .hero-title,
@@ -433,7 +452,7 @@ img {
 
 
 /* =========================================================
-   DESCRIPTION
+   HERO DESCRIPTION
 ========================================================= */
 
 .hero-description {
@@ -478,7 +497,6 @@ img {
 
 .hero-description strong {
   color: var(--purple-2);
-
   font-weight: 800;
 }
 
@@ -515,7 +533,11 @@ img {
   font-family: "Press Start 2P", monospace;
   font-size: 9px;
 
-  transition: 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .button:hover {
@@ -692,16 +714,12 @@ img {
   width: 100%;
   max-width: 780px;
 
-  min-height: 590px;
+  min-height: 550px;
 
   padding: 48px 58px 45px;
 
   overflow: hidden;
 
-  /*
-    Specialiai nelygūs kraštai.
-    Ne vokas, o senas suplėšytas pergamentas.
-  */
   clip-path:
     polygon(
       2% 3%,
@@ -792,7 +810,7 @@ img {
 
 
 /* =========================================================
-   SENOVINIO POPIERIAUS TEKSTŪRA
+   DOT TEXTURE
 ========================================================= */
 
 .visual-card::before {
@@ -816,25 +834,11 @@ img {
     15px 15px;
 
   opacity: 0.28;
-
-  -webkit-mask-image:
-    radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0.25),
-      black 95%
-    );
-
-  mask-image:
-    radial-gradient(
-      ellipse at center,
-      rgba(0, 0, 0, 0.25),
-      black 95%
-    );
 }
 
 
 /* =========================================================
-   APDEGĘ / PATAMSĖJĘ KRAŠTAI
+   DARK EDGES
 ========================================================= */
 
 .visual-card::after {
@@ -871,7 +875,7 @@ img {
 
 
 /* =========================================================
-   SENI ENVELOPE ELEMENTAI PASLEPIAMI
+   OLD UNUSED ENVELOPE ELEMENTS
 ========================================================= */
 
 .envelope-top,
@@ -879,22 +883,14 @@ img {
 .envelope-wing-left,
 .envelope-wing-right,
 .envelope-flap,
-.flap-glow {
-  display: none !important;
-}
-
-
-/* =========================================================
-   SENI CYBER KAMPAI PASLEPIAMI
-========================================================= */
-
+.flap-glow,
 .card-corner {
   display: none !important;
 }
 
 
 /* =========================================================
-   VIRŠUTINĖ DALIS
+   TOP STATUS
 ========================================================= */
 
 .visual-status-row {
@@ -986,7 +982,6 @@ img {
 
 .players-icon {
   color: var(--purple-light);
-
   font-size: 19px;
 }
 
@@ -1013,7 +1008,7 @@ img {
 
 
 /* =========================================================
-   LOGO KAIP ANTSPAUDAS
+   LOGO SEAL
 ========================================================= */
 
 .hero-logo {
@@ -1058,7 +1053,7 @@ img {
 
 
 /* =========================================================
-   PAGRINDINIS TURINYS
+   CARD MAIN CONTENT
 ========================================================= */
 
 .card-main-content {
@@ -1068,11 +1063,6 @@ img {
 
   padding-top: 35px;
 }
-
-
-/* =========================================================
-   MCSTONE TITLE
-========================================================= */
 
 .visual-name {
   margin-bottom: 11px;
@@ -1101,7 +1091,7 @@ img {
 .visual-sub {
   position: relative;
 
-  margin-bottom: 30px;
+  margin-bottom: 34px;
 
   text-align: center;
 
@@ -1139,252 +1129,359 @@ img {
 
 .visual-sub::after {
   right: 20px;
-
   transform: rotate(180deg);
 }
 
 
 /* =========================================================
-   ŽAIDIMO REŽIMAI
-========================================================= */
-
-.card-modes {
-  display: grid;
-
-  grid-template-columns:
-    repeat(5, 1fr);
-
-  gap: 9px;
-
-  margin-bottom: 28px;
-}
-
-.card-mode {
-  min-height: 58px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 7px;
-
-  padding: 8px 5px;
-
-  border-top:
-    1px solid rgba(207, 110, 229, 0.3);
-
-  border-bottom:
-    1px solid rgba(207, 110, 229, 0.18);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(94, 25, 109, 0.22),
-      rgba(15, 5, 19, 0.18)
-    );
-
-  transition: 0.2s ease;
-}
-
-.card-mode:hover {
-  transform: translateY(-2px);
-
-  background:
-    rgba(119, 31, 140, 0.32);
-
-  border-color:
-    rgba(221, 127, 241, 0.55);
-}
-
-.card-mode span {
-  color: var(--purple-light);
-
-  font-size: 15px;
-
-  text-shadow:
-    0 0 10px rgba(199, 94, 223, 0.35);
-}
-
-.card-mode b {
-  color: #d7ced9;
-
-  font-family: "Press Start 2P", monospace;
-  font-size: 4.5px;
-}
-
-
-/* =========================================================
-   IP BLOKAS
+   NEW SERVER IP DESIGN
 ========================================================= */
 
 .visual-ip {
   position: relative;
 
-  width: 100%;
+  width: calc(100% - 20px);
 
-  min-height: 112px;
+  min-height: 145px;
+
+  margin:
+    0 auto 32px;
+
+  padding:
+    28px 90px 25px;
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
   justify-content: center;
 
-  gap: 9px;
-
-  margin-bottom: 30px;
-
-  padding: 18px 70px;
-
-  overflow: hidden;
+  gap: 11px;
 
   cursor: pointer;
 
+  overflow: hidden;
+
   outline: none;
 
-  border:
-    1px solid rgba(202, 100, 224, 0.45);
+  border: 0;
 
-  border-radius: 2px;
+  border-top:
+    1px solid rgba(219, 121, 255, 0.38);
+
+  border-bottom:
+    1px solid rgba(219, 121, 255, 0.38);
+
+  border-radius: 0;
 
   background:
     radial-gradient(
       ellipse at center,
-      rgba(122, 31, 143, 0.37),
-      rgba(44, 12, 52, 0.45)
+      rgba(159, 39, 199, 0.24) 0%,
+      rgba(79, 17, 98, 0.14) 42%,
+      rgba(12, 5, 16, 0.1) 75%
     );
 
   box-shadow:
-    inset 0 0 45px rgba(184, 78, 207, 0.05),
-    0 10px 25px rgba(0, 0, 0, 0.15);
+    inset 0 18px 45px rgba(180, 52, 224, 0.04),
+    inset 0 -18px 45px rgba(180, 52, 224, 0.04);
 
-  transition: 0.2s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+
+/* ornamentas viršuje */
 
 .visual-ip::before {
-  content: "";
+  content: "◆";
 
   position: absolute;
 
-  left: 18px;
-  right: 18px;
-  top: 10px;
+  top: -7px;
+  left: 50%;
 
-  height: 1px;
+  width: 44px;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(217, 124, 238, 0.5),
-      transparent
-    );
+  transform: translateX(-50%);
+
+  color: var(--purple-light);
+
+  background: #16091c;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+  line-height: 14px;
+
+  text-align: center;
+
+  text-shadow:
+    0 0 9px rgba(211, 91, 255, 0.85),
+    0 0 18px rgba(171, 42, 255, 0.5);
 }
+
+
+/* ornamentas apačioje */
 
 .visual-ip::after {
-  content: "";
+  content: "◇";
 
   position: absolute;
 
-  left: 18px;
-  right: 18px;
-  bottom: 10px;
+  bottom: -7px;
+  left: 50%;
 
-  height: 1px;
+  width: 44px;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(217, 124, 238, 0.35),
-      transparent
-    );
+  transform: translateX(-50%);
+
+  color: rgba(217, 124, 255, 0.75);
+
+  background: #130818;
+
+  font-size: 11px;
+  line-height: 14px;
+
+  text-align: center;
 }
 
-.visual-ip:hover {
-  transform: translateY(-3px);
 
-  border-color:
-    rgba(224, 131, 244, 0.75);
-
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(144, 39, 168, 0.46),
-      rgba(50, 13, 59, 0.52)
-    );
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.3),
-    0 0 25px rgba(182, 64, 208, 0.12);
-}
+/* SERVERIO IP */
 
 .visual-ip small {
-  color: #a89cab;
+  position: relative;
 
-  font-size: 8px;
-  font-weight: 800;
-}
-
-.visual-ip b {
-  color: var(--purple-light);
+  color: #9f91a5;
 
   font-family: "Press Start 2P", monospace;
 
-  font-size: 13px;
+  font-size: 6px;
+  font-weight: 400;
 
-  line-height: 1.5;
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+}
+
+
+/* mažas dekoratyvinis taškas */
+
+.visual-ip small::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  right: calc(100% + 15px);
+
+  width: 45px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 112, 255, 0.5)
+    );
+}
+
+.visual-ip small::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: calc(100% + 15px);
+
+  width: 45px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(212, 112, 255, 0.5),
+      transparent
+    );
+}
+
+
+/* IP ADDRESS */
+
+.visual-ip b {
+  position: relative;
+
+  color: #e287ff;
+
+  font-family: "Press Start 2P", monospace;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  letter-spacing: 0.5px;
 
   text-shadow:
-    0 0 17px rgba(196, 92, 255, 0.35);
+    0 0 10px rgba(202, 78, 255, 0.4),
+    0 0 25px rgba(166, 41, 221, 0.22);
+
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease;
 }
 
 .visual-ip > span {
-  color: #8c818f;
+  color: #766c7a;
 
   font-size: 7px;
   font-weight: 700;
+
+  letter-spacing: 0.6px;
 }
+
+
+/* COPY BUTTON */
 
 .copy-symbol {
   position: absolute;
 
-  right: 20px;
   top: 50%;
+  right: 24px;
 
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
 
-  transform: translateY(-50%);
+  transform:
+    translateY(-50%)
+    rotate(45deg);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border:
-    1px solid rgba(205, 108, 225, 0.45);
+  color: #e9c8f5;
 
-  border-radius: 50%;
+  font-size: 0;
+
+  border:
+    1px solid rgba(212, 111, 255, 0.48);
+
+  border-radius: 3px;
 
   background:
-    rgba(17, 5, 21, 0.6);
-
-  color: #fff;
-
-  font-size: 19px;
+    linear-gradient(
+      135deg,
+      rgba(94, 22, 116, 0.42),
+      rgba(20, 7, 25, 0.82)
+    );
 
   box-shadow:
-    inset 0 0 15px rgba(194, 75, 218, 0.08);
+    inset 0 0 18px rgba(196, 76, 235, 0.08),
+    0 0 18px rgba(169, 44, 220, 0.08);
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+
+/* naujas copy simbolis */
+
+.copy-symbol::before {
+  content: "";
+
+  width: 13px;
+  height: 16px;
+
+  position: absolute;
+
+  border:
+    1.5px solid #ead7f1;
+
+  transform:
+    rotate(-45deg)
+    translate(2px, -2px);
+}
+
+.copy-symbol::after {
+  content: "";
+
+  width: 13px;
+  height: 16px;
+
+  position: absolute;
+
+  border:
+    1.5px solid rgba(224, 179, 241, 0.7);
+
+  transform:
+    rotate(-45deg)
+    translate(-3px, 3px);
+}
+
+
+/* pašalinami seni IP kampai */
 
 .ip-decoration {
   display: none !important;
 }
 
 
+/* IP HOVER */
+
+.visual-ip:hover {
+  transform: translateY(-2px);
+
+  border-top-color:
+    rgba(226, 137, 255, 0.72);
+
+  border-bottom-color:
+    rgba(226, 137, 255, 0.72);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(179, 48, 222, 0.34) 0%,
+      rgba(92, 20, 112, 0.18) 45%,
+      rgba(12, 5, 16, 0.08) 78%
+    );
+
+  box-shadow:
+    inset 0 20px 50px rgba(190, 56, 235, 0.06),
+    inset 0 -20px 50px rgba(190, 56, 235, 0.06),
+    0 0 30px rgba(164, 40, 214, 0.08);
+}
+
+.visual-ip:hover b {
+  color: #efb1ff;
+
+  text-shadow:
+    0 0 12px rgba(218, 107, 255, 0.65),
+    0 0 30px rgba(174, 44, 231, 0.35);
+}
+
+.visual-ip:hover .copy-symbol {
+  border-color:
+    rgba(232, 154, 255, 0.85);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(137, 34, 169, 0.55),
+      rgba(29, 8, 35, 0.9)
+    );
+
+  box-shadow:
+    inset 0 0 22px rgba(215, 95, 255, 0.13),
+    0 0 25px rgba(185, 58, 236, 0.2);
+}
+
+
 /* =========================================================
-   APAČIOS STATISTIKA
+   BOTTOM LIVE INFO
 ========================================================= */
 
 .card-live-info {
@@ -1461,7 +1558,7 @@ img {
 
 
 /* =========================================================
-   MAŽAS APAČIOS ANTSPAUDAS
+   BOTTOM DIAMOND
 ========================================================= */
 
 .bottom-diamond {
@@ -1541,6 +1638,7 @@ img {
   color: #655e6a;
 
   font-family: "Press Start 2P", monospace;
+
   font-size: 6px;
 }
 
@@ -1646,7 +1744,10 @@ img {
       rgba(8, 6, 11, 0.95)
     );
 
-  transition: 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .feature:hover {
@@ -1717,10 +1818,16 @@ img {
   font-family: "Press Start 2P", monospace;
 
   font-size: 8px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .text-link:hover {
   color: #fff;
+
+  transform: translateX(4px);
 }
 
 .mode-cards {
@@ -1750,7 +1857,10 @@ img {
   background:
     rgba(13, 9, 17, 0.82);
 
-  transition: 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .mode-card:hover {
@@ -2027,6 +2137,8 @@ img {
   color: #7f7785;
 
   font-size: 12px;
+
+  transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
@@ -2093,7 +2205,9 @@ img {
   box-shadow:
     0 15px 50px rgba(0, 0, 0, 0.5);
 
-  transition: 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .copy-toast.show {
@@ -2292,56 +2406,15 @@ img {
   }
 
 
-  /* PERGAMENTAS MOBILE */
+  /* SERVER CARD */
 
   .visual-card {
     max-width: 100%;
 
-    min-height: 650px;
+    min-height: 640px;
 
     padding:
       35px 24px 40px;
-
-    clip-path:
-      polygon(
-        3% 2%,
-        12% 0.5%,
-        22% 2%,
-        34% 0.7%,
-        46% 2%,
-        58% 0.5%,
-        70% 2%,
-        82% 0.7%,
-        96% 2%,
-
-        99% 9%,
-        97.5% 19%,
-        99% 29%,
-        97.8% 40%,
-        99% 51%,
-        97.7% 62%,
-        99% 73%,
-        97.8% 84%,
-        98% 97%,
-
-        88% 99%,
-        76% 97.5%,
-        64% 99%,
-        52% 97.5%,
-        40% 99%,
-        28% 97.5%,
-        16% 99%,
-        2% 97%,
-
-        1% 88%,
-        2.5% 77%,
-        1% 66%,
-        2.5% 55%,
-        1% 44%,
-        2.5% 33%,
-        1% 22%,
-        2.5% 11%
-      );
   }
 
   .visual-status-row {
@@ -2385,31 +2458,42 @@ img {
     display: none;
   }
 
-  .card-modes {
-    grid-template-columns:
-      repeat(2, 1fr);
-  }
 
-  .card-mode-more {
-    grid-column:
-      span 2;
-  }
+  /* MOBILE IP */
 
   .visual-ip {
+    width: 100%;
+
+    min-height: 135px;
+
     padding:
-      15px 55px 15px 15px;
+      25px 70px 22px 15px;
   }
 
   .visual-ip b {
     font-size: 9px;
   }
 
-  .copy-symbol {
-    right: 12px;
-
-    width: 36px;
-    height: 36px;
+  .visual-ip small::before,
+  .visual-ip small::after {
+    width: 25px;
   }
+
+  .copy-symbol {
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+  }
+
+  .copy-symbol::before,
+  .copy-symbol::after {
+    width: 11px;
+    height: 14px;
+  }
+
+
+  /* LIVE INFO */
 
   .card-live-info {
     grid-template-columns: 1fr;
@@ -2429,6 +2513,9 @@ img {
     border-bottom:
       1px solid rgba(207, 107, 229, 0.15);
   }
+
+
+  /* LOWER PAGE */
 
   .section {
     width: calc(100% - 30px);
@@ -2498,7 +2585,7 @@ img {
   }
 
   .visual-card {
-    min-height: 680px;
+    min-height: 670px;
   }
 
   .hero-logo {
@@ -2516,6 +2603,21 @@ img {
 
   .top-players {
     min-width: 90px;
+  }
+
+  .visual-ip {
+    padding-right: 60px;
+  }
+
+  .visual-ip b {
+    font-size: 8px;
+  }
+
+  .copy-symbol {
+    right: 13px;
+
+    width: 38px;
+    height: 38px;
   }
 }
 
