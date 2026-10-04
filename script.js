@@ -10,6 +10,8 @@
 
 const SERVER_IP = "mcstone.srw.lt";
 
+const SERVER_VERSION = "1.21.11";
+
 const STATUS_API =
   `https://api.mcstatus.io/v2/status/java/${SERVER_IP}`;
 
@@ -43,12 +45,6 @@ function getServerElements() {
 
     cardStatusDot:
       document.getElementById("cardStatusDot"),
-
-    cardPlayers:
-      document.getElementById("cardPlayers"),
-
-    cardVersion:
-      document.getElementById("cardVersion"),
 
     footerStatus:
       document.getElementById("footerStatus")
@@ -214,12 +210,6 @@ function showCopiedButton(button) {
     return;
   }
 
-  /*
-    Kortelės ir didelis IP mygtukas turi
-    daugiau HTML viduje, todėl jų teksto
-    nekeičiame.
-  */
-
   const canChangeText =
     button.classList.contains("nav-ip") ||
     button.classList.contains("button-purple");
@@ -266,10 +256,15 @@ function setLoadingStatus() {
 
   }
 
+  /*
+    Versija sąmoningai nefiksuojama pagal API.
+    Svetainėje visada rodome 1.21.11.
+  */
+
   if (el.serverVersion) {
 
     el.serverVersion.textContent =
-      "TIKRINAMA...";
+      SERVER_VERSION;
 
   }
 
@@ -284,20 +279,6 @@ function setLoadingStatus() {
 
     el.cardStatusText.textContent =
       "TIKRINAMA...";
-
-  }
-
-  if (el.cardPlayers) {
-
-    el.cardPlayers.textContent =
-      "-- / --";
-
-  }
-
-  if (el.cardVersion) {
-
-    el.cardVersion.textContent =
-      "--";
 
   }
 
@@ -321,9 +302,7 @@ function setOnlineStatus(data) {
     getServerElements();
 
 
-  /* ----------------------------
-     ŽAIDĖJAI
-  ---------------------------- */
+  /* ŽAIDĖJAI */
 
   const onlinePlayers =
     data?.players?.online ?? 0;
@@ -335,62 +314,7 @@ function setOnlineStatus(data) {
     `${onlinePlayers} / ${maxPlayers}`;
 
 
-  /* ----------------------------
-     VERSIJA
-  ---------------------------- */
-
-  let version =
-    "ONLINE";
-
-
-  if (
-    data?.version?.name_clean
-  ) {
-
-    version =
-      data.version.name_clean;
-
-  }
-
-  else if (
-    data?.version?.name_raw
-  ) {
-
-    version =
-      data.version.name_raw;
-
-  }
-
-  else if (
-    typeof data?.version === "string"
-  ) {
-
-    version =
-      data.version;
-
-  }
-
-
-  /*
-    Kartais API grąžina ilgą serverio
-    programinės įrangos tekstą.
-    Svetainėje paliekame trumpesnį.
-  */
-
-  if (
-    typeof version === "string" &&
-    version.length > 22
-  ) {
-
-    version =
-      version.substring(0, 22);
-
-  }
-
-
-  /* ----------------------------
-     PAGRINDINIS STATUSAS
-  ---------------------------- */
+  /* KAIRĖS PUSĖS STATUSAS */
 
   if (el.statusText) {
 
@@ -412,9 +336,7 @@ function setOnlineStatus(data) {
   }
 
 
-  /* ----------------------------
-     PAGRINDINIAI DUOMENYS
-  ---------------------------- */
+  /* ŽAIDĖJŲ SKAIČIUS */
 
   if (el.playerCount) {
 
@@ -423,17 +345,18 @@ function setOnlineStatus(data) {
 
   }
 
+
+  /* VERSIJA VISADA 1.21.11 */
+
   if (el.serverVersion) {
 
     el.serverVersion.textContent =
-      version;
+      SERVER_VERSION;
 
   }
 
 
-  /* ----------------------------
-     DEŠINĖ KORTELĖ
-  ---------------------------- */
+  /* DEŠINĖ KORTELĖ */
 
   if (el.cardStatusText) {
 
@@ -454,24 +377,8 @@ function setOnlineStatus(data) {
 
   }
 
-  if (el.cardPlayers) {
 
-    el.cardPlayers.textContent =
-      playersText;
-
-  }
-
-  if (el.cardVersion) {
-
-    el.cardVersion.textContent =
-      version;
-
-  }
-
-
-  /* ----------------------------
-     FOOTER
-  ---------------------------- */
+  /* FOOTER */
 
   if (el.footerStatus) {
 
@@ -522,10 +429,15 @@ function setOfflineStatus() {
   }
 
 
+  /*
+    Net jei serveris trumpam offline,
+    svetainėje versija lieka 1.21.11.
+  */
+
   if (el.serverVersion) {
 
     el.serverVersion.textContent =
-      "--";
+      SERVER_VERSION;
 
   }
 
@@ -547,22 +459,6 @@ function setOfflineStatus() {
     el.cardStatusDot.classList.add(
       "offline-dot"
     );
-
-  }
-
-
-  if (el.cardPlayers) {
-
-    el.cardPlayers.textContent =
-      "0 / 0";
-
-  }
-
-
-  if (el.cardVersion) {
-
-    el.cardVersion.textContent =
-      "--";
 
   }
 
@@ -619,7 +515,7 @@ function setErrorStatus() {
   if (el.serverVersion) {
 
     el.serverVersion.textContent =
-      "--";
+      SERVER_VERSION;
 
   }
 
@@ -645,22 +541,6 @@ function setErrorStatus() {
   }
 
 
-  if (el.cardPlayers) {
-
-    el.cardPlayers.textContent =
-      "-- / --";
-
-  }
-
-
-  if (el.cardVersion) {
-
-    el.cardVersion.textContent =
-      "--";
-
-  }
-
-
   if (el.footerStatus) {
 
     el.footerStatus.textContent =
@@ -682,11 +562,6 @@ async function loadServerStatus() {
     SERVER_IP
   );
 
-
-  /*
-    AbortController neleis užklausai
-    amžinai likti ant "Tikrinama..."
-  */
 
   const controller =
     new AbortController();
@@ -744,11 +619,6 @@ async function loadServerStatus() {
       data
     );
 
-
-    /*
-      mcstatus.io grąžina
-      online: true / false
-    */
 
     if (
       data &&
@@ -979,15 +849,11 @@ function addAnimationStyles() {
     }
 
 
-    @media (
-      prefers-reduced-motion: reduce
-    ) {
+    @media (prefers-reduced-motion: reduce) {
 
       .reveal-item {
         opacity: 1 !important;
-
         transform: none !important;
-
         transition: none !important;
       }
 
@@ -1028,18 +894,8 @@ document.addEventListener(
     setLoadingStatus();
 
 
-    /*
-      Serverio statusas
-      patikrinamas iš karto.
-    */
-
     loadServerStatus();
 
-
-    /*
-      Statusas automatiškai
-      atnaujinamas kas 60 sekundžių.
-    */
 
     setInterval(
       loadServerStatus,
