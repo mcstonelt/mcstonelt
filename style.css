@@ -2,12 +2,9 @@
 
 :root {
   --bg: #050407;
-  --bg-2: #08050d;
   --purple: #a72cff;
   --purple-2: #c45cff;
-  --purple-3: #7d19c8;
   --purple-light: #df7cff;
-  --white: #ffffff;
   --text: #f5f1f8;
   --muted: #aaa1b2;
   --green: #52f38b;
@@ -49,6 +46,11 @@ img {
   max-width: 100%;
 }
 
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -85,7 +87,8 @@ img {
 
   background: rgba(5, 4, 8, 0.9);
 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.05);
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -127,7 +130,10 @@ img {
 .logo span {
   color: #fff;
 
-  font-family: "Press Start 2P", monospace;
+  font-family:
+    "Press Start 2P",
+    monospace;
+
   font-size: 13px;
 }
 
@@ -143,14 +149,16 @@ img {
 .nav-links a {
   position: relative;
 
-  padding: 31px 0 28px;
+  padding:
+    31px 0 28px;
 
   color: #9e96a5;
 
   font-size: 13px;
   font-weight: 700;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease;
 }
 
 .nav-links a:hover,
@@ -169,14 +177,17 @@ img {
   width: 0;
   height: 2px;
 
-  transform: translateX(-50%);
+  transform:
+    translateX(-50%);
 
-  background: var(--purple-2);
+  background:
+    var(--purple-2);
 
   box-shadow:
     0 0 15px var(--purple);
 
-  transition: width 0.2s ease;
+  transition:
+    width 0.2s ease;
 }
 
 .nav-links a:hover::after,
@@ -187,7 +198,8 @@ img {
 .nav-ip {
   min-width: 178px;
 
-  padding: 14px 18px;
+  padding:
+    14px 18px;
 
   cursor: pointer;
 
@@ -201,9 +213,13 @@ img {
   background:
     rgba(126, 28, 180, 0.13);
 
-  color: var(--purple-2);
+  color:
+    var(--purple-2);
 
-  font-family: "Press Start 2P", monospace;
+  font-family:
+    "Press Start 2P",
+    monospace;
+
   font-size: 9px;
 
   transition:
@@ -214,7 +230,8 @@ img {
 }
 
 .nav-ip:hover {
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 
   background:
     rgba(166, 44, 255, 0.22);
@@ -267,6 +284,7 @@ img {
       rgba(5, 4, 8, 0.43) 65%,
       rgba(5, 4, 8, 0.70) 100%
     ),
+
     linear-gradient(
       180deg,
       rgba(5, 4, 8, 0.12),
@@ -287,10 +305,12 @@ img {
   pointer-events: none;
 
   background-image:
+
     linear-gradient(
       rgba(255, 255, 255, 0.06) 1px,
       transparent 1px
     ),
+
     linear-gradient(
       90deg,
       rgba(255, 255, 255, 0.06) 1px,
@@ -340,11 +360,11 @@ img {
 
   grid-template-columns:
     minmax(500px, 1fr)
-    minmax(560px, 0.9fr);
+    minmax(520px, 0.86fr);
 
   align-items: center;
 
-  gap: 85px;
+  gap: 80px;
 }
 
 .hero-left {
@@ -412,7 +432,7 @@ img {
 
 
 /* =========================================================
-   HERO TITLE
+   TITLE
 ========================================================= */
 
 .hero-title,
@@ -514,7 +534,7 @@ img {
 
 
 /* =========================================================
-   HERO BUTTON
+   BUTTONS
 ========================================================= */
 
 .hero-actions {
@@ -586,12 +606,13 @@ img {
 
 .server-stats {
   width: 100%;
-  max-width: 750px;
+
+  max-width: 500px;
 
   display: grid;
 
   grid-template-columns:
-    repeat(3, 1fr);
+    repeat(2, 1fr);
 
   border-top:
     1px solid rgba(255, 255, 255, 0.09);
@@ -663,6 +684,8 @@ img {
 
   display: inline-block;
 
+  flex-shrink: 0;
+
   border-radius: 50%;
 
   background:
@@ -698,190 +721,180 @@ img {
 .hero-right {
   position: relative;
 
+  min-width: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding:
-    35px 25px;
 }
-
-
-/*
-   ŠVYTĖJIMAS UŽ LAIŠKO
-*/
 
 .visual-glow {
   position: absolute;
 
-  width: 600px;
-  height: 430px;
+  width: 580px;
+  height: 390px;
 
   border-radius: 50%;
 
   background:
-    rgba(159, 31, 238, 0.16);
+    rgba(159, 31, 238, 0.20);
 
   filter:
-    blur(120px);
+    blur(105px);
 
   pointer-events: none;
 }
 
 
 /* =========================================================
-   SENOVINIS LAIŠKAS / PERGAMENTAS
+   VISAS PERGAMENTO RITINYS
+========================================================= */
+
+.scroll-card {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+  max-width: 650px;
+
+  min-height: 455px;
+
+  display: flex;
+  align-items: stretch;
+
+  padding:
+    13px 30px;
+
+  filter:
+    drop-shadow(
+      0 35px 40px rgba(0, 0, 0, 0.58)
+    )
+    drop-shadow(
+      0 0 25px rgba(166, 48, 219, 0.10)
+    );
+}
+
+
+/* =========================================================
+   PAGRINDINIS IŠVYNIOTAS LAPAS
 ========================================================= */
 
 .visual-card {
   position: relative;
 
-  z-index: 5;
+  z-index: 4;
 
   isolation: isolate;
 
   width: 100%;
 
-  /*
-     Sumažinta iš šonų.
-  */
-  max-width: 650px;
+  min-height: 430px;
 
-  min-height: 470px;
-
-  padding:
-    58px 58px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   overflow: hidden;
 
+  padding:
+    48px 55px 46px;
+
 
   /*
-     Daug natūralesni,
-     nevienodi popieriaus kraštai.
+     Čia kraštai beveik tiesūs,
+     nes tikro ritinio lapas nėra
+     suplėšyta kortelė.
   */
 
   clip-path: polygon(
-    2.5% 2.5%,
-    7% 1.2%,
-    11% 2.1%,
-    16% 0.8%,
-    21% 1.9%,
-    27% 0.6%,
-    32% 1.5%,
-    37% 0.4%,
-    42% 1.8%,
-    47% 0.7%,
-    52% 1.4%,
-    57% 0.3%,
-    62% 1.7%,
-    68% 0.5%,
-    73% 1.9%,
-    79% 0.8%,
-    84% 2%,
-    89% 0.7%,
-    94% 2%,
-    98% 1.1%,
+    0.6% 2%,
+    8% 1.2%,
+    17% 1.8%,
+    27% 0.8%,
+    37% 1.5%,
+    48% 0.7%,
+    59% 1.5%,
+    69% 0.8%,
+    79% 1.7%,
+    90% 0.9%,
+    99.4% 2%,
 
-    99% 6%,
-    98% 11%,
-    99.2% 17%,
-    98.1% 23%,
-    99.4% 29%,
-    98% 35%,
-    99.1% 41%,
-    97.8% 47%,
-    99.3% 53%,
-    98% 59%,
-    99.2% 65%,
-    97.9% 71%,
-    99.1% 77%,
-    97.8% 83%,
-    99% 89%,
-    97.3% 96%,
+    99% 12%,
+    99.5% 24%,
+    99% 36%,
+    99.6% 49%,
+    99% 62%,
+    99.5% 75%,
+    99% 88%,
+    99.4% 98%,
 
-    93% 98.5%,
-    87% 97.4%,
-    81% 99%,
-    75% 97.7%,
-    69% 99.2%,
-    63% 97.8%,
-    57% 99.3%,
-    51% 97.9%,
-    45% 99.4%,
-    39% 97.8%,
-    33% 99.1%,
-    27% 97.7%,
-    21% 99.2%,
-    15% 97.6%,
-    9% 99%,
-    3% 97.2%,
+    90% 99%,
+    80% 98.2%,
+    70% 99.2%,
+    60% 98.3%,
+    50% 99.1%,
+    40% 98.3%,
+    30% 99.2%,
+    20% 98.2%,
+    10% 99%,
+    0.6% 98%,
 
-    1% 92%,
-    2.2% 86%,
-    0.7% 80%,
-    2% 74%,
-    0.6% 68%,
-    1.9% 62%,
-    0.5% 56%,
-    2.1% 50%,
-    0.7% 44%,
-    2% 38%,
-    0.5% 32%,
-    2.2% 26%,
-    0.7% 20%,
-    2.1% 14%,
-    0.8% 8%
+    1% 87%,
+    0.5% 75%,
+    1% 63%,
+    0.4% 50%,
+    1% 37%,
+    0.5% 25%,
+    1% 13%
   );
 
 
   /*
-     Popieriaus pagrindas.
-     Tamsiai violetinis, bet nebe
-     tiesiog paprastas UI gradientas.
+     Tamsus violetinis pergamentas.
   */
 
   background:
+
     radial-gradient(
-      ellipse at 50% 48%,
-      rgba(92, 29, 108, 0.35) 0%,
-      rgba(46, 14, 55, 0.35) 40%,
-      rgba(13, 5, 17, 0.70) 100%
+      ellipse at 50% 42%,
+      rgba(116, 37, 135, 0.33),
+      transparent 58%
     ),
 
     radial-gradient(
-      circle at 20% 15%,
-      rgba(217, 116, 255, 0.10),
+      circle at 12% 20%,
+      rgba(211, 115, 238, 0.08),
       transparent 27%
     ),
 
     radial-gradient(
       circle at 85% 75%,
-      rgba(161, 56, 195, 0.09),
-      transparent 32%
+      rgba(202, 93, 233, 0.07),
+      transparent 30%
     ),
 
     linear-gradient(
-      138deg,
-      #26102d 0%,
-      #1c0b23 25%,
-      #18091e 55%,
-      #110716 100%
+      90deg,
+      #140719 0%,
+      #26102e 8%,
+      #1f0c27 24%,
+      #1a091f 50%,
+      #200c28 76%,
+      #28102f 92%,
+      #130718 100%
     );
 
 
-  /*
-     Popieriaus gylis ir
-     patamsėję kraštai.
-  */
-
   box-shadow:
-    0 45px 90px rgba(0, 0, 0, 0.78),
-    0 16px 28px rgba(0, 0, 0, 0.62),
-    0 0 45px rgba(165, 48, 221, 0.12),
 
-    inset 0 0 18px rgba(231, 139, 255, 0.10),
-    inset 0 0 55px rgba(0, 0, 0, 0.55),
-    inset 0 0 110px rgba(0, 0, 0, 0.36);
+    inset 25px 0 35px rgba(0, 0, 0, 0.32),
+
+    inset -25px 0 35px rgba(0, 0, 0, 0.32),
+
+    inset 0 18px 30px rgba(206, 109, 232, 0.035),
+
+    inset 0 -20px 35px rgba(0, 0, 0, 0.38);
 }
 
 
@@ -896,65 +909,58 @@ img {
 
   inset: 0;
 
-  z-index: -2;
+  z-index: -3;
 
   pointer-events: none;
-
-
-  /*
-     Taškeliai nebėra visiškai vienodi.
-     Sumaišyti keli raštai.
-  */
 
   background-image:
 
     radial-gradient(
       circle,
-      rgba(219, 130, 240, 0.24) 0.8px,
-      transparent 1.3px
+      rgba(217, 126, 239, 0.18) 0.8px,
+      transparent 1.2px
     ),
 
     radial-gradient(
       circle,
-      rgba(172, 83, 193, 0.14) 0.7px,
+      rgba(145, 67, 166, 0.14) 0.7px,
       transparent 1.2px
     ),
 
     repeating-linear-gradient(
-      13deg,
+      7deg,
       transparent 0,
-      transparent 17px,
-      rgba(255, 255, 255, 0.012) 18px,
-      transparent 19px
+      transparent 19px,
+      rgba(255, 255, 255, 0.011) 20px,
+      transparent 21px
     ),
 
     repeating-linear-gradient(
-      101deg,
+      97deg,
       transparent 0,
-      transparent 28px,
-      rgba(220, 145, 255, 0.010) 29px,
-      transparent 30px
+      transparent 33px,
+      rgba(255, 255, 255, 0.008) 34px,
+      transparent 35px
     );
 
-
   background-size:
-    17px 17px,
-    29px 29px,
+    18px 18px,
+    31px 31px,
     auto,
     auto;
 
   background-position:
     0 0,
-    8px 11px,
+    7px 13px,
     0 0,
     0 0;
 
-  opacity: 0.62;
+  opacity: 0.65;
 }
 
 
 /* =========================================================
-   SENAS POPIERIUS / KRAŠTŲ PATAMSĖJIMAS
+   SENAS POPIERIUS / DĖMĖS / ŠEŠĖLIAI
 ========================================================= */
 
 .visual-card::after {
@@ -964,111 +970,259 @@ img {
 
   inset: 0;
 
+  z-index: -2;
+
+  pointer-events: none;
+
+  background:
+
+    radial-gradient(
+      ellipse at 15% 10%,
+      rgba(0, 0, 0, 0.23),
+      transparent 20%
+    ),
+
+    radial-gradient(
+      ellipse at 90% 18%,
+      rgba(0, 0, 0, 0.18),
+      transparent 22%
+    ),
+
+    radial-gradient(
+      ellipse at 8% 84%,
+      rgba(0, 0, 0, 0.24),
+      transparent 24%
+    ),
+
+    radial-gradient(
+      ellipse at 87% 86%,
+      rgba(0, 0, 0, 0.22),
+      transparent 24%
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.30),
+      transparent 9%,
+      transparent 90%,
+      rgba(0, 0, 0, 0.36)
+    );
+
+  box-shadow:
+    inset 0 0 70px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   SUSUKTI PERGAMENTO GALAI
+========================================================= */
+
+.scroll-roll {
+  position: absolute;
+
+  z-index: 10;
+
+  top: 0;
+  bottom: 0;
+
+  width: 64px;
+
+  border-radius:
+    50% / 3%;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      #0a030d 0%,
+      #1a0920 10%,
+      #3c1648 30%,
+      #62216f 48%,
+      #3a1345 66%,
+      #17081d 88%,
+      #08030b 100%
+    );
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.58),
+    inset 9px 0 16px rgba(0, 0, 0, 0.52),
+    inset -8px 0 15px rgba(0, 0, 0, 0.44),
+    inset 0 0 20px rgba(209, 102, 237, 0.08);
+}
+
+
+/* =========================================================
+   KAIRYSIS RITINYS
+========================================================= */
+
+.scroll-roll-left {
+  left: 0;
+
+  transform:
+    rotate(-0.7deg);
+}
+
+
+/* =========================================================
+   DEŠINYSIS RITINYS
+========================================================= */
+
+.scroll-roll-right {
+  right: 0;
+
+  transform:
+    rotate(0.7deg);
+}
+
+
+/* =========================================================
+   SUSUKTO POPIERIAUS ŠVIESA
+========================================================= */
+
+.scroll-roll::before {
+  content: "";
+
+  position: absolute;
+
+  top: 5px;
+  bottom: 5px;
+
+  left: 50%;
+
+  width: 17px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(232, 145, 255, 0.16),
+      rgba(255, 191, 255, 0.12),
+      rgba(232, 145, 255, 0.08),
+      transparent
+    );
+
+  filter:
+    blur(1px);
+}
+
+
+/* =========================================================
+   SUSUKTO GALŲ APVALUMAS
+========================================================= */
+
+.scroll-roll::after {
+  content: "";
+
+  position: absolute;
+
+  left: 3px;
+  right: 3px;
+
+  bottom: -7px;
+
+  height: 24px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #4c1958 0%,
+      #2a0d33 45%,
+      #0d0411 78%
+    );
+
+  box-shadow:
+    0 7px 12px rgba(0, 0, 0, 0.52),
+    inset 0 2px 6px rgba(226, 124, 250, 0.12);
+}
+
+.scroll-roll-cap {
+  position: absolute;
+
+  left: 3px;
+  right: 3px;
+
+  top: -7px;
+
+  height: 24px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #6a2677 0%,
+      #35113f 48%,
+      #0e0412 80%
+    );
+
+  box-shadow:
+    0 -5px 12px rgba(0, 0, 0, 0.42),
+    inset 0 -2px 7px rgba(231, 137, 255, 0.12);
+}
+
+
+/* =========================================================
+   POPIERIAUS RAUKŠLĖS
+========================================================= */
+
+.paper-fold {
+  position: absolute;
+
   z-index: -1;
 
   pointer-events: none;
 
+  opacity: 0.4;
+}
+
+.paper-fold-one {
+  top: 0;
+  bottom: 0;
+
+  left: 27%;
+
+  width: 2px;
 
   background:
-
-    /*
-       Subtili horizontali raukšlė.
-    */
     linear-gradient(
       180deg,
-      transparent 47%,
-      rgba(226, 135, 255, 0.025) 49%,
-      rgba(0, 0, 0, 0.16) 50%,
-      rgba(229, 142, 255, 0.02) 51%,
-      transparent 53%
-    ),
-
-    /*
-       Subtili vertikali raukšlė.
-    */
-    linear-gradient(
-      90deg,
-      transparent 48%,
-      rgba(0, 0, 0, 0.10) 49.5%,
-      rgba(222, 124, 255, 0.025) 50.5%,
-      transparent 52%
-    ),
-
-    /*
-       Patamsėję kampai.
-    */
-    radial-gradient(
-      circle at 0 0,
-      rgba(0, 0, 0, 0.55),
-      transparent 24%
-    ),
-
-    radial-gradient(
-      circle at 100% 0,
-      rgba(0, 0, 0, 0.48),
-      transparent 24%
-    ),
-
-    radial-gradient(
-      circle at 0 100%,
-      rgba(0, 0, 0, 0.52),
-      transparent 25%
-    ),
-
-    radial-gradient(
-      circle at 100% 100%,
-      rgba(0, 0, 0, 0.55),
-      transparent 25%
-    ),
-
-    /*
-       Tamsūs seni kraštai.
-    */
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.40),
-      transparent 8%,
-      transparent 92%,
-      rgba(0, 0, 0, 0.42)
-    ),
-
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.40),
-      transparent 9%,
-      transparent 91%,
-      rgba(0, 0, 0, 0.48)
+      transparent,
+      rgba(225, 140, 244, 0.07) 15%,
+      rgba(0, 0, 0, 0.20) 48%,
+      rgba(226, 142, 246, 0.05) 75%,
+      transparent
     );
+}
 
+.paper-fold-two {
+  left: 0;
+  right: 0;
 
-  box-shadow:
-    inset 0 0 10px rgba(232, 145, 255, 0.10),
-    inset 0 0 35px rgba(0, 0, 0, 0.32),
-    inset 0 0 85px rgba(0, 0, 0, 0.34);
+  top: 66%;
+
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(222, 129, 243, 0.04) 15%,
+      rgba(0, 0, 0, 0.17) 50%,
+      rgba(224, 131, 246, 0.04) 85%,
+      transparent
+    );
 }
 
 
 /* =========================================================
-   SENI NEREIKALINGI CARD ELEMENTAI
-========================================================= */
-
-.envelope-top,
-.envelope-wing,
-.envelope-wing-left,
-.envelope-wing-right,
-.envelope-flap,
-.flap-glow,
-.card-corner,
-.visual-status-row,
-.visual-top,
-.top-players,
-.card-live-info {
-  display: none !important;
-}
-
-
-/* =========================================================
-   LOGO ANT LAIŠKO
+   LOGO
 ========================================================= */
 
 .hero-logo {
@@ -1076,11 +1230,11 @@ img {
 
   z-index: 30;
 
-  width: 116px;
-  height: 116px;
+  width: 104px;
+  height: 104px;
 
   margin:
-    0 auto 27px;
+    0 auto 22px;
 
   object-fit: contain;
 
@@ -1089,7 +1243,7 @@ img {
   border-radius: 50%;
 
   border:
-    2px solid rgba(204, 100, 229, 0.65);
+    2px solid rgba(204, 100, 229, 0.58);
 
   background:
     radial-gradient(
@@ -1099,8 +1253,8 @@ img {
     );
 
   box-shadow:
-    0 0 0 6px rgba(107, 30, 127, 0.16),
-    0 0 32px rgba(194, 66, 255, 0.34),
+    0 0 0 6px rgba(107, 30, 127, 0.14),
+    0 0 32px rgba(194, 66, 255, 0.32),
     inset 0 0 30px rgba(207, 93, 255, 0.13);
 }
 
@@ -1112,11 +1266,11 @@ img {
 .card-main-content {
   position: relative;
 
-  z-index: 10;
+  z-index: 20;
 }
 
 .visual-name {
-  margin-bottom: 11px;
+  margin-bottom: 9px;
 
   text-align: center;
 
@@ -1126,7 +1280,7 @@ img {
     "Press Start 2P",
     monospace;
 
-  font-size: 30px;
+  font-size: 27px;
 
   line-height: 1.3;
 
@@ -1143,70 +1297,82 @@ img {
 }
 
 .visual-sub {
-  position: relative;
-
-  margin-bottom: 31px;
+  margin-bottom: 20px;
 
   text-align: center;
 
-  color: #a79ca9;
+  color: #9d919f;
 
   font-family:
     "Press Start 2P",
     monospace;
 
-  font-size: 6px;
+  font-size: 5.5px;
 
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
 }
 
-.visual-sub::before,
-.visual-sub::after {
-  content: "";
 
-  position: absolute;
+/* =========================================================
+   DEKORATYVINĖS LINIJOS
+========================================================= */
 
-  top: 50%;
+.scroll-divider {
+  width: 100%;
 
-  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin:
+    4px 0 10px;
+}
+
+.scroll-divider span {
+  width: 80px;
   height: 1px;
 
   background:
     linear-gradient(
       90deg,
       transparent,
-      rgba(199, 101, 220, 0.55)
+      rgba(211, 107, 235, 0.48)
     );
 }
 
-.visual-sub::before {
-  left: 10px;
-}
-
-.visual-sub::after {
-  right: 10px;
-
+.scroll-divider span:last-child {
   transform:
     rotate(180deg);
 }
 
+.scroll-divider i {
+  color:
+    rgba(221, 126, 242, 0.75);
+
+  font-size: 7px;
+
+  font-style: normal;
+
+  text-shadow:
+    0 0 8px rgba(206, 93, 233, 0.5);
+}
+
+.scroll-divider-bottom {
+  margin:
+    10px 0 0;
+}
+
 
 /* =========================================================
-   IP ANT LAIŠKO
+   IP
 ========================================================= */
 
 .visual-ip {
-  position: relative;
+  width: 100%;
 
-  width: calc(100% - 16px);
-
-  min-height: 137px;
-
-  margin:
-    0 auto;
-
-  padding:
-    27px 30px 24px;
+  min-height: 104px;
 
   display: flex;
   flex-direction: column;
@@ -1214,161 +1380,51 @@ img {
   align-items: center;
   justify-content: center;
 
-  gap: 10px;
+  gap: 8px;
+
+  padding:
+    15px 20px;
 
   cursor: pointer;
-
-  overflow: hidden;
 
   outline: none;
 
   border: 0;
 
-  border-top:
-    1px solid rgba(219, 121, 255, 0.34);
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(164, 46, 199, 0.16),
+      transparent 70%
+    );
 
-  border-bottom:
-    1px solid rgba(219, 121, 255, 0.34);
+  transition:
+    transform 0.22s ease,
+    background 0.22s ease;
+}
 
-  border-radius: 0;
+.visual-ip:hover {
+  transform:
+    translateY(-2px);
 
   background:
     radial-gradient(
       ellipse at center,
-      rgba(159, 39, 199, 0.22) 0%,
-      rgba(79, 17, 98, 0.12) 44%,
-      rgba(12, 5, 16, 0.05) 78%
+      rgba(177, 50, 216, 0.25),
+      transparent 72%
     );
-
-  box-shadow:
-    inset 0 15px 38px rgba(180, 52, 224, 0.035),
-    inset 0 -15px 38px rgba(180, 52, 224, 0.035);
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-
-/* VIRŠUTINIS ORNAMENTAS */
-
-.visual-ip::before {
-  content: "◆";
-
-  position: absolute;
-
-  top: -7px;
-  left: 50%;
-
-  width: 44px;
-
-  transform:
-    translateX(-50%);
-
-  color:
-    var(--purple-light);
-
-  background:
-    #19091f;
-
-  font-size: 12px;
-
-  line-height: 14px;
-
-  text-align: center;
-
-  text-shadow:
-    0 0 9px rgba(211, 91, 255, 0.85),
-    0 0 18px rgba(171, 42, 255, 0.5);
-}
-
-
-/* APATINIS ORNAMENTAS */
-
-.visual-ip::after {
-  content: "◇";
-
-  position: absolute;
-
-  bottom: -7px;
-  left: 50%;
-
-  width: 44px;
-
-  transform:
-    translateX(-50%);
-
-  color:
-    rgba(217, 124, 255, 0.75);
-
-  background:
-    #16081b;
-
-  font-size: 11px;
-
-  line-height: 14px;
-
-  text-align: center;
 }
 
 .visual-ip small {
-  position: relative;
-
-  color: #9f91a5;
+  color: #9d919f;
 
   font-family:
     "Press Start 2P",
     monospace;
 
-  font-size: 6px;
-
-  font-weight: 400;
+  font-size: 5.5px;
 
   letter-spacing: 1px;
-}
-
-.visual-ip small::before {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-
-  right:
-    calc(100% + 15px);
-
-  width: 37px;
-  height: 1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(212, 112, 255, 0.5)
-    );
-}
-
-.visual-ip small::after {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-
-  left:
-    calc(100% + 15px);
-
-  width: 37px;
-  height: 1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(212, 112, 255, 0.5),
-      transparent
-    );
 }
 
 .visual-ip b {
@@ -1378,101 +1434,25 @@ img {
     "Press Start 2P",
     monospace;
 
-  font-size: 13px;
+  font-size: 12px;
 
-  line-height: 1.6;
-
-  letter-spacing: 0.4px;
+  line-height: 1.7;
 
   text-align: center;
 
   text-shadow:
-    0 0 10px rgba(202, 78, 255, 0.4),
+    0 0 10px rgba(202, 78, 255, 0.42),
     0 0 25px rgba(166, 41, 221, 0.22);
-
-  transition:
-    color 0.25s ease,
-    text-shadow 0.25s ease;
 }
 
 .visual-ip > span {
   color: #766c7a;
 
-  font-size: 7px;
+  font-size: 6.5px;
 
   font-weight: 700;
 
-  letter-spacing: 0.6px;
-}
-
-.visual-ip:hover {
-  transform:
-    translateY(-2px);
-
-  border-top-color:
-    rgba(226, 137, 255, 0.68);
-
-  border-bottom-color:
-    rgba(226, 137, 255, 0.68);
-
-  background:
-    radial-gradient(
-      ellipse at center,
-      rgba(179, 48, 222, 0.31) 0%,
-      rgba(92, 20, 112, 0.16) 45%,
-      rgba(12, 5, 16, 0.04) 78%
-    );
-
-  box-shadow:
-    inset 0 20px 50px rgba(190, 56, 235, 0.05),
-    inset 0 -20px 50px rgba(190, 56, 235, 0.05),
-    0 0 30px rgba(164, 40, 214, 0.07);
-}
-
-.visual-ip:hover b {
-  color: #efb1ff;
-
-  text-shadow:
-    0 0 12px rgba(218, 107, 255, 0.65),
-    0 0 30px rgba(174, 44, 231, 0.35);
-}
-
-
-/* =========================================================
-   APAČIOS PERGAMENTO ŽENKLAS
-========================================================= */
-
-.bottom-diamond {
-  position: absolute;
-
-  z-index: 30;
-
-  left: 50%;
-  bottom: 13px;
-
-  width: 26px;
-  height: 18px;
-
-  transform:
-    translateX(-50%);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bottom-diamond span {
-  width: 7px;
-  height: 7px;
-
-  transform:
-    rotate(45deg);
-
-  background:
-    rgba(216, 121, 236, 0.82);
-
-  box-shadow:
-    0 0 12px rgba(200, 84, 225, 0.60);
+  letter-spacing: 0.5px;
 }
 
 
@@ -1520,7 +1500,7 @@ img {
 
 
 /* =========================================================
-   MAIN SECTION
+   SECTIONS
 ========================================================= */
 
 .section {
@@ -1530,8 +1510,7 @@ img {
       var(--max-width)
     );
 
-  margin:
-    0 auto;
+  margin: 0 auto;
 
   padding:
     130px 0;
@@ -1820,8 +1799,7 @@ img {
       var(--max-width)
     );
 
-  margin:
-    0 auto;
+  margin: 0 auto;
 
   padding:
     20px 0 130px;
@@ -1930,7 +1908,6 @@ img {
   color: #817889;
 
   font-size: 9px;
-
   font-weight: 800;
 }
 
@@ -1971,8 +1948,7 @@ img {
       var(--max-width)
     );
 
-  margin:
-    0 auto;
+  margin: 0 auto;
 
   padding:
     70px 0;
@@ -1987,7 +1963,6 @@ img {
 
 .footer-brand {
   display: flex;
-
   align-items: flex-start;
 
   gap: 18px;
@@ -2074,8 +2049,7 @@ img {
 
   min-height: 70px;
 
-  margin:
-    0 auto;
+  margin: 0 auto;
 
   display: flex;
   align-items: center;
@@ -2147,7 +2121,7 @@ img {
 
 
 /* =========================================================
-   RESPONSIVE - 1450
+   RESPONSIVE
 ========================================================= */
 
 @media (max-width: 1450px) {
@@ -2155,13 +2129,13 @@ img {
   .hero-inner {
     grid-template-columns:
       minmax(450px, 1fr)
-      minmax(520px, 0.85fr);
+      minmax(500px, 0.82fr);
 
-    gap: 55px;
+    gap: 50px;
   }
 
-  .visual-card {
-    max-width: 610px;
+  .scroll-card {
+    max-width: 600px;
   }
 
   .hero-title,
@@ -2177,15 +2151,10 @@ img {
 }
 
 
-/* =========================================================
-   RESPONSIVE - 1180
-========================================================= */
-
 @media (max-width: 1180px) {
 
   .navbar {
     height: auto;
-
     min-height: 74px;
   }
 
@@ -2245,7 +2214,7 @@ img {
     justify-content: center;
   }
 
-  .visual-card {
+  .scroll-card {
     max-width: 650px;
   }
 
@@ -2275,10 +2244,6 @@ img {
 
 }
 
-
-/* =========================================================
-   RESPONSIVE - MOBILE
-========================================================= */
 
 @media (max-width: 760px) {
 
@@ -2316,7 +2281,7 @@ img {
     width:
       calc(100% - 24px);
 
-    gap: 55px;
+    gap: 60px;
   }
 
   .hero-title,
@@ -2348,84 +2313,80 @@ img {
     width: 100%;
   }
 
+
+  /* STATUSAS MOBILE */
+
   .server-stats {
+    max-width: 100%;
+
     grid-template-columns:
-      1fr;
+      repeat(2, 1fr);
   }
 
   .stat {
-    min-height: auto;
+    min-height: 75px;
 
     padding:
-      20px 0 !important;
-
-    border-bottom:
-      1px solid rgba(255, 255, 255, 0.07);
+      20px 15px 12px 0;
   }
 
-  .stat::after {
-    display: none;
+  .stat:not(:first-child) {
+    padding-left: 20px;
   }
 
 
-  /* MOBILE LAIŠKAS */
+  /* PERGAMENTAS MOBILE */
 
-  .hero-right {
+  .scroll-card {
+    max-width: 100%;
+
+    min-height: 390px;
+
     padding:
-      20px 0;
+      10px 21px;
   }
 
   .visual-card {
-    max-width: 100%;
-
-    min-height: 430px;
+    min-height: 370px;
 
     padding:
-      45px 26px 46px;
+      38px 32px;
   }
 
-  .visual-glow {
-    width: 95%;
-    height: 350px;
+  .scroll-roll {
+    width: 45px;
   }
 
   .hero-logo {
-    width: 94px;
-    height: 94px;
+    width: 82px;
+    height: 82px;
 
-    margin-bottom: 24px;
+    margin-bottom: 19px;
   }
 
   .visual-name {
     font-size:
       clamp(
-        21px,
-        7vw,
-        29px
+        19px,
+        6vw,
+        25px
       );
   }
 
-  .visual-sub::before,
-  .visual-sub::after {
-    display: none;
+  .visual-sub {
+    font-size: 5px;
   }
 
   .visual-ip {
-    width: 100%;
-
-    min-height: 130px;
-
-    padding:
-      24px 15px 22px;
+    min-height: 95px;
   }
 
   .visual-ip b {
     font-size: 9px;
   }
 
-  .visual-ip small::before,
-  .visual-ip small::after {
-    width: 25px;
+  .scroll-divider span {
+    width: 45px;
   }
 
 
@@ -2484,8 +2445,7 @@ img {
     width:
       calc(100% - 30px);
 
-    flex-direction:
-      column;
+    flex-direction: column;
 
     align-items:
       flex-start;
@@ -2501,10 +2461,6 @@ img {
 }
 
 
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
 @media (max-width: 430px) {
 
   .logo span {
@@ -2516,20 +2472,37 @@ img {
     font-size: 35px;
   }
 
+  .scroll-card {
+    padding:
+      8px 17px;
+  }
+
+  .scroll-roll {
+    width: 37px;
+  }
+
   .visual-card {
-    min-height: 410px;
+    min-height: 350px;
 
     padding:
-      40px 20px 43px;
+      34px 24px;
   }
 
   .hero-logo {
-    width: 82px;
-    height: 82px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .visual-name {
+    font-size: 19px;
   }
 
   .visual-ip b {
     font-size: 8px;
+  }
+
+  .visual-ip > span {
+    font-size: 5.5px;
   }
 
 }
