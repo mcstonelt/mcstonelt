@@ -4,538 +4,272 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="McStone.lt – lietuviškas Minecraft serveris. Survival, Dungeons, PvP ir dar daugiau.">
-  <meta name="theme-color" content="#050407">
+
+  <meta
+    name="description"
+    content="McStone.lt – lietuviškas Minecraft serveris. Survival, Dungeons, PvP, Events ir dar daugiau."
+  >
+
+  <meta name="theme-color" content="#08050d">
 
   <title>McStone.lt | Minecraft serveris</title>
 
   <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="style.css?v=62">
-  <link rel="stylesheet" href="background.css?v=5">
 
-  <style>
-    /* =========================================
-       MCSTONE HERO ATNAUJINIMAS
-       ========================================= */
+  <!-- PAGRINDINIS DIZAINAS -->
+  <link rel="stylesheet" href="style.css?v=60">
 
-    /* Pašalinamas senas kvadratinis tinklelis */
-    .hero-grid {
-      display: none !important;
-      background: none !important;
-    }
+  <!-- PAPILDOMAS FONAS -->
+  <link rel="stylesheet" href="background.css?v=60">
 
-    .hero {
-      background-image: url("hero-bg.png") !important;
-      background-size: cover !important;
-      background-position: center center !important;
-    }
-
-    .hero-inner {
-      grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
-      gap: clamp(45px, 5vw, 100px);
-    }
-
-    /* Dešinė pusė */
-    .hero-right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 0;
-    }
-
-    .aura-glow {
-      position: absolute;
-      inset: 12%;
-      background: rgba(146, 43, 218, .14);
-      filter: blur(90px);
-      pointer-events: none;
-    }
-
-    /* Nauja kortelė */
-    .mc-showcase {
-      position: relative;
-      isolation: isolate;
-      width: 100%;
-      max-width: 550px;
-      min-height: 455px;
-      margin: 0 auto;
-      padding: 38px 38px 30px;
-      overflow: hidden;
-      text-align: center;
-
-      clip-path: none;
-      border: 1px solid rgba(191, 91, 255, .32);
-      border-radius: 12px;
-
-      background:
-        radial-gradient(
-          ellipse at 50% 5%,
-          rgba(134, 42, 179, .21),
-          transparent 65%
-        ),
-        linear-gradient(
-          145deg,
-          rgba(24, 11, 34, .97),
-          rgba(10, 6, 17, .98)
-        );
-
-      box-shadow:
-        0 30px 90px rgba(0, 0, 0, .48),
-        0 0 40px rgba(159, 52, 230, .08),
-        inset 0 1px 0 rgba(255, 255, 255, .05);
-    }
-
-    .mc-showcase::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      opacity: .35;
-      pointer-events: none;
-
-      background-image:
-        radial-gradient(
-          circle,
-          rgba(187, 93, 247, .33) .8px,
-          transparent 1px
-        );
-      background-size: 19px 19px;
-    }
-
-    /* Subtilus viršutinis akcentas */
-    .mc-showcase::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 28%;
-      right: 28%;
-      height: 2px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #c36cff,
-        transparent
-      );
-      box-shadow: 0 0 18px rgba(196, 108, 255, .5);
-    }
-
-    .showcase-topline {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 30px;
-      color: #b38cc6;
-      font-family: "Press Start 2P", monospace;
-      font-size: 7px;
-      letter-spacing: 1px;
-    }
-
-    .topline-square {
-      width: 4px;
-      height: 4px;
-      background: #b959ed;
-      transform: rotate(45deg);
-    }
-
-    .showcase-logo {
-      width: 112px;
-      height: 112px;
-      margin: 0 auto 25px;
-      display: grid;
-      place-items: center;
-
-      border: 1px solid rgba(209, 108, 255, .55);
-      border-radius: 50%;
-      background:
-        radial-gradient(
-          circle,
-          rgba(89, 29, 118, .5),
-          rgba(16, 7, 25, .96)
-        );
-
-      box-shadow:
-        0 0 0 7px rgba(152, 53, 201, .07),
-        0 0 38px rgba(169, 55, 230, .18);
-    }
-
-    .showcase-logo img {
-      width: 96px;
-      height: 96px;
-      object-fit: contain;
-    }
-
-    .showcase-title {
-      margin-bottom: 9px;
-      color: #fff;
-      font-family: "Press Start 2P", monospace;
-      font-size: clamp(21px, 2vw, 29px);
-      line-height: 1.4;
-    }
-
-    .showcase-title span {
-      color: #c16aff;
-    }
-
-    .showcase-subtitle {
-      color: #a997b1;
-      font-family: "Press Start 2P", monospace;
-      font-size: 6px;
-      line-height: 1.9;
-    }
-
-    /* Dekoratyvinė linija */
-    .showcase-divider {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      margin: 30px 0;
-      color: #b46be0;
-    }
-
-    .showcase-divider span {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(194, 92, 255, .35)
-      );
-    }
-
-    .showcase-divider span:last-child {
-      transform: rotate(180deg);
-    }
-
-    .showcase-divider i {
-      font-style: normal;
-      font-size: 9px;
-    }
-
-    /* Serverio IP */
-    .showcase-ip {
-      width: 100%;
-      min-height: 115px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 11px;
-      padding: 22px 18px;
-
-      border: 1px solid rgba(188, 87, 243, .28);
-      border-radius: 7px;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(104, 27, 141, .16),
-          rgba(38, 13, 53, .2)
-        );
-
-      color: #fff;
-      cursor: pointer;
-
-      transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease;
-    }
-
-    .showcase-ip:hover {
-      transform: translateY(-3px);
-      border-color: rgba(208, 117, 255, .7);
-      background: rgba(129, 39, 174, .24);
-    }
-
-    .showcase-ip small {
-      color: #a58caf;
-      font-family: "Press Start 2P", monospace;
-      font-size: 7px;
-    }
-
-    .showcase-ip strong {
-      color: #df9bff;
-      font-family: "Press Start 2P", monospace;
-      font-size: clamp(10px, 1.1vw, 14px);
-      line-height: 1.6;
-      overflow-wrap: anywhere;
-      text-shadow: 0 0 18px rgba(191, 76, 249, .2);
-    }
-
-    .showcase-ip > span {
-      color: #9a849f;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: .5px;
-    }
-
-    .showcase-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin-top: 27px;
-      color: #8f799d;
-      font-family: "Press Start 2P", monospace;
-      font-size: 6px;
-    }
-
-    .showcase-footer-mark {
-      color: #c27bf0;
-      font-size: 9px;
-    }
-
-    /* Nebenaudojami seni kampai */
-    .showcase-corner {
-      display: none !important;
-    }
-
-    /* Išjungiam papildomas linijas tik HERO zonoje */
-    .hero .hero-grid,
-    .hero .visual-grid {
-      display: none !important;
-    }
-
-    @media (max-width: 1250px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 65px;
-      }
-
-      .mc-showcase {
-        max-width: 570px;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .mc-showcase {
-        min-height: auto;
-        padding: 32px 22px 26px;
-      }
-
-      .showcase-topline {
-        font-size: 6px;
-      }
-
-      .showcase-title {
-        font-size: 22px;
-      }
-
-      .showcase-logo {
-        width: 96px;
-        height: 96px;
-      }
-
-      .showcase-logo img {
-        width: 82px;
-        height: 82px;
-      }
-
-      .showcase-ip strong {
-        font-size: 10px;
-      }
-    }
-  </style>
+  <!-- KORTELIŲ DIZAINAS -->
+  <link rel="stylesheet" href="modes.css?v=60">
 </head>
 
 <body>
 
-<header class="navbar">
-  <div class="nav-inner">
+  <!-- ======================================
+       NAVIGACIJA
+  ======================================= -->
 
-    <a href="index.html" class="logo" aria-label="McStone.lt pradžia">
-      <img src="logo.png" alt="McStone.lt">
-      <span>MCSTONE.LT</span>
-    </a>
+  <header class="navbar">
+    <div class="nav-inner">
 
-    <nav class="nav-links" aria-label="Pagrindinė navigacija">
-      <a class="active" href="index.html">Pradžia</a>
-      <a href="informacija.html">Informacija</a>
-      <a href="naujienos.html">Naujienos</a>
-      <a href="komanda.html">Komanda</a>
-      <a href="discord.html">Discord</a>
-      <a href="https://mcstonelt.tebex.io/" target="_blank" rel="noopener noreferrer">Parduotuvė</a>
-    </nav>
+      <a
+        href="index.html"
+        class="logo"
+        aria-label="McStone.lt pradžia"
+      >
+        <img src="logo.png" alt="McStone.lt logotipas">
+        <span>MCSTONE.LT</span>
+      </a>
 
-    <button class="nav-ip" type="button" onclick="copyIP(this)">
-      MCSTONE.SRW.LT
-    </button>
+      <nav class="nav-links" aria-label="Navigacija">
+        <a href="index.html" class="active">Pradžia</a>
+        <a href="informacija.html">Informacija</a>
+        <a href="naujienos.html">Naujienos</a>
+        <a href="komanda.html">Komanda</a>
+        <a href="discord.html">Discord</a>
+        <a
+          href="https://mcstonelt.tebex.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Parduotuvė
+        </a>
+      </nav>
 
-  </div>
-</header>
-
-<main>
-
-  <section class="hero">
-
-    <div class="hero-overlay"></div>
-    <div class="hero-glow"></div>
-
-    <div class="hero-inner">
-
-      <div class="hero-left">
-
-        <div class="hero-tag">
-          <span></span>
-          SURVIVAL <b>•</b> DUNGEONS <b>•</b> EVENTS
-          <b>•</b> PVP <b>•</b> IR DAR DAUGIAU
-        </div>
-
-        <h1 class="hero-title">
-          MC<span>STONE</span><em>.LT</em>
-        </h1>
-
-        <div class="hero-description">
-          <div class="hero-description-line"></div>
-
-          <p>
-            <strong>McStone</strong> – vienas populiariausių lietuviškų
-            Minecraft serverių, subūręs aktyvią ir nuolat augančią
-            bendruomenę. Tavęs laukia <strong>Survival</strong>,
-            <strong>Dungeons</strong>, <strong>Events</strong>,
-            <strong>PvP</strong>, išvystyta ekonomika, unikalios
-            sistemos bei nuolat atnaujinamas turinys. Kurk savo istoriją,
-            varžykis su kitais ir tapk <strong>McStone</strong>
-            bendruomenės dalimi.
-          </p>
-        </div>
-
-        <div class="hero-actions">
-          <a
-            class="button button-dark"
-            href="https://discord.gg/xH5VDRtM7v"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            DISCORD
-          </a>
-        </div>
-
-        <div class="server-stats">
-
-          <div class="stat">
-            <span>VERSIJA</span>
-            <strong id="serverVersion">1.21.11</strong>
-          </div>
-
-          <div class="stat">
-            <span>STATUSAS</span>
-            <strong class="server-status" id="serverStatus">
-              <i id="serverDot"></i>
-              <span id="serverStatusText">TIKRINAMA...</span>
-            </strong>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="hero-right">
-
-        <div class="aura-glow"></div>
-
-        <div class="mc-showcase">
-
-          <div class="showcase-topline">
-            <span class="topline-square"></span>
-            MCSTONE NETWORK
-            <span class="topline-square"></span>
-          </div>
-
-          <div class="showcase-logo">
-            <img src="logo.png" alt="McStone.lt logotipas">
-          </div>
-
-          <h2 class="showcase-title">
-            MC<span>STONE</span>
-          </h2>
-
-          <p class="showcase-subtitle">
-            LIETUVIŠKAS MINECRAFT SERVERIS
-          </p>
-
-          <div class="showcase-divider">
-            <span></span>
-            <i>◆</i>
-            <span></span>
-          </div>
-
-          <button
-            class="showcase-ip"
-            type="button"
-            onclick="copyIP(this)"
-          >
-            <small>SERVERIO IP</small>
-            <strong>MCSTONE.SRW.LT</strong>
-            <span>SPAUSK, KAD NUKOPIJUOTUM</span>
-          </button>
-
-          <div class="showcase-footer">
-            <span>JAVA EDITION</span>
-            <span class="showcase-footer-mark">◆</span>
-            <span>MCSTONE.LT</span>
-          </div>
-
-        </div>
-
-      </div>
+      <button
+        class="nav-ip"
+        type="button"
+        onclick="copyIP(this)"
+      >
+        MCSTONE.SRW.LT
+      </button>
 
     </div>
-
-    <div class="scroll-hint">
-      <span></span>
-      DAUGIAU
-    </div>
-
-  </section>
+  </header>
 
 
-  <section class="section why-section">
+  <main>
 
-    <div class="why-heading">
+    <!-- ======================================
+         HERO
+    ======================================= -->
 
-      <div class="section-eyebrow">
-        <span class="eyebrow-line"></span>
-        <span class="eyebrow-text">MCSTONE LAUKIA TAVĘS</span>
-        <span class="eyebrow-line"></span>
+    <section class="hero">
+
+      <div class="hero-overlay"></div>
+      <div class="hero-glow"></div>
+
+      <div class="hero-inner">
+
+        <!-- KAIRĖ -->
+
+        <div class="hero-left">
+
+          <div class="hero-tag">
+            <span></span>
+            SURVIVAL
+            <b>•</b>
+            DUNGEONS
+            <b>•</b>
+            EVENTS
+            <b>•</b>
+            PVP
+            <b>•</b>
+            IR DAR DAUGIAU
+          </div>
+
+          <h1 class="hero-title">
+            MC<span>STONE</span><em>.LT</em>
+          </h1>
+
+          <div class="hero-description">
+
+            <div class="hero-description-line"></div>
+
+            <p>
+              <strong>McStone</strong> – vienas populiariausių
+              lietuviškų Minecraft serverių, subūręs aktyvią
+              ir nuolat augančią bendruomenę.
+              Tavęs laukia <strong>Survival</strong>,
+              <strong>Dungeons</strong>,
+              <strong>Events</strong>,
+              <strong>PvP</strong>, išvystyta ekonomika,
+              unikalios sistemos bei nuolat atnaujinamas
+              turinys. Kurk savo istoriją, varžykis su
+              kitais ir tapk <strong>McStone</strong>
+              bendruomenės dalimi.
+            </p>
+
+          </div>
+
+          <div class="hero-actions">
+
+            <a
+              class="button button-dark"
+              href="https://discord.gg/xH5VDRtM7v"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DISCORD
+            </a>
+
+          </div>
+
+          <!-- TIK VERSIJA IR STATUSAS -->
+
+          <div class="server-stats">
+
+            <div class="stat">
+              <span>VERSIJA</span>
+              <strong id="serverVersion">1.21.11</strong>
+            </div>
+
+            <div class="stat">
+
+              <span>STATUSAS</span>
+
+              <strong
+                class="server-status"
+                id="serverStatus"
+              >
+                <i id="serverDot"></i>
+
+                <span id="serverStatusText">
+                  TIKRINAMA...
+                </span>
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- DEŠINĖ -->
+
+        <div class="hero-right">
+
+          <div class="visual-glow"></div>
+
+          <div class="visual-card">
+
+            <img
+              src="logo.png"
+              alt="McStone.lt"
+              class="hero-logo"
+            >
+
+            <div class="card-main-content">
+
+              <div class="visual-name">
+                MC<span>STONE</span>
+              </div>
+
+              <div class="visual-sub">
+                LIETUVIŠKAS MINECRAFT SERVERIS
+              </div>
+
+              <button
+                class="visual-ip"
+                type="button"
+                onclick="copyIP(this)"
+              >
+
+                <small>SERVERIO IP</small>
+
+                <b>MCSTONE.SRW.LT</b>
+
+                <span>
+                  SPAUSK, KAD NUKOPIJUOTUM
+                </span>
+
+              </button>
+
+            </div>
+
+            <div class="bottom-diamond">
+              <span></span>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <h2 class="why-title">
-        VIENAS PASAULIS.
-        <span>NERIBOTOS GALIMYBĖS.</span>
-      </h2>
+      <div class="scroll-hint">
+        <span></span>
+        DAUGIAU
+      </div>
 
-      <div class="why-intro">
-        <span class="why-intro-label">
-          TAVO ISTORIJA PRASIDEDA ČIA
-        </span>
+    </section>
+
+
+    <!-- ======================================
+         VIENAS PASAULIS
+    ======================================= -->
+
+    <section class="section">
+
+      <div class="section-heading">
+
+        <div class="mini-title">
+          MCSTONE LAUKIA TAVĘS
+        </div>
+
+        <h2>
+          VIENAS PASAULIS.
+          <br>
+          <span style="color:#c886e8">
+            NERIBOTOS GALIMYBĖS.
+          </span>
+        </h2>
 
         <p>
-          Kurk, tyrinėk ir kovok. Atrask savo vietą McStone pasaulyje,
-          kuriame kiekvienas nuotykis tampa tavo istorijos dalimi.
+          Kurk, tyrinėk ir kovok. Atrask savo vietą
+          McStone pasaulyje, kuriame kiekvienas
+          nuotykis tampa tavo istorijos dalimi.
         </p>
+
       </div>
 
-    </div>
 
+      <!-- TRYS DIDELĖS KORTELĖS -->
 
-    <div class="experience-grid">
+      <div class="feature-row">
 
-      <article class="experience-card survival-card">
-        <div class="experience-image"></div>
-        <div class="experience-shade"></div>
+        <!-- SURVIVAL -->
 
-        <div class="experience-top">
-          <div class="experience-label">
-            <span class="label-dot"></span>
-            ATRASK PASAULĮ
+        <article class="feature">
+
+          <div class="feature-number">
+            01
           </div>
-          <span class="experience-number">01</span>
-        </div>
 
-        <div class="experience-body">
-          <span class="experience-small">NUOTYKIS PRASIDEDA ČIA</span>
           <h3>SURVIVAL</h3>
 
           <p>
@@ -544,29 +278,17 @@
             kartu su bendruomene.
           </p>
 
-          <div class="experience-tags">
-            <span>STATYBOS</span>
-            <span>EKONOMIKA</span>
-            <span>TYRINĖJIMAS</span>
+        </article>
+
+
+        <!-- DUNGEONS -->
+
+        <article class="feature">
+
+          <div class="feature-number">
+            02
           </div>
-        </div>
-      </article>
 
-
-      <article class="experience-card dungeons-card">
-        <div class="experience-image"></div>
-        <div class="experience-shade"></div>
-
-        <div class="experience-top">
-          <div class="experience-label">
-            <span class="label-dot"></span>
-            IŠBANDYK SAVE
-          </div>
-          <span class="experience-number">02</span>
-        </div>
-
-        <div class="experience-body">
-          <span class="experience-small">PASLAPTYS LAUKIA TAVĘS</span>
           <h3>DUNGEONS</h3>
 
           <p>
@@ -575,29 +297,17 @@
             bei vertingus apdovanojimus.
           </p>
 
-          <div class="experience-tags">
-            <span>BOSSAI</span>
-            <span>LOOT</span>
-            <span>IŠŠŪKIAI</span>
+        </article>
+
+
+        <!-- PVP -->
+
+        <article class="feature">
+
+          <div class="feature-number">
+            03
           </div>
-        </div>
-      </article>
 
-
-      <article class="experience-card pvp-card">
-        <div class="experience-image"></div>
-        <div class="experience-shade"></div>
-
-        <div class="experience-top">
-          <div class="experience-label">
-            <span class="label-dot"></span>
-            KOVOK DĖL PERGALĖS
-          </div>
-          <span class="experience-number">03</span>
-        </div>
-
-        <div class="experience-body">
-          <span class="experience-small">PARODYK SAVO ĮGŪDŽIUS</span>
           <h3>PVP</h3>
 
           <p>
@@ -606,195 +316,310 @@
             ir siek pergalių.
           </p>
 
-          <div class="experience-tags">
-            <span>KOVOS</span>
-            <span>VARŽYBOS</span>
-            <span>PERGALĖS</span>
+        </article>
+
+      </div>
+
+
+      <!-- ======================================
+           RINKIS SAVO KELIĄ
+      ======================================= -->
+
+      <div class="modes">
+
+        <div class="modes-info">
+
+          <div class="mini-title">
+            ŽAIDIMO GALIMYBĖS
           </div>
+
+          <h2>
+            RINKIS SAVO KELIĄ.
+          </h2>
+
+          <p>
+            McStone nėra tik paprastas Survival serveris.
+            Čia rasi skirtingų veiklų, todėl visada
+            turėsi ką veikti.
+          </p>
+
+          <a
+            href="informacija.html"
+            class="text-link"
+          >
+            DAUGIAU APIE SERVERĮ →
+          </a>
+
         </div>
-      </article>
-
-    </div>
 
 
-    <div class="section-separator">
-      <span></span>
-      <b>ATRASK DAR DAUGIAU</b>
-      <span></span>
-    </div>
+        <div class="mode-cards">
+
+          <article class="mode-card">
+
+            <div class="mode-icon">⛏</div>
+
+            <div>
+              <h3>SURVIVAL</h3>
+              <p>
+                Statyk, rink resursus ir
+                tobulink savo bazę.
+              </p>
+            </div>
+
+          </article>
 
 
-    <div class="modes">
+          <article class="mode-card">
 
-      <div class="modes-info">
-        <div class="mini-title">ŽAIDIMAS</div>
-        <h2>RINKIS SAVO KELIĄ.</h2>
+            <div class="mode-icon">⌘</div>
 
-        <p>
-          McStone nėra tik paprastas Survival serveris.
-          Čia rasi skirtingų veiklų, todėl visada
-          turėsi ką veikti.
-        </p>
+            <div>
+              <h3>DUNGEONS</h3>
+              <p>
+                Tyrinėk požemius, kovok ir
+                rink vertingą loot'ą.
+              </p>
+            </div>
 
-        <a href="informacija.html" class="text-link">
-          DAUGIAU APIE SERVERĮ →
-        </a>
+          </article>
+
+
+          <article class="mode-card">
+
+            <div class="mode-icon">⚔</div>
+
+            <div>
+              <h3>PVP</h3>
+              <p>
+                Kovok prieš kitus
+                serverio žaidėjus.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="mode-card">
+
+            <div class="mode-icon">★</div>
+
+            <div>
+              <h3>EVENTS</h3>
+              <p>
+                Dalyvauk renginiuose
+                ir laimėk prizus.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="mode-card">
+
+            <div class="mode-icon">◆</div>
+
+            <div>
+              <h3>EKONOMIKA</h3>
+              <p>
+                Uždirbk, prekiauk
+                ir augink savo turtą.
+              </p>
+            </div>
+
+          </article>
+
+
+          <article class="mode-card">
+
+            <div class="mode-icon">✦</div>
+
+            <div>
+              <h3>IR DAR DAUGIAU</h3>
+              <p>
+                Naujos veiklos, atnaujinimai
+                ir papildomas turinys.
+              </p>
+            </div>
+
+          </article>
+
+        </div>
+
       </div>
 
-      <div class="mode-cards">
+    </section>
 
-        <article class="mode-card">
-          <div class="mode-icon">⛏</div>
-          <div>
-            <h3>SURVIVAL</h3>
-            <p>Statyk, rink resursus ir tobulink savo bazę.</p>
+
+    <!-- ======================================
+         PRISIJUNGIMAS
+    ======================================= -->
+
+    <section class="cta-wrap">
+
+      <div class="cta">
+
+        <div class="cta-glow"></div>
+
+        <div class="cta-content">
+
+          <div class="mini-title">
+            PRADĖK DABAR
           </div>
-        </article>
 
-        <article class="mode-card">
-          <div class="mode-icon">☠</div>
-          <div>
-            <h3>DUNGEONS</h3>
-            <p>Tyrinėk požemius, kovok ir rink vertingą loot'ą.</p>
-          </div>
-        </article>
+          <h2>
+            PASIRUOŠĘS
+            <br>
+            PRISIJUNGTI?
+          </h2>
 
-        <article class="mode-card">
-          <div class="mode-icon">⚔</div>
-          <div>
-            <h3>PVP</h3>
-            <p>Kovok prieš kitus serverio žaidėjus.</p>
-          </div>
-        </article>
+          <p>
+            Paleisk Minecraft Java Edition,
+            pridėk McStone serverį ir pradėk
+            savo kelionę kartu su mūsų
+            bendruomene.
+          </p>
 
-        <article class="mode-card">
-          <div class="mode-icon">★</div>
-          <div>
-            <h3>EVENTS</h3>
-            <p>Dalyvauk renginiuose ir laimėk prizus.</p>
-          </div>
-        </article>
+          <a
+            href="https://discord.gg/xH5VDRtM7v"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button-dark"
+          >
+            PRISIJUNGTI PRIE DISCORD
+          </a>
 
-        <article class="mode-card">
-          <div class="mode-icon">◆</div>
-          <div>
-            <h3>EKONOMIKA</h3>
-            <p>Uždirbk, prekiauk ir augink savo turtą.</p>
-          </div>
-        </article>
-
-        <article class="mode-card">
-          <div class="mode-icon">+</div>
-          <div>
-            <h3>IR DAR DAUGIAU</h3>
-            <p>Naujos veiklos, atnaujinimai ir papildomas turinys.</p>
-          </div>
-        </article>
-
-      </div>
-
-    </div>
-
-  </section>
+        </div>
 
 
-  <section class="cta-wrap">
-    <div class="cta">
-
-      <div class="cta-glow"></div>
-
-      <div class="cta-content">
-        <div class="mini-title">PRADĖK DABAR</div>
-
-        <h2>
-          PASIRUOŠĘS
-          <br>
-          PRISIJUNGTI?
-        </h2>
-
-        <p>
-          Paleisk Minecraft Java Edition, pridėk McStone
-          serverį ir pradėk savo kelionę kartu su mūsų
-          bendruomene.
-        </p>
-
-        <a
-          href="https://discord.gg/xH5VDRtM7v"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button button-dark"
+        <button
+          class="big-ip"
+          type="button"
+          onclick="copyIP(this)"
         >
-          PRISIJUNGTI PRIE DISCORD
-        </a>
+
+          <small>SERVERIO ADRESAS</small>
+
+          <strong>MCSTONE.SRW.LT</strong>
+
+          <span>
+            SPAUSK, KAD NUKOPIJUOTUM
+          </span>
+
+        </button>
+
       </div>
 
-      <button class="big-ip" type="button" onclick="copyIP(this)">
-        <small>SERVERIO ADRESAS</small>
-        <strong>MCSTONE.SRW.LT</strong>
-        <span>SPAUSK, KAD NUKOPIJUOTUM</span>
-      </button>
+    </section>
+
+  </main>
+
+
+  <!-- ======================================
+       FOOTER
+  ======================================= -->
+
+  <footer class="footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+
+        <img
+          src="logo.png"
+          alt="McStone.lt"
+        >
+
+        <div>
+
+          <strong>MCSTONE.LT</strong>
+
+          <p>
+            Lietuviškas Minecraft serveris.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <div>
+
+          <b>PUSLAPIAI</b>
+
+          <a href="index.html">Pradžia</a>
+          <a href="informacija.html">Informacija</a>
+          <a href="naujienos.html">Naujienos</a>
+          <a href="komanda.html">Komanda</a>
+
+        </div>
+
+
+        <div>
+
+          <b>BENDRUOMENĖ</b>
+
+          <a href="discord.html">Discord</a>
+
+          <a
+            href="https://mcstonelt.tebex.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Parduotuvė
+          </a>
+
+        </div>
+
+
+        <div>
+
+          <b>SERVERIS</b>
+
+          <span>MCSTONE.SRW.LT</span>
+          <span>Java Edition</span>
+
+          <span id="footerStatus">
+            Tikrinama...
+          </span>
+
+        </div>
+
+      </div>
 
     </div>
-  </section>
-
-</main>
 
 
-<footer class="footer">
+    <div class="footer-bottom">
 
-  <div class="footer-inner">
+      <span>© 2026 MCSTONE.LT</span>
 
-    <div class="footer-brand">
-      <img src="logo.png" alt="McStone.lt">
-
-      <div>
-        <strong>MCSTONE.LT</strong>
-        <p>Vienas populiariausių lietuviškų Minecraft serverių.</p>
-      </div>
-    </div>
-
-    <div class="footer-links">
-
-      <div>
-        <b>PUSLAPIAI</b>
-        <a href="index.html">Pradžia</a>
-        <a href="informacija.html">Informacija</a>
-        <a href="naujienos.html">Naujienos</a>
-        <a href="komanda.html">Komanda</a>
-      </div>
-
-      <div>
-        <b>BENDRUOMENĖ</b>
-        <a href="discord.html">Discord</a>
-        <a href="https://mcstonelt.tebex.io/" target="_blank" rel="noopener noreferrer">
-          Parduotuvė
-        </a>
-      </div>
-
-      <div>
-        <b>SERVERIS</b>
-        <span>MCSTONE.SRW.LT</span>
-        <span>Java Edition</span>
-        <span id="footerStatus">Tikrinama...</span>
-      </div>
+      <span>
+        Lietuviškas Minecraft serveris
+      </span>
 
     </div>
 
+  </footer>
+
+
+  <!-- IP NUKOPIJAVIMO PRANEŠIMAS -->
+
+  <div
+    class="copy-toast"
+    id="copyToast"
+    role="status"
+    aria-live="polite"
+  >
+    ✓ MCSTONE.SRW.LT NUKOPIJUOTAS
   </div>
 
-  <div class="footer-bottom">
-    <span>© 2026 MCSTONE.LT</span>
-    <span>Lietuviškas Minecraft serveris</span>
-  </div>
 
-</footer>
+  <!-- JAVASCRIPT -->
 
-
-<div class="copy-toast" id="copyToast" role="status" aria-live="polite">
-  ✓ MCSTONE.SRW.LT NUKOPIJUOTAS
-</div>
-
-<script src="script.js?v=45"></script>
+  <script src="script.js?v=60"></script>
 
 </body>
 </html>
