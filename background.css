@@ -1,37 +1,32 @@
 
 /* ==========================================
    MCSTONE.LT
-   PIXEL DOT BACKGROUND
+   SUBTLE PIXEL DOT BACKGROUND
    ========================================== */
-
-/* Pagrindinis fonas */
 
 body {
   background-color: #050407;
 }
 
-/* KODĖL MCSTONE sekcija */
+/* Pagrindinė sekcija */
 
 .why-section {
   position: relative;
   isolation: isolate;
 }
 
-/* Labai daug mažų violetinių taškelių */
+/* Smulkūs violetiniai taškeliai */
 
 .why-section::before {
   content: "";
   position: absolute;
-
   z-index: -1;
 
-  top: -70px;
-  bottom: -100px;
-
+  top: 190px;
+  bottom: 80px;
   left: 50%;
 
   width: 100vw;
-
   transform: translateX(-50%);
 
   pointer-events: none;
@@ -39,53 +34,66 @@ body {
   background-image:
     radial-gradient(
       circle,
-      rgba(190, 100, 255, 0.48) 1px,
-      transparent 1.4px
+      rgba(187, 92, 255, 0.28) 0.65px,
+      transparent 1px
     );
 
-  /* Taškai kas 17 pikselių */
-  background-size: 17px 17px;
-
+  background-size: 20px 20px;
   background-position: center top;
 
-  /* Švelniai išnyksta kraštuose */
+  -webkit-mask-image:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.45) 17%,
+      black 40%,
+      rgba(0, 0, 0, 0.55) 72%,
+      transparent 100%
+    );
+
   mask-image:
-    radial-gradient(
-      ellipse at 50% 45%,
-      black 5%,
-      rgba(0, 0, 0, 0.9) 40%,
-      transparent 88%
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.45) 17%,
+      black 40%,
+      rgba(0, 0, 0, 0.55) 72%,
+      transparent 100%
     );
 }
 
-/* Silpnas violetinis apšvietimas */
+/* Švelnus violetinis apšvietimas */
 
 .why-section::after {
   content: "";
   position: absolute;
-
   z-index: -2;
 
-  top: 0;
-  bottom: -100px;
-
+  top: 250px;
   left: 50%;
 
   width: 100vw;
+  height: 580px;
 
   transform: translateX(-50%);
-
   pointer-events: none;
 
   background:
     radial-gradient(
-      ellipse at 50% 45%,
-      rgba(100, 25, 145, 0.11),
-      transparent 75%
+      ellipse at 50% 50%,
+      rgba(105, 28, 150, 0.095),
+      transparent 70%
     );
 }
 
-/* Kortelės lieka virš taškelių */
+/* Antraštė */
+
+.why-heading {
+  position: relative;
+  z-index: 1;
+}
+
+/* Kortelės */
 
 .experience-grid {
   position: relative;
@@ -94,13 +102,25 @@ body {
 
 .experience-card {
   position: relative;
-  overflow: hidden;
 
   box-shadow:
-    0 18px 50px rgba(0, 0, 0, 0.45);
+    0 20px 55px rgba(0, 0, 0, 0.48);
 }
 
-/* Taškeliai taip pat už žaidimo sekcijos */
+.experience-card:hover {
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(168, 55, 225, 0.12);
+}
+
+/* Sekcijų atskyrimas */
+
+.section-separator {
+  position: relative;
+  z-index: 1;
+}
+
+/* Žaidimo režimai */
 
 .modes {
   position: relative;
@@ -112,27 +132,22 @@ body {
 @media (max-width: 760px) {
 
   .why-section::before {
-    top: -35px;
-    bottom: -70px;
+    top: 230px;
+    bottom: 120px;
 
-    background-size: 15px 15px;
+    background-size: 19px 19px;
 
     background-image:
       radial-gradient(
         circle,
-        rgba(190, 100, 255, 0.4) 0.8px,
-        transparent 1.2px
+        rgba(187, 92, 255, 0.24) 0.6px,
+        transparent 1px
       );
   }
 
-}
-
-/* Mažiau judesio */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .experience-card {
-    transition: none;
+  .why-section::after {
+    top: 350px;
+    height: 1100px;
   }
 
 }
