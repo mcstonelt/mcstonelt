@@ -1,0 +1,142 @@
+
+/* ========================================
+   MCSTONE.LT — SECTION BACKGROUND
+   ======================================== */
+
+:root {
+  --section-purple: #a72cff;
+  --section-dark: #07040d;
+}
+
+/* Pagrindinis puslapio fonas */
+
+body {
+  background:
+    radial-gradient(
+      ellipse 900px 520px at 50% 1150px,
+      rgba(105, 25, 160, 0.13),
+      transparent 75%
+    ),
+    #050407;
+}
+
+/* KODĖL MCSTONE sekcija */
+
+.why-section {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Violetinis švytėjimas už kortelių */
+
+.why-section::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  top: 70px;
+  left: 50%;
+  width: 110vw;
+  height: 850px;
+  transform: translateX(-50%);
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse 48% 38% at 20% 50%,
+      rgba(113, 32, 172, 0.15),
+      transparent 100%
+    ),
+    radial-gradient(
+      ellipse 45% 45% at 80% 45%,
+      rgba(93, 25, 148, 0.13),
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(23, 8, 35, 0.48) 30%,
+      rgba(18, 7, 29, 0.52) 65%,
+      transparent 100%
+    );
+}
+
+/* Subtilus Minecraft blokų tinklelis */
+
+.why-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 80px;
+  left: 50%;
+  width: 100vw;
+  height: 800px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.22;
+
+  background-image:
+    linear-gradient(
+      rgba(194, 91, 255, 0.045) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(194, 91, 255, 0.045) 1px,
+      transparent 1px
+    );
+
+  background-size: 64px 64px;
+
+  mask-image: linear-gradient(
+    180deg,
+    transparent,
+    black 25%,
+    black 70%,
+    transparent
+  );
+}
+
+/* Kortelių šešėliai */
+
+.experience-card {
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.38),
+    0 0 35px rgba(135, 37, 190, 0.04);
+}
+
+.experience-card:hover {
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(160, 53, 230, 0.13);
+}
+
+/* Apačioje švelnus perėjimas */
+
+.section-separator {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 760px) {
+  .why-section::before {
+    height: 1500px;
+    top: 40px;
+    background:
+      radial-gradient(
+        ellipse at center,
+        rgba(110, 28, 170, 0.13),
+        transparent 75%
+      );
+  }
+
+  .why-section::after {
+    height: 1500px;
+    background-size: 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-card {
+    transition: none;
+  }
+}
