@@ -680,9 +680,7 @@ img {
   box-shadow: 0 0 10px var(--purple);
 }
 
-/* =====================================
-   KODĖL MCSTONE
-===================================== */
+/* KODĖL MCSTONE */
 
 .section {
   width: min(calc(100% - 64px), var(--max-width));
@@ -740,9 +738,7 @@ img {
   line-height: 1.85;
 }
 
-/* =====================================
-   NAUJOS MINECRAFT KORTELĖS
-===================================== */
+/* TRYS MINECRAFT KORTELĖS */
 
 .experience-grid {
   display: grid;
@@ -776,36 +772,34 @@ img {
   position: absolute;
   inset: 0;
   z-index: -3;
-  background-image: url("hero-bg.png?v=44");
   background-repeat: no-repeat;
-  background-size: auto 120%;
-  transition:
-    transform 0.7s ease,
-    filter 0.7s ease;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.7s ease, filter 0.7s ease;
 }
 
 .experience-card:hover .experience-image {
   transform: scale(1.08);
 }
 
-/* Skirtingos tos pačios nuotraukos vietos */
+/* NAUJOS NUOTRAUKOS */
 
 .survival-card .experience-image {
-  background-position: 18% center;
-  filter: saturate(0.9);
+  background-image: url("survival-bg.png");
+  background-position: center center;
 }
 
 .dungeons-card .experience-image {
-  background-position: 62% center;
-  filter: saturate(1.1) brightness(0.85);
+  background-image: url("dungeons-bg.png");
+  background-position: center center;
 }
 
 .pvp-card .experience-image {
-  background-position: 92% center;
-  filter: saturate(0.95) brightness(0.9);
+  background-image: url("pvp-bg.png");
+  background-position: center center;
 }
 
-/* Tamsus sluoksnis, kad tekstas būtų skaitomas */
+/* TAMSUS GRADIENTAS */
 
 .experience-shade {
   position: absolute;
@@ -814,10 +808,10 @@ img {
   background:
     linear-gradient(
       180deg,
-      rgba(7, 4, 12, 0.48) 0%,
-      rgba(7, 4, 12, 0.05) 24%,
-      rgba(8, 4, 13, 0.36) 43%,
-      rgba(8, 4, 13, 0.88) 69%,
+      rgba(7, 4, 12, 0.35) 0%,
+      rgba(7, 4, 12, 0.02) 25%,
+      rgba(8, 4, 13, 0.28) 45%,
+      rgba(8, 4, 13, 0.86) 73%,
       rgba(8, 4, 13, 0.98) 100%
     );
 }
@@ -835,7 +829,7 @@ img {
   );
 }
 
-/* Viršutinė kortelės dalis */
+/* KORTELIŲ VIRŠUS */
 
 .experience-top {
   position: absolute;
@@ -878,7 +872,7 @@ img {
   text-shadow: 0 2px 10px black;
 }
 
-/* Apatinė kortelės dalis */
+/* KORTELIŲ TEKSTAS */
 
 .experience-body {
   position: absolute;
@@ -931,8 +925,6 @@ img {
   font-weight: 800;
   letter-spacing: 0.4px;
 }
-
-/* Subtilus hover efektas */
 
 .experience-card:hover .experience-tags span {
   border-color: rgba(202, 144, 228, 0.42);
@@ -1509,10 +1501,6 @@ img {
 
   .experience-card {
     height: 385px;
-  }
-
-  .experience-image {
-    background-size: cover;
   }
 
   .experience-body {
