@@ -1,9 +1,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Press+Start+2P&display=swap");
 
-/* ========================================
-   MCSTONE.LT — PAGRINDINIAI STILIAI
-======================================== */
+/* =========================================
+   MCSTONE.LT — FULL STYLE
+========================================= */
 
 :root {
   --bg: #060409;
@@ -12,7 +12,7 @@
   --purple: #a72cff;
   --purple-light: #cb76ff;
   --purple-soft: #d09ae8;
-  --white: #ffffff;
+  --white: #fff;
   --text: #f4eef8;
   --muted: #b0a3b8;
   --green: #52f38b;
@@ -65,6 +65,8 @@ a:focus-visible {
   color: #fff;
 }
 
+/* SCROLLBAR */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -78,9 +80,9 @@ a:focus-visible {
   border-radius: 20px;
 }
 
-/* ========================================
-   NAVIGACIJA
-======================================== */
+/* =========================================
+   NAVBAR
+========================================= */
 
 .navbar {
   position: fixed;
@@ -183,9 +185,9 @@ a:focus-visible {
   border-color: #d18bff;
 }
 
-/* ========================================
+/* =========================================
    HERO
-======================================== */
+========================================= */
 
 .hero {
   position: relative;
@@ -222,12 +224,9 @@ a:focus-visible {
     );
 }
 
-/* Senas tinklelis pašalintas */
-
 .hero-grid,
 .visual-grid {
   display: none !important;
-  background: none !important;
 }
 
 .hero-glow {
@@ -383,9 +382,9 @@ a:focus-visible {
   border-color: #c46fff;
 }
 
-/* ========================================
-   HERO STATUSAS
-======================================== */
+/* =========================================
+   SERVER STATUS
+========================================= */
 
 .server-stats {
   max-width: 530px;
@@ -453,9 +452,9 @@ a:focus-visible {
   box-shadow: 0 0 12px rgba(255, 77, 104, 0.7) !important;
 }
 
-/* ========================================
-   NAUJA DEŠINĖ KORTELĖ
-======================================== */
+/* =========================================
+   HERO RIGHT CARD
+========================================= */
 
 .hero-right {
   position: relative;
@@ -691,17 +690,15 @@ a:focus-visible {
   font-size: 9px;
 }
 
-/* Senų kortelių dekoracijos išjungiamos */
-
 .visual-card,
 .visual-glow,
 .showcase-corner {
   display: none;
 }
 
-/* ========================================
-   SCROLL UŽRAŠAS
-======================================== */
+/* =========================================
+   SCROLL HINT
+========================================= */
 
 .scroll-hint {
   position: absolute;
@@ -725,9 +722,9 @@ a:focus-visible {
   box-shadow: 0 0 13px #a52ee5;
 }
 
-/* ========================================
-   BENDROS SEKCIJOS
-======================================== */
+/* =========================================
+   SECTIONS
+========================================= */
 
 .section {
   width: min(calc(100% - 64px), var(--container));
@@ -761,9 +758,9 @@ a:focus-visible {
   line-height: 1.9;
 }
 
-/* ========================================
-   MCSTONE LAUKIA TAVĘS
-======================================== */
+/* =========================================
+   WHY SECTION
+========================================= */
 
 .why-section {
   position: relative;
@@ -846,9 +843,9 @@ a:focus-visible {
   line-height: 1.9;
 }
 
-/* ========================================
-   TRYS ŽAIDIMO KORTELĖS
-======================================== */
+/* =========================================
+   EXPERIENCE CARDS
+========================================= */
 
 .experience-grid {
   display: grid;
@@ -976,7 +973,6 @@ a:focus-visible {
   font-size: clamp(16px, 1.5vw, 22px);
   font-weight: 400;
   line-height: 1.5;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
 }
 
 .experience-body p {
@@ -1005,9 +1001,9 @@ a:focus-visible {
   line-height: 1.6;
 }
 
-/* ========================================
-   SEKCIJOS ATSKYRIMAS
-======================================== */
+/* =========================================
+   SECTION SEPARATOR
+========================================= */
 
 .section-separator {
   display: flex;
@@ -1040,93 +1036,240 @@ a:focus-visible {
   white-space: nowrap;
 }
 
-/* ========================================
-   ŽAIDIMO REŽIMAI
-======================================== */
+/* =========================================
+   RINKIS SAVO KELIĄ — NAUJAS DIZAINAS
+========================================= */
 
 .modes {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 80px;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(45px, 5vw, 95px);
+  align-items: center;
+  padding: 36px 0 20px;
 }
 
 .modes-info {
-  align-self: start;
+  position: relative;
+  max-width: 480px;
+  padding: 0 0 0 28px;
+}
+
+.modes-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    #bc5cff 20%,
+    #8d2ec0 75%,
+    transparent
+  );
+}
+
+.modes-info .mini-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+  color: #d38bff;
+}
+
+.modes-info .mini-title::before {
+  content: "◆";
+  color: #bc5cff;
+  font-size: 9px;
 }
 
 .modes-info h2 {
-  font-size: clamp(24px, 2.7vw, 42px);
+  max-width: 470px;
+  margin-bottom: 25px;
+  color: #fff;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(26px, 2.5vw, 43px);
+  line-height: 1.65;
+  letter-spacing: -1px;
 }
 
-.text-link {
-  display: inline-block;
-  margin-top: 28px;
-  color: #cf80ff;
+.modes-info p {
+  max-width: 410px;
+  color: #bcaec5;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.modes-info .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 30px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid rgba(200, 100, 255, 0.4);
+  color: #d58bff;
   font-family: "Press Start 2P", monospace;
   font-size: 8px;
   line-height: 1.8;
   transition: 0.2s;
 }
 
-.text-link:hover {
+.modes-info .text-link:hover {
   color: #fff;
+  border-color: #d58bff;
   transform: translateX(4px);
 }
+
+/* Kortelių tinklelis */
 
 .mode-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 15px;
+  counter-reset: mc-mode;
 }
 
+/* Kiekviena kortelė */
+
 .mode-card {
-  min-height: 145px;
+  position: relative;
+  isolation: isolate;
+  min-height: 155px;
   display: flex;
-  align-items: flex-start;
-  gap: 17px;
-  padding: 24px;
-  border: 1px solid rgba(184, 101, 228, 0.13);
-  border-radius: 7px;
-  background: rgba(18, 11, 25, 0.85);
-  transition: 0.2s;
+  align-items: center;
+  gap: 18px;
+  overflow: hidden;
+  padding: 27px 24px;
+  border: 1px solid rgba(172, 94, 212, 0.2);
+  border-radius: 8px;
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(121, 35, 166, 0.07),
+      transparent 65%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(24, 15, 32, 0.96),
+      rgba(12, 8, 18, 0.98)
+    );
+  counter-increment: mc-mode;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.mode-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(197, 91, 255, 0.8),
+    transparent
+  );
+  opacity: 0.3;
+  transition: opacity 0.25s;
+}
+
+.mode-card::after {
+  content: counter(mc-mode, decimal-leading-zero);
+  position: absolute;
+  top: 15px;
+  right: 17px;
+  color: rgba(195, 116, 239, 0.35);
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
 }
 
 .mode-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(196, 94, 255, 0.45);
-  background: rgba(31, 15, 42, 0.9);
+  transform: translateY(-5px);
+  border-color: rgba(202, 107, 255, 0.57);
+  background:
+    radial-gradient(
+      ellipse at 100% 0%,
+      rgba(140, 44, 190, 0.15),
+      transparent 65%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(32, 17, 43, 0.98),
+      rgba(14, 8, 20, 0.98)
+    );
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.28),
+    0 0 30px rgba(145, 43, 211, 0.07);
 }
 
+.mode-card:hover::before {
+  opacity: 1;
+}
+
+/* Ikona */
+
 .mode-icon {
-  width: 43px;
-  height: 43px;
+  position: relative;
+  width: 54px;
+  height: 54px;
   flex-shrink: 0;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(186, 85, 255, 0.28);
-  border-radius: 5px;
-  background: rgba(131, 35, 183, 0.12);
-  color: #c977ff;
-  font-size: 19px;
+  border: 1px solid rgba(195, 101, 255, 0.35);
+  border-radius: 7px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(116, 36, 157, 0.2),
+      rgba(45, 16, 64, 0.25)
+    );
+  color: #d384ff;
+  font-size: 24px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.mode-card:hover .mode-icon {
+  transform: scale(1.06);
+  border-color: rgba(218, 132, 255, 0.72);
+  box-shadow: 0 0 20px rgba(177, 62, 239, 0.13);
+}
+
+/* Kortelės tekstas */
+
+.mode-card > div:last-child {
+  min-width: 0;
+  padding-right: 8px;
 }
 
 .mode-card h3 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: #fff;
   font-family: "Press Start 2P", monospace;
-  font-size: 9px;
-  line-height: 1.6;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.7;
 }
 
 .mode-card p {
-  color: #aa9aaf;
+  color: #b8a9c2;
   font-size: 12px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
-/* ========================================
+/* =========================================
    CTA
-======================================== */
+========================================= */
 
 .cta-wrap {
   width: min(calc(100% - 64px), var(--container));
@@ -1226,9 +1369,9 @@ a:focus-visible {
   font-weight: 700;
 }
 
-/* ========================================
+/* =========================================
    FOOTER
-======================================== */
+========================================= */
 
 .footer {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -1313,9 +1456,9 @@ a:focus-visible {
   font-size: 11px;
 }
 
-/* ========================================
-   IP KOPIJAVIMO PRANEŠIMAS
-======================================== */
+/* =========================================
+   COPY TOAST
+========================================= */
 
 .copy-toast {
   position: fixed;
@@ -1343,9 +1486,9 @@ a:focus-visible {
   transform: translate(-50%, 0);
 }
 
-/* ========================================
-   PLANŠETĖS
-======================================== */
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media (max-width: 1250px) {
   .hero-inner {
@@ -1377,7 +1520,16 @@ a:focus-visible {
   }
 
   .modes {
-    gap: 45px;
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .modes-info {
+    max-width: 760px;
+  }
+
+  .modes-info h2 {
+    max-width: 100%;
   }
 }
 
@@ -1421,20 +1573,13 @@ a:focus-visible {
     min-height: 385px;
   }
 
-  .experience-top {
-    padding: 20px;
-  }
-
+  .experience-top,
   .experience-body {
     padding: 20px;
   }
 
   .experience-tags span {
     font-size: 5px;
-  }
-
-  .modes {
-    grid-template-columns: 1fr;
   }
 
   .cta {
@@ -1445,10 +1590,6 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 }
-
-/* ========================================
-   TELEFONAI
-======================================== */
 
 @media (max-width: 760px) {
   .nav-inner {
@@ -1500,20 +1641,12 @@ a:focus-visible {
     font-size: 14px;
   }
 
-  .hero-actions {
-    margin-bottom: 35px;
-  }
-
   .button {
     width: 100%;
   }
 
   .server-stats {
     max-width: 100%;
-  }
-
-  .stat {
-    padding-right: 10px;
   }
 
   .stat + .stat {
@@ -1583,10 +1716,7 @@ a:focus-visible {
     min-height: 420px;
   }
 
-  .experience-top {
-    padding: 24px;
-  }
-
+  .experience-top,
   .experience-body {
     padding: 24px;
   }
@@ -1612,8 +1742,47 @@ a:focus-visible {
     font-size: 6px;
   }
 
+  /* Naujos režimų kortelės telefone */
+
+  .modes {
+    padding-top: 10px;
+    gap: 35px;
+  }
+
+  .modes-info {
+    padding-left: 19px;
+  }
+
+  .modes-info h2 {
+    font-size: clamp(23px, 6vw, 34px);
+  }
+
+  .modes-info p {
+    font-size: 14px;
+  }
+
   .mode-cards {
     grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .mode-card {
+    min-height: 125px;
+    padding: 22px 19px;
+  }
+
+  .mode-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 21px;
+  }
+
+  .mode-card h3 {
+    font-size: 9px;
+  }
+
+  .mode-card p {
+    font-size: 12px;
   }
 
   .cta-wrap {
@@ -1682,10 +1851,6 @@ a:focus-visible {
     font-size: 5px;
   }
 }
-
-/* ========================================
-   MAŽIAU ANIMACIJŲ
-======================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
