@@ -4,14 +4,338 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="McStone.lt – lietuviškas Minecraft serveris. Survival, Dungeons, PvP, Events ir dar daugiau.">
+  <meta name="description" content="McStone.lt – lietuviškas Minecraft serveris. Survival, Dungeons, PvP ir dar daugiau.">
   <meta name="theme-color" content="#050407">
 
   <title>McStone.lt | Minecraft serveris</title>
 
   <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="style.css?v=61">
-  <link rel="stylesheet" href="background.css?v=4">
+  <link rel="stylesheet" href="style.css?v=62">
+  <link rel="stylesheet" href="background.css?v=5">
+
+  <style>
+    /* =========================================
+       MCSTONE HERO ATNAUJINIMAS
+       ========================================= */
+
+    /* Pašalinamas senas kvadratinis tinklelis */
+    .hero-grid {
+      display: none !important;
+      background: none !important;
+    }
+
+    .hero {
+      background-image: url("hero-bg.png") !important;
+      background-size: cover !important;
+      background-position: center center !important;
+    }
+
+    .hero-inner {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+      gap: clamp(45px, 5vw, 100px);
+    }
+
+    /* Dešinė pusė */
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .aura-glow {
+      position: absolute;
+      inset: 12%;
+      background: rgba(146, 43, 218, .14);
+      filter: blur(90px);
+      pointer-events: none;
+    }
+
+    /* Nauja kortelė */
+    .mc-showcase {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      max-width: 550px;
+      min-height: 455px;
+      margin: 0 auto;
+      padding: 38px 38px 30px;
+      overflow: hidden;
+      text-align: center;
+
+      clip-path: none;
+      border: 1px solid rgba(191, 91, 255, .32);
+      border-radius: 12px;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 5%,
+          rgba(134, 42, 179, .21),
+          transparent 65%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(24, 11, 34, .97),
+          rgba(10, 6, 17, .98)
+        );
+
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, .48),
+        0 0 40px rgba(159, 52, 230, .08),
+        inset 0 1px 0 rgba(255, 255, 255, .05);
+    }
+
+    .mc-showcase::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: .35;
+      pointer-events: none;
+
+      background-image:
+        radial-gradient(
+          circle,
+          rgba(187, 93, 247, .33) .8px,
+          transparent 1px
+        );
+      background-size: 19px 19px;
+    }
+
+    /* Subtilus viršutinis akcentas */
+    .mc-showcase::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 28%;
+      right: 28%;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #c36cff,
+        transparent
+      );
+      box-shadow: 0 0 18px rgba(196, 108, 255, .5);
+    }
+
+    .showcase-topline {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      color: #b38cc6;
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+      letter-spacing: 1px;
+    }
+
+    .topline-square {
+      width: 4px;
+      height: 4px;
+      background: #b959ed;
+      transform: rotate(45deg);
+    }
+
+    .showcase-logo {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 25px;
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(209, 108, 255, .55);
+      border-radius: 50%;
+      background:
+        radial-gradient(
+          circle,
+          rgba(89, 29, 118, .5),
+          rgba(16, 7, 25, .96)
+        );
+
+      box-shadow:
+        0 0 0 7px rgba(152, 53, 201, .07),
+        0 0 38px rgba(169, 55, 230, .18);
+    }
+
+    .showcase-logo img {
+      width: 96px;
+      height: 96px;
+      object-fit: contain;
+    }
+
+    .showcase-title {
+      margin-bottom: 9px;
+      color: #fff;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(21px, 2vw, 29px);
+      line-height: 1.4;
+    }
+
+    .showcase-title span {
+      color: #c16aff;
+    }
+
+    .showcase-subtitle {
+      color: #a997b1;
+      font-family: "Press Start 2P", monospace;
+      font-size: 6px;
+      line-height: 1.9;
+    }
+
+    /* Dekoratyvinė linija */
+    .showcase-divider {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin: 30px 0;
+      color: #b46be0;
+    }
+
+    .showcase-divider span {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(194, 92, 255, .35)
+      );
+    }
+
+    .showcase-divider span:last-child {
+      transform: rotate(180deg);
+    }
+
+    .showcase-divider i {
+      font-style: normal;
+      font-size: 9px;
+    }
+
+    /* Serverio IP */
+    .showcase-ip {
+      width: 100%;
+      min-height: 115px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+      padding: 22px 18px;
+
+      border: 1px solid rgba(188, 87, 243, .28);
+      border-radius: 7px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(104, 27, 141, .16),
+          rgba(38, 13, 53, .2)
+        );
+
+      color: #fff;
+      cursor: pointer;
+
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+    }
+
+    .showcase-ip:hover {
+      transform: translateY(-3px);
+      border-color: rgba(208, 117, 255, .7);
+      background: rgba(129, 39, 174, .24);
+    }
+
+    .showcase-ip small {
+      color: #a58caf;
+      font-family: "Press Start 2P", monospace;
+      font-size: 7px;
+    }
+
+    .showcase-ip strong {
+      color: #df9bff;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(10px, 1.1vw, 14px);
+      line-height: 1.6;
+      overflow-wrap: anywhere;
+      text-shadow: 0 0 18px rgba(191, 76, 249, .2);
+    }
+
+    .showcase-ip > span {
+      color: #9a849f;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+
+    .showcase-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 27px;
+      color: #8f799d;
+      font-family: "Press Start 2P", monospace;
+      font-size: 6px;
+    }
+
+    .showcase-footer-mark {
+      color: #c27bf0;
+      font-size: 9px;
+    }
+
+    /* Nebenaudojami seni kampai */
+    .showcase-corner {
+      display: none !important;
+    }
+
+    /* Išjungiam papildomas linijas tik HERO zonoje */
+    .hero .hero-grid,
+    .hero .visual-grid {
+      display: none !important;
+    }
+
+    @media (max-width: 1250px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 65px;
+      }
+
+      .mc-showcase {
+        max-width: 570px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .mc-showcase {
+        min-height: auto;
+        padding: 32px 22px 26px;
+      }
+
+      .showcase-topline {
+        font-size: 6px;
+      }
+
+      .showcase-title {
+        font-size: 22px;
+      }
+
+      .showcase-logo {
+        width: 96px;
+        height: 96px;
+      }
+
+      .showcase-logo img {
+        width: 82px;
+        height: 82px;
+      }
+
+      .showcase-ip strong {
+        font-size: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -20,7 +344,7 @@
   <div class="nav-inner">
 
     <a href="index.html" class="logo" aria-label="McStone.lt pradžia">
-      <img src="logo.png" alt="McStone.lt logotipas">
+      <img src="logo.png" alt="McStone.lt">
       <span>MCSTONE.LT</span>
     </a>
 
@@ -42,11 +366,9 @@
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
 
     <div class="hero-overlay"></div>
-    <div class="hero-grid"></div>
     <div class="hero-glow"></div>
 
     <div class="hero-inner">
@@ -108,17 +430,12 @@
 
       </div>
 
-      <!-- DEŠINĖS PUSĖS SERVERIO KORTELĖ -->
+
       <div class="hero-right">
 
         <div class="aura-glow"></div>
 
         <div class="mc-showcase">
-
-          <span class="showcase-corner corner-tl"></span>
-          <span class="showcase-corner corner-tr"></span>
-          <span class="showcase-corner corner-bl"></span>
-          <span class="showcase-corner corner-br"></span>
 
           <div class="showcase-topline">
             <span class="topline-square"></span>
@@ -127,7 +444,7 @@
           </div>
 
           <div class="showcase-logo">
-            <img src="logo.png" alt="McStone.lt">
+            <img src="logo.png" alt="McStone.lt logotipas">
           </div>
 
           <h2 class="showcase-title">
@@ -174,7 +491,6 @@
   </section>
 
 
-  <!-- NAUJA, SUTVARKYTA SEKCIJA -->
   <section class="section why-section">
 
     <div class="why-heading">
@@ -204,11 +520,9 @@
     </div>
 
 
-    <!-- MINECRAFT KORTELĖS -->
     <div class="experience-grid">
 
       <article class="experience-card survival-card">
-
         <div class="experience-image"></div>
         <div class="experience-shade"></div>
 
@@ -217,16 +531,11 @@
             <span class="label-dot"></span>
             ATRASK PASAULĮ
           </div>
-
           <span class="experience-number">01</span>
         </div>
 
         <div class="experience-body">
-
-          <span class="experience-small">
-            NUOTYKIS PRASIDEDA ČIA
-          </span>
-
+          <span class="experience-small">NUOTYKIS PRASIDEDA ČIA</span>
           <h3>SURVIVAL</h3>
 
           <p>
@@ -240,14 +549,11 @@
             <span>EKONOMIKA</span>
             <span>TYRINĖJIMAS</span>
           </div>
-
         </div>
-
       </article>
 
 
       <article class="experience-card dungeons-card">
-
         <div class="experience-image"></div>
         <div class="experience-shade"></div>
 
@@ -256,16 +562,11 @@
             <span class="label-dot"></span>
             IŠBANDYK SAVE
           </div>
-
           <span class="experience-number">02</span>
         </div>
 
         <div class="experience-body">
-
-          <span class="experience-small">
-            PASLAPTYS LAUKIA TAVĘS
-          </span>
-
+          <span class="experience-small">PASLAPTYS LAUKIA TAVĘS</span>
           <h3>DUNGEONS</h3>
 
           <p>
@@ -279,14 +580,11 @@
             <span>LOOT</span>
             <span>IŠŠŪKIAI</span>
           </div>
-
         </div>
-
       </article>
 
 
       <article class="experience-card pvp-card">
-
         <div class="experience-image"></div>
         <div class="experience-shade"></div>
 
@@ -295,16 +593,11 @@
             <span class="label-dot"></span>
             KOVOK DĖL PERGALĖS
           </div>
-
           <span class="experience-number">03</span>
         </div>
 
         <div class="experience-body">
-
-          <span class="experience-small">
-            PARODYK SAVO ĮGŪDŽIUS
-          </span>
-
+          <span class="experience-small">PARODYK SAVO ĮGŪDŽIUS</span>
           <h3>PVP</h3>
 
           <p>
@@ -318,9 +611,7 @@
             <span>VARŽYBOS</span>
             <span>PERGALĖS</span>
           </div>
-
         </div>
-
       </article>
 
     </div>
@@ -333,12 +624,10 @@
     </div>
 
 
-    <!-- ŽAIDIMO REŽIMAI -->
     <div class="modes">
 
       <div class="modes-info">
         <div class="mini-title">ŽAIDIMAS</div>
-
         <h2>RINKIS SAVO KELIĄ.</h2>
 
         <p>
@@ -409,9 +698,7 @@
   </section>
 
 
-  <!-- CTA -->
   <section class="cta-wrap">
-
     <div class="cta">
 
       <div class="cta-glow"></div>
@@ -448,7 +735,6 @@
       </button>
 
     </div>
-
   </section>
 
 </main>
