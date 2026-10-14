@@ -1,23 +1,13 @@
 
-/* ========================================
-   MCSTONE.LT — SECTION BACKGROUND
-   ======================================== */
+/* ==========================================
+   MCSTONE.LT
+   PIXEL DOT BACKGROUND
+   ========================================== */
 
-:root {
-  --section-purple: #a72cff;
-  --section-dark: #07040d;
-}
-
-/* Pagrindinis puslapio fonas */
+/* Pagrindinis fonas */
 
 body {
-  background:
-    radial-gradient(
-      ellipse 900px 520px at 50% 1150px,
-      rgba(105, 25, 160, 0.13),
-      transparent 75%
-    ),
-    #050407;
+  background-color: #050407;
 }
 
 /* KODĖL MCSTONE sekcija */
@@ -27,116 +17,122 @@ body {
   isolation: isolate;
 }
 
-/* Violetinis švytėjimas už kortelių */
+/* Labai daug mažų violetinių taškelių */
 
 .why-section::before {
   content: "";
   position: absolute;
-  z-index: -2;
-  top: 70px;
+
+  z-index: -1;
+
+  top: -70px;
+  bottom: -100px;
+
   left: 50%;
-  width: 110vw;
-  height: 850px;
+
+  width: 100vw;
+
   transform: translateX(-50%);
+
   pointer-events: none;
 
-  background:
+  background-image:
     radial-gradient(
-      ellipse 48% 38% at 20% 50%,
-      rgba(113, 32, 172, 0.15),
-      transparent 100%
-    ),
+      circle,
+      rgba(190, 100, 255, 0.48) 1px,
+      transparent 1.4px
+    );
+
+  /* Taškai kas 17 pikselių */
+  background-size: 17px 17px;
+
+  background-position: center top;
+
+  /* Švelniai išnyksta kraštuose */
+  mask-image:
     radial-gradient(
-      ellipse 45% 45% at 80% 45%,
-      rgba(93, 25, 148, 0.13),
-      transparent 100%
-    ),
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(23, 8, 35, 0.48) 30%,
-      rgba(18, 7, 29, 0.52) 65%,
-      transparent 100%
+      ellipse at 50% 45%,
+      black 5%,
+      rgba(0, 0, 0, 0.9) 40%,
+      transparent 88%
     );
 }
 
-/* Subtilus Minecraft blokų tinklelis */
+/* Silpnas violetinis apšvietimas */
 
 .why-section::after {
   content: "";
   position: absolute;
-  z-index: -1;
-  top: 80px;
+
+  z-index: -2;
+
+  top: 0;
+  bottom: -100px;
+
   left: 50%;
+
   width: 100vw;
-  height: 800px;
+
   transform: translateX(-50%);
+
   pointer-events: none;
-  opacity: 0.22;
 
-  background-image:
-    linear-gradient(
-      rgba(194, 91, 255, 0.045) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(194, 91, 255, 0.045) 1px,
-      transparent 1px
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(100, 25, 145, 0.11),
+      transparent 75%
     );
-
-  background-size: 64px 64px;
-
-  mask-image: linear-gradient(
-    180deg,
-    transparent,
-    black 25%,
-    black 70%,
-    transparent
-  );
 }
 
-/* Kortelių šešėliai */
+/* Kortelės lieka virš taškelių */
 
-.experience-card {
-  box-shadow:
-    0 18px 50px rgba(0, 0, 0, 0.38),
-    0 0 35px rgba(135, 37, 190, 0.04);
-}
-
-.experience-card:hover {
-  box-shadow:
-    0 28px 70px rgba(0, 0, 0, 0.55),
-    0 0 40px rgba(160, 53, 230, 0.13);
-}
-
-/* Apačioje švelnus perėjimas */
-
-.section-separator {
+.experience-grid {
   position: relative;
   z-index: 1;
 }
 
+.experience-card {
+  position: relative;
+  overflow: hidden;
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+/* Taškeliai taip pat už žaidimo sekcijos */
+
+.modes {
+  position: relative;
+  z-index: 1;
+}
+
+/* Telefonams */
+
 @media (max-width: 760px) {
+
   .why-section::before {
-    height: 1500px;
-    top: 40px;
-    background:
+    top: -35px;
+    bottom: -70px;
+
+    background-size: 15px 15px;
+
+    background-image:
       radial-gradient(
-        ellipse at center,
-        rgba(110, 28, 170, 0.13),
-        transparent 75%
+        circle,
+        rgba(190, 100, 255, 0.4) 0.8px,
+        transparent 1.2px
       );
   }
 
-  .why-section::after {
-    height: 1500px;
-    background-size: 48px 48px;
-  }
 }
 
+/* Mažiau judesio */
+
 @media (prefers-reduced-motion: reduce) {
+
   .experience-card {
     transition: none;
   }
+
 }
