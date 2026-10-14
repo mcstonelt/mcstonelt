@@ -15,83 +15,32 @@
     content="McStone.lt – lietuviškas Minecraft serveris. Survival, Dungeons, PvP, Events ir dar daugiau."
   >
 
-  <meta
-    name="theme-color"
-    content="#050407"
-  >
+  <meta name="theme-color" content="#050407">
 
   <title>McStone.lt | Minecraft serveris</title>
 
-  <link
-    rel="icon"
-    type="image/png"
-    href="logo.png"
-  >
+  <link rel="icon" type="image/png" href="logo.png">
 
-  <link
-    rel="stylesheet"
-    href="style.css?v=52"
-  >
-
-  <link
-    rel="stylesheet"
-    href="background.css?v=3"
-  >
-
+  <link rel="stylesheet" href="style.css?v=52">
+  <link rel="stylesheet" href="background.css?v=4">
 </head>
 
 <body>
 
-  <!-- NAVIGACIJA -->
-
   <header class="navbar">
-
     <div class="nav-inner">
 
-      <a
-        href="index.html"
-        class="logo"
-        aria-label="McStone.lt pradžia"
-      >
-
-        <img
-          src="logo.png"
-          alt="McStone.lt logotipas"
-        >
-
+      <a href="index.html" class="logo" aria-label="McStone.lt pradžia">
+        <img src="logo.png" alt="McStone.lt logotipas">
         <span>MCSTONE.LT</span>
-
       </a>
 
-
-      <nav
-        class="nav-links"
-        aria-label="Pagrindinė navigacija"
-      >
-
-        <a
-          href="index.html"
-          class="active"
-        >
-          Pradžia
-        </a>
-
-        <a href="informacija.html">
-          Informacija
-        </a>
-
-        <a href="naujienos.html">
-          Naujienos
-        </a>
-
-        <a href="komanda.html">
-          Komanda
-        </a>
-
-        <a href="discord.html">
-          Discord
-        </a>
-
+      <nav class="nav-links" aria-label="Pagrindinė navigacija">
+        <a href="index.html" class="active">Pradžia</a>
+        <a href="informacija.html">Informacija</a>
+        <a href="naujienos.html">Naujienos</a>
+        <a href="komanda.html">Komanda</a>
+        <a href="discord.html">Discord</a>
         <a
           href="https://mcstonelt.tebex.io/"
           target="_blank"
@@ -99,20 +48,13 @@
         >
           Parduotuvė
         </a>
-
       </nav>
 
-
-      <button
-        class="nav-ip"
-        type="button"
-        onclick="copyIP(this)"
-      >
+      <button class="nav-ip" type="button" onclick="copyIP(this)">
         MCSTONE.SRW.LT
       </button>
 
     </div>
-
   </header>
 
 
@@ -126,125 +68,69 @@
       <div class="hero-grid"></div>
       <div class="hero-glow"></div>
 
-
       <div class="hero-inner">
-
-        <!-- KAIRĖ -->
 
         <div class="hero-left">
 
           <div class="hero-tag">
-
             <span></span>
-
             SURVIVAL
-
             <b>•</b>
-
             DUNGEONS
-
             <b>•</b>
-
             EVENTS
-
             <b>•</b>
-
             PVP
-
             <b>•</b>
-
             IR DAR DAUGIAU
-
           </div>
 
-
           <h1 class="hero-title">
-
             MC<span>STONE</span><em>.LT</em>
-
           </h1>
 
-
           <div class="hero-description">
-
             <div class="hero-description-line"></div>
 
             <p>
-
               <strong>McStone</strong> – vienas populiariausių
               lietuviškų Minecraft serverių, subūręs aktyvią
-              ir nuolat augančią bendruomenę.
-
-              Tavęs laukia
-
+              ir nuolat augančią bendruomenę. Tavęs laukia
               <strong>Survival</strong>,
-
               <strong>Dungeons</strong>,
-
               <strong>Events</strong>,
-
               <strong>PvP</strong>,
-
               išvystyta ekonomika, unikalios sistemos bei
-              nuolat atnaujinamas turinys.
-
-              Kurk savo istoriją, varžykis su kitais
-              ir tapk <strong>McStone</strong>
-              bendruomenės dalimi.
-
+              nuolat atnaujinamas turinys. Kurk savo istoriją,
+              varžykis su kitais ir tapk
+              <strong>McStone</strong> bendruomenės dalimi.
             </p>
-
           </div>
 
-
           <div class="hero-actions">
-
             <a
               href="https://discord.gg/xH5VDRtM7v"
               target="_blank"
               rel="noopener noreferrer"
               class="button button-dark"
             >
-
               DISCORD
-
             </a>
-
           </div>
-
-
-          <!-- SERVERIO INFORMACIJA -->
 
           <div class="server-stats">
 
             <div class="stat">
-
               <span>VERSIJA</span>
-
-              <strong id="serverVersion">
-                1.21.11
-              </strong>
-
+              <strong id="serverVersion">1.21.11</strong>
             </div>
 
-
             <div class="stat">
-
               <span>STATUSAS</span>
-
-              <strong
-                class="server-status"
-                id="serverStatus"
-              >
-
+              <strong class="server-status" id="serverStatus">
                 <i id="serverDot"></i>
-
-                <span id="serverStatusText">
-                  TIKRINAMA...
-                </span>
-
+                <span id="serverStatusText">TIKRINAMA...</span>
               </strong>
-
             </div>
 
           </div>
@@ -252,124 +138,67 @@
         </div>
 
 
-        <!-- DEŠINĖ -->
+        <!-- DEŠINĖS PUSĖS KORTELĖ -->
 
         <div class="hero-right">
 
           <div class="aura-glow"></div>
 
-
           <div class="mc-showcase">
 
-            <span
-              class="showcase-corner corner-tl"
-            ></span>
-
-            <span
-              class="showcase-corner corner-tr"
-            ></span>
-
-            <span
-              class="showcase-corner corner-bl"
-            ></span>
-
-            <span
-              class="showcase-corner corner-br"
-            ></span>
-
+            <span class="showcase-corner corner-tl"></span>
+            <span class="showcase-corner corner-tr"></span>
+            <span class="showcase-corner corner-bl"></span>
+            <span class="showcase-corner corner-br"></span>
 
             <div class="showcase-topline">
-
               <span class="topline-square"></span>
-
               MCSTONE NETWORK
-
               <span class="topline-square"></span>
-
             </div>
-
 
             <div class="showcase-logo">
-
-              <img
-                src="logo.png"
-                alt="McStone.lt logotipas"
-              >
-
+              <img src="logo.png" alt="McStone.lt logotipas">
             </div>
-
 
             <h2 class="showcase-title">
-
               MC<span>STONE</span>
-
             </h2>
 
-
             <p class="showcase-subtitle">
-
               LIETUVIŠKAS MINECRAFT SERVERIS
-
             </p>
 
-
             <div class="showcase-divider">
-
               <span></span>
-
               <i>◆</i>
-
               <span></span>
-
             </div>
-
 
             <button
               class="showcase-ip"
               type="button"
               onclick="copyIP(this)"
             >
-
-              <small>
-                SERVERIO IP
-              </small>
-
-              <strong>
-                MCSTONE.SRW.LT
-              </strong>
-
-              <span>
-                SPAUSK, KAD NUKOPIJUOTUM
-              </span>
-
+              <small>SERVERIO IP</small>
+              <strong>MCSTONE.SRW.LT</strong>
+              <span>SPAUSK, KAD NUKOPIJUOTUM</span>
             </button>
 
-
             <div class="showcase-footer">
-
               <span>JAVA EDITION</span>
-
-              <span class="showcase-footer-mark">
-                ◆
-              </span>
-
+              <span class="showcase-footer-mark">◆</span>
               <span>MCSTONE.LT</span>
-
             </div>
 
           </div>
-
         </div>
 
       </div>
 
-
       <div class="scroll-hint">
-
         <span></span>
-
         DAUGIAU
-
       </div>
 
     </section>
@@ -384,39 +213,26 @@
         <div>
 
           <div class="section-eyebrow">
-
             <span class="eyebrow-line"></span>
-
             KODĖL MCSTONE?
-
           </div>
 
-
           <h2>
-
             VIENAS SERVERIS.
-
             <br>
-
             <span>DAUGYBĖ GALIMYBIŲ.</span>
-
           </h2>
 
         </div>
 
-
         <p class="why-intro">
-
           Atrask skirtingus žaidimo būdus,
           patirk naujus nuotykius ir kurk
           savo istoriją McStone pasaulyje.
-
         </p>
 
       </div>
 
-
-      <!-- TRYS NUOTRAUKŲ KORTELĖS -->
 
       <div class="experience-grid">
 
@@ -425,56 +241,35 @@
         <article class="experience-card survival-card">
 
           <div class="experience-image"></div>
-
           <div class="experience-shade"></div>
 
-
           <div class="experience-top">
-
             <div class="experience-label">
-
               <span class="label-dot"></span>
-
               ATRASK PASAULĮ
-
             </div>
 
-            <span class="experience-number">
-              01
-            </span>
-
+            <span class="experience-number">01</span>
           </div>
-
 
           <div class="experience-body">
 
             <span class="experience-small">
-
               NUOTYKIS PRASIDEDA ČIA
-
             </span>
-
 
             <h3>SURVIVAL</h3>
 
-
             <p>
-
               Statyk savo bazę, tyrinėk pasaulį,
               rink resursus ir kurk savo istoriją
               kartu su bendruomene.
-
             </p>
 
-
             <div class="experience-tags">
-
               <span>STATYBOS</span>
-
               <span>EKONOMIKA</span>
-
               <span>TYRINĖJIMAS</span>
-
             </div>
 
           </div>
@@ -487,56 +282,35 @@
         <article class="experience-card dungeons-card">
 
           <div class="experience-image"></div>
-
           <div class="experience-shade"></div>
 
-
           <div class="experience-top">
-
             <div class="experience-label">
-
               <span class="label-dot"></span>
-
               IŠBANDYK SAVE
-
             </div>
 
-            <span class="experience-number">
-              02
-            </span>
-
+            <span class="experience-number">02</span>
           </div>
-
 
           <div class="experience-body">
 
             <span class="experience-small">
-
               PASLAPTYS LAUKIA TAVĘS
-
             </span>
-
 
             <h3>DUNGEONS</h3>
 
-
             <p>
-
               Leiskis į pavojingus požemius,
               įveik priešus ir atrask retus
               bei vertingus apdovanojimus.
-
             </p>
 
-
             <div class="experience-tags">
-
               <span>BOSSAI</span>
-
               <span>LOOT</span>
-
               <span>IŠŠŪKIAI</span>
-
             </div>
 
           </div>
@@ -549,56 +323,35 @@
         <article class="experience-card pvp-card">
 
           <div class="experience-image"></div>
-
           <div class="experience-shade"></div>
 
-
           <div class="experience-top">
-
             <div class="experience-label">
-
               <span class="label-dot"></span>
-
               KOVOK DĖL PERGALĖS
-
             </div>
 
-            <span class="experience-number">
-              03
-            </span>
-
+            <span class="experience-number">03</span>
           </div>
-
 
           <div class="experience-body">
 
             <span class="experience-small">
-
               PARODYK SAVO ĮGŪDŽIUS
-
             </span>
-
 
             <h3>PVP</h3>
 
-
             <p>
-
               Susirung su kitais žaidėjais,
               tobulink kovos įgūdžius
               ir siek pergalių.
-
             </p>
 
-
             <div class="experience-tags">
-
               <span>KOVOS</span>
-
               <span>VARŽYBOS</span>
-
               <span>PERGALĖS</span>
-
             </div>
 
           </div>
@@ -608,16 +361,10 @@
       </div>
 
 
-      <!-- SKYRIŲ ATSKYRIMAS -->
-
       <div class="section-separator">
-
         <span></span>
-
         <b>ATRASK DAR DAUGIAU</b>
-
         <span></span>
-
       </div>
 
 
@@ -627,36 +374,18 @@
 
         <div class="modes-info">
 
-          <div class="mini-title">
-            ŽAIDIMAS
-          </div>
+          <div class="mini-title">ŽAIDIMAS</div>
 
-
-          <h2>
-
-            RINKIS SAVO KELIĄ.
-
-          </h2>
-
+          <h2>RINKIS SAVO KELIĄ.</h2>
 
           <p>
-
-            McStone nėra tik paprastas
-            Survival serveris.
-
-            Čia rasi skirtingų veiklų,
-            todėl visada turėsi ką veikti.
-
+            McStone nėra tik paprastas Survival serveris.
+            Čia rasi skirtingų veiklų, todėl visada
+            turėsi ką veikti.
           </p>
 
-
-          <a
-            href="informacija.html"
-            class="text-link"
-          >
-
+          <a href="informacija.html" class="text-link">
             DAUGIAU APIE SERVERĮ →
-
           </a>
 
         </div>
@@ -665,123 +394,51 @@
         <div class="mode-cards">
 
           <article class="mode-card">
-
             <div class="mode-icon">⛏</div>
-
             <div>
-
               <h3>SURVIVAL</h3>
-
-              <p>
-
-                Statyk, rink resursus
-                ir tobulink savo bazę.
-
-              </p>
-
+              <p>Statyk, rink resursus ir tobulink savo bazę.</p>
             </div>
-
           </article>
 
-
           <article class="mode-card">
-
             <div class="mode-icon">☠</div>
-
             <div>
-
               <h3>DUNGEONS</h3>
-
-              <p>
-
-                Tyrinėk požemius, kovok
-                ir rink vertingą loot'ą.
-
-              </p>
-
+              <p>Tyrinėk požemius, kovok ir rink vertingą loot'ą.</p>
             </div>
-
           </article>
 
-
           <article class="mode-card">
-
             <div class="mode-icon">⚔</div>
-
             <div>
-
               <h3>PVP</h3>
-
-              <p>
-
-                Kovok prieš kitus
-                serverio žaidėjus.
-
-              </p>
-
+              <p>Kovok prieš kitus serverio žaidėjus.</p>
             </div>
-
           </article>
 
-
           <article class="mode-card">
-
             <div class="mode-icon">★</div>
-
             <div>
-
               <h3>EVENTS</h3>
-
-              <p>
-
-                Dalyvauk renginiuose
-                ir laimėk prizus.
-
-              </p>
-
+              <p>Dalyvauk renginiuose ir laimėk prizus.</p>
             </div>
-
           </article>
 
-
           <article class="mode-card">
-
             <div class="mode-icon">◆</div>
-
             <div>
-
               <h3>EKONOMIKA</h3>
-
-              <p>
-
-                Uždirbk, prekiauk
-                ir augink savo turtą.
-
-              </p>
-
+              <p>Uždirbk, prekiauk ir augink savo turtą.</p>
             </div>
-
           </article>
 
-
           <article class="mode-card">
-
             <div class="mode-icon">+</div>
-
             <div>
-
               <h3>IR DAR DAUGIAU</h3>
-
-              <p>
-
-                Naujos veiklos,
-                atnaujinimai ir
-                papildomas turinys.
-
-              </p>
-
+              <p>Naujos veiklos, atnaujinimai ir papildomas turinys.</p>
             </div>
-
           </article>
 
         </div>
@@ -791,7 +448,7 @@
     </section>
 
 
-    <!-- PRISIJUNGIMO SEKCIJA -->
+    <!-- PRISIJUNK -->
 
     <section class="cta-wrap">
 
@@ -799,34 +456,21 @@
 
         <div class="cta-glow"></div>
 
-
         <div class="cta-content">
 
-          <div class="mini-title">
-            PRADĖK DABAR
-          </div>
-
+          <div class="mini-title">PRADĖK DABAR</div>
 
           <h2>
-
             PASIRUOŠĘS
-
             <br>
-
             PRISIJUNGTI?
-
           </h2>
 
-
           <p>
-
             Paleisk Minecraft Java Edition,
-            pridėk McStone serverį ir
-            pradėk savo kelionę kartu
-            su mūsų bendruomene.
-
+            pridėk McStone serverį ir pradėk
+            savo kelionę kartu su mūsų bendruomene.
           </p>
-
 
           <a
             href="https://discord.gg/xH5VDRtM7v"
@@ -834,34 +478,19 @@
             rel="noopener noreferrer"
             class="button button-dark"
           >
-
             PRISIJUNGTI PRIE DISCORD
-
           </a>
 
         </div>
-
 
         <button
           class="big-ip"
           type="button"
           onclick="copyIP(this)"
         >
-
-          <small>
-            SERVERIO ADRESAS
-          </small>
-
-
-          <strong>
-            MCSTONE.SRW.LT
-          </strong>
-
-
-          <span>
-            SPAUSK, KAD NUKOPIJUOTUM
-          </span>
-
+          <small>SERVERIO ADRESAS</small>
+          <strong>MCSTONE.SRW.LT</strong>
+          <span>SPAUSK, KAD NUKOPIJUOTUM</span>
         </button>
 
       </div>
@@ -879,25 +508,13 @@
 
       <div class="footer-brand">
 
-        <img
-          src="logo.png"
-          alt="McStone.lt"
-        >
+        <img src="logo.png" alt="McStone.lt">
 
         <div>
-
-          <strong>
-            MCSTONE.LT
-          </strong>
-
-
+          <strong>MCSTONE.LT</strong>
           <p>
-
-            Vienas populiariausių
-            lietuviškų Minecraft serverių.
-
+            Vienas populiariausių lietuviškų Minecraft serverių.
           </p>
-
         </div>
 
       </div>
@@ -906,36 +523,16 @@
       <div class="footer-links">
 
         <div>
-
           <b>PUSLAPIAI</b>
-
-          <a href="index.html">
-            Pradžia
-          </a>
-
-          <a href="informacija.html">
-            Informacija
-          </a>
-
-          <a href="naujienos.html">
-            Naujienos
-          </a>
-
-          <a href="komanda.html">
-            Komanda
-          </a>
-
+          <a href="index.html">Pradžia</a>
+          <a href="informacija.html">Informacija</a>
+          <a href="naujienos.html">Naujienos</a>
+          <a href="komanda.html">Komanda</a>
         </div>
 
-
         <div>
-
           <b>BENDRUOMENĖ</b>
-
-          <a href="discord.html">
-            Discord
-          </a>
-
+          <a href="discord.html">Discord</a>
           <a
             href="https://mcstonelt.tebex.io/"
             target="_blank"
@@ -943,49 +540,28 @@
           >
             Parduotuvė
           </a>
-
         </div>
 
-
         <div>
-
           <b>SERVERIS</b>
-
-          <span>
-            MCSTONE.SRW.LT
-          </span>
-
-          <span>
-            Java Edition
-          </span>
-
-          <span id="footerStatus">
-            Tikrinama...
-          </span>
-
+          <span>MCSTONE.SRW.LT</span>
+          <span>Java Edition</span>
+          <span id="footerStatus">Tikrinama...</span>
         </div>
 
       </div>
 
     </div>
 
-
     <div class="footer-bottom">
-
-      <span>
-        © 2026 MCSTONE.LT
-      </span>
-
-      <span>
-        Lietuviškas Minecraft serveris
-      </span>
-
+      <span>© 2026 MCSTONE.LT</span>
+      <span>Lietuviškas Minecraft serveris</span>
     </div>
 
   </footer>
 
 
-  <!-- IP NUKOPIJAVIMO PRANEŠIMAS -->
+  <!-- IP PRANEŠIMAS -->
 
   <div
     class="copy-toast"
@@ -993,13 +569,9 @@
     role="status"
     aria-live="polite"
   >
-
     ✓ MCSTONE.SRW.LT NUKOPIJUOTAS
-
   </div>
 
-
-  <!-- JAVASCRIPT -->
 
   <script src="script.js?v=45"></script>
 
