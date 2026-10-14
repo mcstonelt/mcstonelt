@@ -1,153 +1,165 @@
 
-/* ==========================================
-   MCSTONE.LT
-   SUBTLE PIXEL DOT BACKGROUND
-   ========================================== */
+/* ========================================
+   MCSTONE.LT — BACKGROUND
+   Smulkūs violetiniai taškeliai
+   Be kvadratinio tinklelio
+======================================== */
 
-body {
-  background-color: #050407;
+:root {
+  --background-base: #060409;
+  --background-purple: #b951ef;
 }
 
-/* Pagrindinė sekcija */
+/* Bendras fonas */
+
+body {
+  background: var(--background-base);
+}
+
+/* Hero fonui papildomų raštų nededame */
+
+.hero {
+  background-image: url("hero-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-grid,
+.visual-grid {
+  display: none !important;
+  background-image: none !important;
+}
+
+/* ========================================
+   SMULKIŲ TAŠKELIŲ SEKCIJA
+======================================== */
 
 .why-section {
   position: relative;
   isolation: isolate;
 }
 
-/* Smulkūs violetiniai taškeliai */
+/* Taškeliai per visą sekciją */
 
 .why-section::before {
   content: "";
   position: absolute;
   z-index: -1;
-
-  top: 190px;
-  bottom: 80px;
-  left: 50%;
-
-  width: 100vw;
-  transform: translateX(-50%);
-
+  inset: 0;
   pointer-events: none;
 
-  background-image:
-    radial-gradient(
-      circle,
-      rgba(187, 92, 255, 0.28) 0.65px,
-      transparent 1px
-    );
+  background-image: radial-gradient(
+    circle,
+    rgba(185, 81, 239, 0.38) 0.75px,
+    transparent 1.1px
+  );
 
-  background-size: 20px 20px;
+  background-size: 18px 18px;
   background-position: center top;
 
-  -webkit-mask-image:
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.45) 17%,
-      black 40%,
-      rgba(0, 0, 0, 0.55) 72%,
-      transparent 100%
-    );
+  opacity: 0.42;
 
-  mask-image:
-    linear-gradient(
-      180deg,
-      transparent 0%,
-      rgba(0, 0, 0, 0.45) 17%,
-      black 40%,
-      rgba(0, 0, 0, 0.55) 72%,
-      transparent 100%
-    );
+  mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 12%,
+    #000 85%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    #000 12%,
+    #000 85%,
+    transparent 100%
+  );
 }
 
-/* Švelnus violetinis apšvietimas */
+/* Švelnus violetinis švytėjimas */
 
 .why-section::after {
   content: "";
   position: absolute;
   z-index: -2;
-
-  top: 250px;
+  top: 0;
   left: 50%;
-
-  width: 100vw;
-  height: 580px;
-
+  width: 100%;
+  height: 700px;
   transform: translateX(-50%);
   pointer-events: none;
 
-  background:
-    radial-gradient(
-      ellipse at 50% 50%,
-      rgba(105, 28, 150, 0.095),
-      transparent 70%
-    );
+  background: radial-gradient(
+    ellipse at center top,
+    rgba(100, 28, 143, 0.10),
+    transparent 65%
+  );
 }
 
-/* Antraštė */
-
-.why-heading {
-  position: relative;
-  z-index: 1;
-}
-
-/* Kortelės */
-
-.experience-grid {
-  position: relative;
-  z-index: 1;
-}
+/* ========================================
+   KORTELIŲ FONAI
+======================================== */
 
 .experience-card {
-  position: relative;
-
-  box-shadow:
-    0 20px 55px rgba(0, 0, 0, 0.48);
+  background-color: #110a17;
 }
 
-.experience-card:hover {
-  box-shadow:
-    0 25px 65px rgba(0, 0, 0, 0.55),
-    0 0 30px rgba(168, 55, 225, 0.12);
+/* Tik nuotraukos, jokių tinklelių */
+
+.experience-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-/* Sekcijų atskyrimas */
-
-.section-separator {
-  position: relative;
-  z-index: 1;
-}
-
-/* Žaidimo režimai */
+/* ========================================
+   REŽIMŲ SEKCIJA
+======================================== */
 
 .modes {
   position: relative;
-  z-index: 1;
 }
 
-/* Telefonams */
+/* ========================================
+   CTA FONAS
+======================================== */
+
+.cta {
+  background-image:
+    radial-gradient(
+      ellipse at 12% 90%,
+      rgba(143, 41, 194, 0.15),
+      transparent 55%
+    ),
+    linear-gradient(
+      120deg,
+      #1a0b25,
+      #09060e
+    );
+}
+
+/* ========================================
+   TELEFONAI
+======================================== */
 
 @media (max-width: 760px) {
-
   .why-section::before {
-    top: 230px;
-    bottom: 120px;
-
-    background-size: 19px 19px;
-
-    background-image:
-      radial-gradient(
-        circle,
-        rgba(187, 92, 255, 0.24) 0.6px,
-        transparent 1px
-      );
+    background-size: 21px 21px;
+    opacity: 0.3;
   }
 
   .why-section::after {
-    top: 350px;
-    height: 1100px;
+    height: 450px;
   }
+}
 
+/* ========================================
+   PRIEINAMUMAS
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-image {
+    transition: none;
+  }
 }
