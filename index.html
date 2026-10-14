@@ -4,26 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="McStone.lt – lietuviškas Minecraft serveris. Survival, Dungeons, Events, PvP ir dar daugiau.">
+  <meta name="description" content="McStone.lt – lietuviškas Minecraft serveris. Survival, Dungeons, PvP, Events ir dar daugiau.">
   <meta name="theme-color" content="#08050d">
 
   <title>McStone.lt | Minecraft serveris</title>
 
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="stylesheet" href="style.css?v=81">
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css?v=90">
 </head>
 
 <body>
 
+  <!-- NAVIGACIJA -->
+
   <header class="navbar">
     <div class="nav-inner">
 
-      <a href="index.html" class="logo" aria-label="McStone.lt pradžia">
-        <img src="logo.png" alt="McStone.lt">
+      <a href="index.html" class="logo">
+        <img src="logo.png" alt="McStone.lt logotipas">
         <span>MCSTONE.LT</span>
       </a>
 
-      <nav class="nav-links" aria-label="Pagrindinė navigacija">
+      <nav class="nav-links">
         <a class="active" href="index.html">Pradžia</a>
         <a href="informacija.html">Informacija</a>
         <a href="naujienos.html">Naujienos</a>
@@ -116,7 +118,7 @@
         </div>
 
 
-        <!-- DEŠINĖ KORTELĖ -->
+        <!-- DEŠINĖ HERO KORTELĖ -->
 
         <div class="hero-right">
 
@@ -136,7 +138,7 @@
             </div>
 
             <div class="showcase-logo">
-              <img src="logo.png" alt="McStone.lt logotipas">
+              <img src="logo.png" alt="McStone.lt">
             </div>
 
             <div class="showcase-title">
@@ -157,7 +159,6 @@
               class="showcase-ip"
               type="button"
               onclick="copyIP(this)"
-              aria-label="Nukopijuoti McStone serverio IP"
             >
               <small>SERVERIO ADRESAS</small>
               <strong>MCSTONE.SRW.LT</strong>
@@ -184,11 +185,9 @@
     </section>
 
 
-    <!-- PROFESIONALI KODĖL MCSTONE SEKCIJA -->
+    <!-- KODĖL MCSTONE -->
 
     <section class="section why-section" id="kodel-mcstone">
-
-      <div class="why-ambient"></div>
 
       <div class="why-heading">
 
@@ -196,7 +195,7 @@
 
           <div class="section-eyebrow">
             <span class="eyebrow-line"></span>
-            <span>ATRASK MCSTONE</span>
+            KODĖL MCSTONE?
           </div>
 
           <h2>
@@ -207,58 +206,54 @@
         </div>
 
         <p class="why-intro">
-          Nuo pirmosios bazės iki didžiausių nuotykių.
-          Atrask pasaulį, kuriame kiekvienas žaidėjas
-          gali pasirinkti savo kelią.
+          Atrask skirtingus žaidimo būdus,
+          patirk naujus nuotykius ir kurk
+          savo istoriją McStone pasaulyje.
         </p>
 
       </div>
 
 
+      <!-- NAUJOS KORTELĖS -->
+
       <div class="experience-grid">
 
         <!-- SURVIVAL -->
 
-        <article class="experience-card experience-survival">
+        <article class="experience-card survival-card">
 
-          <div class="experience-art" aria-hidden="true">
-            <div class="art-light"></div>
-            <div class="pixel-sun"></div>
+          <div class="experience-image"></div>
+          <div class="experience-shade"></div>
 
-            <div class="pixel-mountain mountain-back"></div>
-            <div class="pixel-mountain mountain-front"></div>
+          <div class="experience-top">
 
-            <div class="pixel-tree tree-one">
-              <span class="tree-crown"></span>
-              <span class="tree-trunk"></span>
-            </div>
+            <span class="experience-label">
+              <span class="label-dot"></span>
+              ATRASK PASAULĮ
+            </span>
 
-            <div class="pixel-tree tree-two">
-              <span class="tree-crown"></span>
-              <span class="tree-trunk"></span>
-            </div>
+            <span class="experience-number">01</span>
 
-            <div class="pixel-ground"></div>
           </div>
 
-          <div class="experience-content">
+          <div class="experience-body">
 
-            <div class="experience-meta">
-              <span class="experience-index">01 / 03</span>
-              <span class="experience-category">PASAULIS</span>
-            </div>
+            <span class="experience-small">
+              NUOTYKIS PRASIDEDA ČIA
+            </span>
 
             <h3>SURVIVAL</h3>
 
             <p>
-              Kurk savo bazę, tyrinėk pasaulį, rink
-              resursus ir augink savo istoriją kartu
-              su bendruomene.
+              Statyk savo bazę, tyrinėk pasaulį,
+              rink resursus ir kurk savo istoriją
+              kartu su bendruomene.
             </p>
 
-            <div class="experience-bottom">
-              <span>STATYK · TYRINĖK · TOBULĖK</span>
-              <span class="experience-arrow">↗</span>
+            <div class="experience-tags">
+              <span>STATYBOS</span>
+              <span>EKONOMIKA</span>
+              <span>TYRINĖJIMAS</span>
             </div>
 
           </div>
@@ -268,41 +263,40 @@
 
         <!-- DUNGEONS -->
 
-        <article class="experience-card experience-dungeons">
+        <article class="experience-card dungeons-card">
 
-          <div class="experience-art" aria-hidden="true">
-            <div class="art-light"></div>
+          <div class="experience-image"></div>
+          <div class="experience-shade"></div>
 
-            <div class="dungeon-arch">
-              <div class="dungeon-arch-inner"></div>
-            </div>
+          <div class="experience-top">
 
-            <div class="dungeon-step step-one"></div>
-            <div class="dungeon-step step-two"></div>
-            <div class="dungeon-step step-three"></div>
+            <span class="experience-label">
+              <span class="label-dot"></span>
+              IŠBANDYK SAVE
+            </span>
 
-            <div class="dungeon-flame flame-left"></div>
-            <div class="dungeon-flame flame-right"></div>
+            <span class="experience-number">02</span>
+
           </div>
 
-          <div class="experience-content">
+          <div class="experience-body">
 
-            <div class="experience-meta">
-              <span class="experience-index">02 / 03</span>
-              <span class="experience-category">NUOTYKIAI</span>
-            </div>
+            <span class="experience-small">
+              PASLAPTYS LAUKIA TAVĘS
+            </span>
 
             <h3>DUNGEONS</h3>
 
             <p>
-              Leiskis į paslaptingus požemius,
-              įveik iššūkius ir atrask vertingus
-              apdovanojimus.
+              Leiskis į pavojingus požemius,
+              įveik priešus ir atrask retus
+              bei vertingus apdovanojimus.
             </p>
 
-            <div class="experience-bottom">
-              <span>TYRINĖK · KOVOK · ATRASK</span>
-              <span class="experience-arrow">↗</span>
+            <div class="experience-tags">
+              <span>BOSSAI</span>
+              <span>LOOT</span>
+              <span>IŠŠŪKIAI</span>
             </div>
 
           </div>
@@ -312,49 +306,40 @@
 
         <!-- PVP -->
 
-        <article class="experience-card experience-pvp">
+        <article class="experience-card pvp-card">
 
-          <div class="experience-art" aria-hidden="true">
-            <div class="art-light"></div>
+          <div class="experience-image"></div>
+          <div class="experience-shade"></div>
 
-            <div class="arena-ring"></div>
-            <div class="arena-floor"></div>
+          <div class="experience-top">
 
-            <div class="pixel-sword sword-left">
-              <span class="sword-blade"></span>
-              <span class="sword-guard"></span>
-              <span class="sword-handle"></span>
-            </div>
+            <span class="experience-label">
+              <span class="label-dot"></span>
+              KOVOK DĖL PERGALĖS
+            </span>
 
-            <div class="pixel-sword sword-right">
-              <span class="sword-blade"></span>
-              <span class="sword-guard"></span>
-              <span class="sword-handle"></span>
-            </div>
+            <span class="experience-number">03</span>
 
-            <div class="arena-spark spark-one"></div>
-            <div class="arena-spark spark-two"></div>
-            <div class="arena-spark spark-three"></div>
           </div>
 
-          <div class="experience-content">
+          <div class="experience-body">
 
-            <div class="experience-meta">
-              <span class="experience-index">03 / 03</span>
-              <span class="experience-category">VARŽYBOS</span>
-            </div>
+            <span class="experience-small">
+              PARODYK SAVO ĮGŪDŽIUS
+            </span>
 
             <h3>PVP</h3>
 
             <p>
-              Išbandyk savo kovos įgūdžius,
-              susirung su kitais žaidėjais
+              Susirung su kitais žaidėjais,
+              tobulink kovos įgūdžius
               ir siek pergalių.
             </p>
 
-            <div class="experience-bottom">
-              <span>KOVOK · VARŽYKIS · LAIMĖK</span>
-              <span class="experience-arrow">↗</span>
+            <div class="experience-tags">
+              <span>KOVOS</span>
+              <span>VARŽYBOS</span>
+              <span>PERGALĖS</span>
             </div>
 
           </div>
@@ -364,12 +349,12 @@
       </div>
 
 
-      <!-- SEKCIJOS PABAIGA -->
+      <!-- PERĖJIMAS -->
 
-      <div class="why-outro">
-        <span class="why-outro-line"></span>
-        <span>TAI TIK PRADŽIA</span>
-        <span class="why-outro-line"></span>
+      <div class="section-separator">
+        <span></span>
+        <b>ATRASK DAR DAUGIAU</b>
+        <span></span>
       </div>
 
 
@@ -379,9 +364,13 @@
 
         <div class="modes-info">
 
-          <div class="mini-title">ŽAIDIMAS</div>
+          <div class="mini-title">
+            ŽAIDIMAS
+          </div>
 
-          <h2>RINKIS SAVO KELIĄ.</h2>
+          <h2>
+            RINKIS SAVO KELIĄ.
+          </h2>
 
           <p>
             McStone nėra tik paprastas Survival serveris.
@@ -453,7 +442,7 @@
     </section>
 
 
-    <!-- PRISIJUNGIMAS -->
+    <!-- CTA -->
 
     <section class="cta-wrap">
 
@@ -463,7 +452,9 @@
 
         <div class="cta-content">
 
-          <div class="mini-title">PRADĖK DABAR</div>
+          <div class="mini-title">
+            PRADĖK DABAR
+          </div>
 
           <h2>
             PASIRUOŠĘS<br>
@@ -487,7 +478,11 @@
 
         </div>
 
-        <button class="big-ip" type="button" onclick="copyIP(this)">
+        <button
+          class="big-ip"
+          type="button"
+          onclick="copyIP(this)"
+        >
           <small>SERVERIO ADRESAS</small>
           <strong>MCSTONE.SRW.LT</strong>
           <span>SPAUSK, KAD NUKOPIJUOTUM</span>
@@ -507,12 +502,14 @@
     <div class="footer-inner">
 
       <div class="footer-brand">
+
         <img src="logo.png" alt="McStone.lt">
 
         <div>
           <strong>MCSTONE.LT</strong>
           <p>Vienas populiariausių lietuviškų Minecraft serverių.</p>
         </div>
+
       </div>
 
       <div class="footer-links">
@@ -549,8 +546,7 @@
 
   </footer>
 
-
-  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">
+  <div class="copy-toast" id="copyToast">
     ✓ MCSTONE.SRW.LT NUKOPIJUOTAS
   </div>
 
